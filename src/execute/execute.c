@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/08 16:15:25 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/10 10:59:17 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,7 @@ void	execute_cmd(t_pipes *p, int idx)
 	execve(g_data.cur.cmd_list[idx]->cmd, g_data.cur.cmd_list[idx]->args,
 		g_data.env.vars);
 	execve(path, g_data.cur.cmd_list[idx]->args, g_data.env.vars);
-	ft_putstr_fd("Shell: ", 2);
-	if (ft_strchr(g_data.cur.cmd_list[idx]->cmd, '/'))
-	{
-		ft_putstr_fd(g_data.cur.cmd_list[idx]->cmd, 2);
-		ft_putstr_fd(": ", 2);
-		perror("");
-	}
-	else
-	{
-		ft_putstr_fd(g_data.cur.cmd_list[idx]->cmd, 2);
-		ft_putstr_fd(": Command not found\n", 2);
-	}
-	clean_exit_shell();
-	exit(errno);
+	execute_fail(idx);
 }
 
 void	command_loop(t_pipes *p)

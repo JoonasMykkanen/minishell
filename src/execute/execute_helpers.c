@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:24:26 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/06 15:25:46 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/10 10:59:20 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,21 @@ char	*get_command_path(char *token)
 		i++;
 	}
 	return ("not found");
+}
+void	execute_fail(int idx)
+{
+	ft_putstr_fd("Shell: ", 2);
+	if (ft_strchr(g_data.cur.cmd_list[idx]->cmd, '/'))
+	{
+		ft_putstr_fd(g_data.cur.cmd_list[idx]->cmd, 2);
+		ft_putstr_fd(": ", 2);
+		perror("");
+	}
+	else
+	{
+		ft_putstr_fd(g_data.cur.cmd_list[idx]->cmd, 2);
+		ft_putstr_fd(": Command not found\n", 2);
+	}
+	clean_exit_shell();
+	exit(errno);
 }
