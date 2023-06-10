@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:53:39 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/10 11:31:11 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/10 11:47:45 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,33 @@ void handle_child(t_pipes *p)
 {
 	handle_input_redirection_for_execution(p);
 	handle_output_redirection_for_execution(p);
-    if (p->idx < g_data.cur.cmd_count - 1)
+
+	if (p->idx != 0)
     {
-        if (p->fdout != STDOUT_FILENO)
-        {
-            dup2(p->pipes[p->idx][WRITE_END], STDOUT_FILENO);
-        }
-		close(p->pipes[p->idx][READ_END]);
-		close(p->pipes[p->idx][WRITE_END]);
+        dup2(p->pipes[p->idx - 1][READ_END], STDIN_FILENO);
     }
+	if (p->idx < g_data.cur.cmd_count - 1)
+    {
+		dup2(p->pipes[p->idx][WRITE_END], STDOUT_FILENO);
+    }
+    
+    for (int i = 0; i < g_data.cur.cmd_count - 1; i++)
+    {
+        close(p->pipes[i][READ_END]);
+        close(p->pipes[i][WRITE_END]);
+    }
+
     execute_cmd(p, p->idx);
 }
 
 void handle_parent(t_pipes *p)
 {
-    if (p->idx < g_data.cur.cmd_count - 1)
+	if (p->idx != 0)
+    {
+        close(p->pipes[p->idx - 1][READ_END]);
+    }
+	if (p->idx < g_data.cur.cmd_count - 1)
     {
 		close(p->pipes[p->idx][WRITE_END]);
-        p->fdin = p->pipes[p->idx][READ_END];
-        dup2(p->fdin, STDIN_FILENO);
-		close(p->pipes[p->idx][READ_END]);
     }
 }

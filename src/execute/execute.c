@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/10 10:59:17 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/10 11:47:33 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,9 @@ void	execute_cmd(t_pipes *p, int idx)
 	execute_fail(idx);
 }
 
-void	command_loop(t_pipes *p)
+void command_loop(t_pipes *p)
 {
-	if (p->idx < g_data.cur.cmd_count - 1)
-		pipe(p->pipes[p->idx]);
+    pipe(p->pipes[p->idx]);
 	g_data.sig.exec_pid = fork();
 	if (g_data.sig.exec_pid == 0)
 	{
@@ -58,9 +57,9 @@ void	command_loop(t_pipes *p)
 	else
 	{
 		handle_parent(p);
+		g_data.cur.cmd_index++;
+		p->idx++;
 	}
-	g_data.cur.cmd_index++;
-	p->idx++;
 }
 void	execute(void)
 {
