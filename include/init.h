@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:20:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/05/30 18:47:22 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/10 13:13:01 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 void	reset_cur(void);
 char	**get_paths(void);
 void	set_builtins(void);
+void	free_arr(char **arr);
 void	clean_cur_struct(void);
 void	termios_settings(void);
 int		init_struct(char **envp);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oanttoor <oanttoor@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:26:28 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/05 18:05:06 by oanttoor         ###   ########.fr       */
+/*   Updated: 2023/06/10 12:40:40 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define TYPES_H
 
 # include "../libft/libft.h"
-# include	<sys/_types.h>
+# include <sys/_types.h>
 # include <stdbool.h>
 # include <dirent.h>
 
