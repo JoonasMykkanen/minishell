@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/10 12:21:31 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/10 20:13:08 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void command_loop(t_pipes *p)
 void execute(void)
 {
 	int		original_stdin;
-	int		status;
 	t_pipes	p;
 
 	p.idx = 0;
@@ -82,9 +81,13 @@ void execute(void)
 		{
 			command_loop(&p);
 		}
-		while (wait(&status) > 0)
+		while (wait(NULL) > 0)
    			 ;
-		close(p.pipes[p.idx - 1][READ_END]);
+		// GPT CHANGE
+		if (p.idx > 0) 
+        {
+            close(p.pipes[p.idx - 1][READ_END]);
+        }
 		dup2(original_stdin, STDIN);
 		close(original_stdin);
 		if (WIFEXITED(g_data.env.exit_status))
