@@ -1,8 +1,7 @@
 NAME = minishell
 CC = gcc
-CXX = g++
 FLAGS = -Wall -Werror -Wextra
-LDFLAGS = -L/opt/homebrew/opt/readline/lib -lreadline -L libft -lft
+LDFLAGS = -L/opt/homebrew/opt/readline/lib -lreadline -L src/libft -lft
 
 SRC_FILES = $(wildcard src/builtins/*.c) $(wildcard src/parser/*.c) \
 			 $(wildcard src/input/*.c) $(wildcard src/execute/*.c) \
@@ -19,7 +18,7 @@ OBJ_FILES = $(patsubst src/%.c, obj/%.o, $(wildcard src/*.c))  \
 all: $(NAME)
 
 $(NAME): $(filter-out obj/AllTests.o, $(OBJ_FILES))
-	make -C libft
+	make -C src/libft
 	$(CC) -g $(LDFLAGS) $^ -o bin/$@ -lreadline
 
 run: $(NAME)
@@ -27,7 +26,7 @@ run: $(NAME)
 
 .PHONY: clean
 clean:
-	make fclean -C libft	
+	make fclean -C src/libft	
 	rm -f obj/*.o obj/*/*.o bin/*
 
 obj/%.o: src/%.c

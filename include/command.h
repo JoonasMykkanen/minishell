@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   command.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oanttoor <oanttoor@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 09:44:43 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/05/25 13:36:52 by oanttoor         ###   ########.fr       */
+/*   Updated: 2023/06/10 13:48:14 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COMMAND_H
 # define COMMAND_H
 
-# include "../libft/libft.h"
+# include "../src/libft/libft.h"
 # include <fcntl.h>
 # include "types.h"
 # include "minishell.h"

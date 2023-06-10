@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oanttoor <oanttoor@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:25:58 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/06 14:12:04 by oanttoor         ###   ########.fr       */
+/*   Updated: 2023/06/10 13:47:59 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOKENIZER_H
 # define TOKENIZER_H
 
-# include "../libft/libft.h"
+# include "../src/libft/libft.h"
 
 # define DEFAULT 0
 # define WITHIN_QUOTES 1

@@ -6,14 +6,14 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:26:28 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/10 12:40:40 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/10 13:47:47 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
 
-# include "../libft/libft.h"
+# include "../src/libft/libft.h"
 # include <sys/_types.h>
 # include <stdbool.h>
 # include <dirent.h>

@@ -6,14 +6,14 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 08:56:37 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/06 19:01:31 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/10 13:48:06 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INPUT_H
 # define INPUT_H
 
-# include "../libft/libft.h"
+# include "../src/libft/libft.h"
 
 int		handle_input(char *input);
 int		is_multiline(char *input);

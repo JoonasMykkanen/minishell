@@ -6,14 +6,14 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:20:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/10 13:13:01 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/10 13:48:08 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INIT_H
 # define INIT_H
 
-# include "../libft/libft.h"
+# include "../src/libft/libft.h"
 # include <fcntl.h>
 
 void	reset_cur(void);
