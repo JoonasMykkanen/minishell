@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/10 12:19:25 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/10 12:21:31 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,7 @@ void execute(void)
 		}
 		while (wait(&status) > 0)
    			 ;
-        // close read end of the last pipe
-        if (p.idx != 0)
-        {
-            close(p.pipes[p.idx - 1][READ_END]);
-        }
+		close(p.pipes[p.idx - 1][READ_END]);
 		dup2(original_stdin, STDIN);
 		close(original_stdin);
 		if (WIFEXITED(g_data.env.exit_status))
