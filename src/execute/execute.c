@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/10 12:04:59 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/10 12:19:25 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ void execute(void)
 		execute_builtin(&p);
 	else
 	{
-		original_stdin = dup(STDIN_FILENO);
-		p.fdin = STDIN_FILENO;
+		original_stdin = dup(STDIN);
+		p.fdin = STDIN;
 		while (p.idx < g_data.cur.cmd_count)
 		{
 			command_loop(&p);
@@ -89,7 +89,7 @@ void execute(void)
         {
             close(p.pipes[p.idx - 1][READ_END]);
         }
-		dup2(original_stdin, STDIN_FILENO);
+		dup2(original_stdin, STDIN);
 		close(original_stdin);
 		if (WIFEXITED(g_data.env.exit_status))
 			g_data.env.exit_status = WEXITSTATUS(g_data.env.exit_status);
