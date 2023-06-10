@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/10 11:47:33 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/10 12:04:59 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ void	execute_cmd(t_pipes *p, int idx)
 
 void command_loop(t_pipes *p)
 {
-    pipe(p->pipes[p->idx]);
+    if (p->idx < g_data.cur.cmd_count - 1)
+    {
+        pipe(p->pipes[p->idx]);
+    }
 	g_data.sig.exec_pid = fork();
 	if (g_data.sig.exec_pid == 0)
 	{
@@ -61,9 +64,10 @@ void command_loop(t_pipes *p)
 		p->idx++;
 	}
 }
-void	execute(void)
+void execute(void)
 {
 	int		original_stdin;
+	int		status;
 	t_pipes	p;
 
 	p.idx = 0;
@@ -78,11 +82,17 @@ void	execute(void)
 		{
 			command_loop(&p);
 		}
-		while (waitpid(-1, &g_data.env.exit_status, 0) > 0)
-			;
+		while (wait(&status) > 0)
+   			 ;
+        // close read end of the last pipe
+        if (p.idx != 0)
+        {
+            close(p.pipes[p.idx - 1][READ_END]);
+        }
 		dup2(original_stdin, STDIN_FILENO);
 		close(original_stdin);
 		if (WIFEXITED(g_data.env.exit_status))
 			g_data.env.exit_status = WEXITSTATUS(g_data.env.exit_status);
 	}
 }
+

@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:52:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/08 16:20:17 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/10 12:13:39 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,25 @@ void	redir_out(t_pipes *p)
 	}
 }
 
-void	handle_input_redirection_for_execution(t_pipes *p)
+void handle_input_redirection_for_execution(t_pipes *p)
 {
-	if (g_data.cur.cmd_list[p->idx]->input == NULL)
-		p->fdin = STDIN;
-	else
-		redir_input(p);
-	if (p->fdin != STDIN)
-	{
-		dup2(p->fdin, STDIN);
-		close(p->fdin);
-	}
+    // For the first command, fdin should be STDIN if no input redirection
+    // For other commands, fdin should be the read end of the previous pipe
+    if (g_data.cur.cmd_list[p->idx]->input == NULL)
+    {
+        if (p->idx == 0)
+            p->fdin = STDIN_FILENO;
+        else
+            p->fdin = p->pipes[p->idx - 1][READ_END];
+    }
+    else
+        redir_input(p);
+
+    dup2(p->fdin, STDIN_FILENO);
+    if (p->fdin != STDIN_FILENO)
+        close(p->fdin);
 }
+
 
 void	handle_output_redirection_for_execution(t_pipes *p)
 {
