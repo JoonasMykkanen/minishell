@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:51:24 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/06 17:52:25 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/10 21:53:51 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	execute_builtin(t_pipes *p)
 	original_stdout = dup(STDOUT);
 	handle_output_redirection_for_execution(p);
 	cmd = ft_strdup(g_data.cur.cmd_list[g_data.cur.cmd_index]->cmd);
+	malloc_error_check(cmd);
 	idx = what_builtin(cmd);
 	return_value = choose_builtin(idx);
 	if (g_data.cur.cmd_count == 1)

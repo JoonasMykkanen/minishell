@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   store_token.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oanttoor <oanttoor@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:45:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/06 15:02:42 by oanttoor         ###   ########.fr       */
+/*   Updated: 2023/06/10 22:04:47 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	store_current_token(void)
 	type = DEFAULT;
 	add_char_to_buffer('\0');
 	token = ft_strdup((char *)vec_get(&g_data.cur.token_buffer, 0));
+	malloc_error_check(token);
 	vec_push(&g_data.cur.tokens, &token);
 	vec_push(&g_data.cur.types, &type);
 }
@@ -58,6 +59,7 @@ void	store_current_token_within_quotes(void)
 	type = WITHIN_QUOTES;
 	add_char_to_buffer('\0');
 	token = ft_strdup((char *)vec_get(&g_data.cur.token_buffer, 0));
+	malloc_error_check(token);
 	vec_push(&g_data.cur.tokens, &token);
 	vec_push(&g_data.cur.types, &type);
 }

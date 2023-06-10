@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/10 20:13:08 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/10 20:18:46 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,8 @@ void execute(void)
 		}
 		while (wait(NULL) > 0)
    			 ;
-		// GPT CHANGE
 		if (p.idx > 0) 
-        {
             close(p.pipes[p.idx - 1][READ_END]);
-        }
 		dup2(original_stdin, STDIN);
 		close(original_stdin);
 		if (WIFEXITED(g_data.env.exit_status))

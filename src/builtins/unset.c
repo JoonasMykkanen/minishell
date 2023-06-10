@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 07:55:31 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/06 18:58:36 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/10 21:57:40 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	is_var_to_be_removed(char *to_be_removed, char *current_env_var)
 	char	*needle;
 
 	needle = ft_strjoin(to_be_removed, "=");
+	malloc_error_check(needle);
 	if (ft_strncmp(current_env_var, needle, ft_strlen(needle)) == 0)
 		return (1);
 	free(needle);
@@ -40,6 +41,7 @@ char	**remove_env_var(char *arg)
 		if (is_var_to_be_removed(arg, g_data.env.vars[i]) == 0)
 		{
 			new_env_vars[j] = ft_strdup(g_data.env.vars[i]);
+			malloc_error_check(new_env_vars[j]);
 			j++;
 		}
 		i++;

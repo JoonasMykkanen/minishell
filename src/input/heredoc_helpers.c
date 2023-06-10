@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:10:30 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/06 19:01:05 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/10 21:58:35 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ char	*heredoc_delim(char *input, int heredoc_start_idx)
 	delim_end_idx = get_delim_end_index(input, delim_start_idx);
 	delim_len = delim_end_idx - delim_start_idx;
 	delim = ft_substr(input, delim_start_idx, delim_len);
+	malloc_error_check(delim);
 	return (delim);
 }
 

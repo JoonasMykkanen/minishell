@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_cmds_and_args.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oanttoor <oanttoor@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:21:26 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/06 15:44:05 by oanttoor         ###   ########.fr       */
+/*   Updated: 2023/06/10 22:01:34 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ extern t_data	g_data;
 void	handle_cmd(int cmd_idx, char *token, int *args_index)
 {
 	g_data.cur.cmd_list[cmd_idx]->cmd = ft_strdup(token);
+	malloc_error_check(g_data.cur.cmd_list[cmd_idx]->cmd);
 	g_data.cur.cmd_list[cmd_idx]->args = (char **)malloc(100 * sizeof(char *));
 	string_array_malloc_error_check(g_data.cur.cmd_list[cmd_idx]->args);
 	g_data.cur.cmd_list[cmd_idx]->args[(*args_index)++] = ft_strdup(token);
@@ -27,6 +28,7 @@ void	handle_cmd(int cmd_idx, char *token, int *args_index)
 void	handle_args(int cmd_idx, char *token, int *args_index)
 {
 	g_data.cur.cmd_list[cmd_idx]->args[*args_index] = ft_strdup(token);
+	malloc_error_check(g_data.cur.cmd_list[cmd_idx]->args[*args_index]);
 	(*args_index)++;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oanttoor <oanttoor@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 10:38:38 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/06 18:00:20 by oanttoor         ###   ########.fr       */
+/*   Updated: 2023/06/10 21:56:46 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ char	**add_arg_to_env_vars(char *arg)
 	while (g_data.env.vars[i] != NULL)
 	{
 		new_env_vars[i] = ft_strdup(g_data.env.vars[i]);
+		malloc_error_check(new_env_vars[i]);
 		i++;
 	}
 	new_env_vars[i] = ft_strdup(arg);
@@ -88,6 +89,7 @@ int	ft_export(int cmd_idx)
 	i = 1;
 	env_var_idx = 0;
 	arg = ft_strdup(g_data.cur.cmd_list[cmd_idx]->args[i]);
+	malloc_error_check(arg);
 	if (g_data.cur.cmd_list[cmd_idx]->args[1] == NULL)
 	{
 		while (g_data.env.vars[env_var_idx] != NULL)

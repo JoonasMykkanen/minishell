@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansion_mode_helpers.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oanttoor <oanttoor@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:51:57 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/06 15:40:49 by oanttoor         ###   ########.fr       */
+/*   Updated: 2023/06/10 22:02:59 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ char	*fetch_env_var(char *str)
 
 	idx = -1;
 	needle = ft_strjoin(str, "=");
+	malloc_error_check(needle);
 	len = ft_strlen(needle);
 	free(str);
 	while (g_data.env.vars[++idx] != NULL)

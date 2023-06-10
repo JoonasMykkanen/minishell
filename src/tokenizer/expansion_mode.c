@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:41:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/06 19:07:18 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/10 22:04:16 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ char	*get_identifier(int *input_idx, int *identifier_idx)
 		(*identifier_idx)++;
 	identifier = ft_substr(g_data.cur.raw, (*input_idx + 1), \
 						(*identifier_idx - 1) - *input_idx);
+	malloc_error_check(identifier);
 	return (identifier);
 }
 
