@@ -17,14 +17,4 @@ Basics of how a shell interprets and executes commands and environment variable 
 ### Input Parsing
 Command line parser to process user input into executable commands.
 
-## Project Structure
-- **main.c**: The main entry point to our shell.
-- **builtins.c**: Implementation of built-in commands.
-- **executer.c**: Handles command execution.
-- **signals.c**: Manages signal handling.
-- **parser.c**: Parses the user input into commands.
-- **redirect.c**: Implements input/output redirections.
-- **pipes.c**: Manages inter-process communication using pipes.
-- **Makefile**: Automates compilation and clean-up process.
-
 For further details, bash has been taken as the reference, staying as close to its behaviour as possible within the scope of the project. For more details on this assigment, see `subject.pdf`.
