@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:13:09 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/13 12:45:29 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/13 13:14:15 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ char	**get_paths(void)
 	path_str = ft_strdup("PATH");
 	malloc_error_check(path_str);
 	env_vars = fetch_env_var(path_str);
-	free(path_str);
 	if (!env_vars)
 		return (NULL);
 	paths = ft_split(env_vars, ':');
+	free(env_vars);
 	return (paths);
 }
 

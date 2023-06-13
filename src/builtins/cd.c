@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 09:57:54 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/10 21:55:48 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/13 13:08:49 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ int	ft_cd(void)
 		getcwd(g_data.dir.current, 1024);
 		g_data.dir.ptr_current = g_data.dir.ptr_target;
 	}
+	free(target);
 	return (0);
 }

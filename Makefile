@@ -1,5 +1,6 @@
 NAME = minishell
-CC = gcc
+LIBFT = src/libft
+CC = cc
 CFLAGS = -g -I./include
 
 SRC_FILES = $(wildcard src/builtins/*.c) $(wildcard src/parser/*.c) \
@@ -13,15 +14,15 @@ OBJ_FILES = $(patsubst src/%.c, obj/%.o, $(SRC_FILES))
 all: $(NAME)
 
 $(NAME): $(OBJ_FILES)
-	make -C libft
-	$(CC) -g $^ -L./libft -lft -L/opt/homebrew/opt/readline/lib -lreadline -o bin/$@
+	make -C $(LIBFT)
+	$(CC) -g $^ -L./src/libft -lft -L/opt/homebrew/opt/readline/lib -lreadline -o bin/$@
 
 
 run: $(NAME)
 	./bin/$(NAME)
 
 clean:
-	make clean -C libft
+	make clean -C $(LIBFT)
 	rm -rf obj/*.o obj/*/*.o bin/*
 
 obj/%.o: src/%.c
