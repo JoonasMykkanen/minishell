@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:02:11 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/08 11:21:49 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/13 12:02:23 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,15 @@ int	is_delim(int i)
 
 	t = get_token(i);
 	if (t->type == DEFAULT)
+	{
 		if (ft_strncmp("|", t->token, ft_strlen(t->token)) == 0)
+		{
+			free(t);
 			return (1);
+		}
+
+	}
+	free(t);
 	return (0);
 }
 

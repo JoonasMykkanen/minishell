@@ -2,6 +2,7 @@
 	"files.associations": {
 		"minishell.h": "c",
 		"init.h": "c",
-		"_types.h": "c"
+		"_types.h": "c",
+		"command.h": "c"
 	}
 }
