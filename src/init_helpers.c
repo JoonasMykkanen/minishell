@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:13:09 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/13 12:04:38 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/13 12:45:29 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ char	**get_paths(void)
 	if (!env_vars)
 		return (NULL);
 	paths = ft_split(env_vars, ':');
-	free_arr(env_vars);
 	return (paths);
 }
 
