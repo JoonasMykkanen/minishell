@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/14 09:29:04 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/14 12:10:32 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ void	execute_cmd(t_pipes *p, int idx)
 	execute_fail(idx);
 }
 
-void command_loop(t_pipes *p)
+void	command_loop(t_pipes *p)
 {
-    if (p->idx < g_data.cur.cmd_count - 1)
-    {
-        pipe(p->pipes[p->idx]);
-    }
+	if (p->idx < g_data.cur.cmd_count - 1)
+	{
+		pipe(p->pipes[p->idx]);
+	}
 	g_data.sig.exec_pid = fork();
 	if (g_data.sig.exec_pid == 0)
 	{
@@ -64,13 +64,13 @@ void command_loop(t_pipes *p)
 		p->idx++;
 	}
 }
-void execute(void)
+void	execute(void)
 {
 	int		original_stdin;
 	t_pipes	p;
 
 	p.idx = 0;
-	if (g_data.cur.cmd_count == 1 \
+	if (g_data.cur.cmd_count == 1
 		&& is_builtin(g_data.cur.cmd_list[0]->cmd) == 1)
 		execute_builtin(&p);
 	else
@@ -82,12 +82,11 @@ void execute(void)
 			command_loop(&p);
 		}
 		while (wait(NULL) > 0)
-   			 ;
-		if (p.idx > 0) 
-            close(p.pipes[p.idx - 1][READ_END]);
+			;
+		if (p.idx > 0)
+			close(p.pipes[p.idx - 1][READ_END]);
 		dup2(original_stdin, STDIN);
 		if (WIFEXITED(g_data.env.exit_status))
 			g_data.env.exit_status = WEXITSTATUS(g_data.env.exit_status);
 	}
 }
-

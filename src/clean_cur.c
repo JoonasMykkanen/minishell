@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:35:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/14 12:04:02 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/14 12:10:22 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,23 @@ static void	handle_heredoc_flag(void)
 
 static void	free_vec_pointers(void)
 {
-	char 	*str;
+	char	*str;
 	size_t	i;
 
 	i = -1;
 	while (++i < g_data.cur.tokens.len)
 	{
-        str = *(char **)vec_get(&g_data.cur.tokens, i);
+		str = *(char **)vec_get(&g_data.cur.tokens, i);
 		if (str)
 		{
-       		free(str);
+			free(str);
 		}
-    }
+	}
 }
 
 void	clean_cur_struct(void)
 {
-	int		i;
+	int	i;
 
 	i = -1;
 	free(g_data.cur.raw);
