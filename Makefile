@@ -15,7 +15,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ_FILES)
 	make -C $(LIBFT)
-	$(CC) -g $^ -L.$(LIBFT) -lft -L/opt/homebrew/opt/readline/lib -lreadline -o bin/$@
+	$(CC) -g $^ -L$(LIBFT) -lft -L/opt/homebrew/opt/readline/lib -lreadline -o bin/$@
 
 
 run: $(NAME)
