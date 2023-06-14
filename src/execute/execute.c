@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/10 20:18:46 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/14 09:03:16 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ int	do_checks(char *cmd)
 		ft_putstr_fd("Shell: .: File name argument requiered\n", 2);
 		exit(2);
 	}
-	stat(cmd, &statbuf);
+	if (stat(cmd, &statbuf) != 0)
+	{
+		ft_putstr_fd("Shell: Error retrieving file information\n", 2);
+		exit(1);
+	}
 	if (S_ISDIR(statbuf.st_mode) != 0)
 	{
 		ft_putstr_fd("Shell: /: is a directory\n", 2);

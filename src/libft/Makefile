@@ -6,7 +6,7 @@
 #    By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 14:22:41 by jmykkane          #+#    #+#              #
-#    Updated: 2023/06/10 12:57:28 by joonasmykka      ###   ########.fr        #
+#    Updated: 2023/06/14 08:57:19 by joonasmykka      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ vec_push.c vec_remove.c vec_resize.c ft_strcmp.c ft_isnum.c
 
 SRC_O = $(SRC:.c=.o)
 
-INCLUDES = libft.h get_next_line.h ft_printf.h vec.h
+INCLUDES = ./
 
 FLAGS = -Wall -Werror -Wextra -g -I $(INCLUDES)
 
