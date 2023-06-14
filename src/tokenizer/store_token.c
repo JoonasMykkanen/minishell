@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:45:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/14 09:20:38 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/14 09:38:45 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	store_current_token(void)
 	malloc_error_check(token);
 	vec_push(&g_data.cur.tokens, &token);
 	vec_push(&g_data.cur.types, &type);
-	free(token);
 }
 
 // Store token if buffer is not empty
@@ -63,7 +62,6 @@ void	store_current_token_within_quotes(void)
 	malloc_error_check(token);
 	vec_push(&g_data.cur.tokens, &token);
 	vec_push(&g_data.cur.types, &type);
-	free(token);
 }
 
 void	store_empty_token(void)
