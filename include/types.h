@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:26:28 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/10 13:47:47 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/14 08:51:15 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define TYPES_H
 
 # include "../src/libft/libft.h"
-# include <sys/_types.h>
+# include <sys/types.h>
 # include <stdbool.h>
 # include <dirent.h>
 
