@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:47:02 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/13 12:05:30 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/14 17:19:48 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,10 @@ extern t_data	g_data;
 
 static void	free_dir(void)
 {
-	free_arr(g_data.dir.builtins);
 	if (g_data.dir.current)
 	{
 		free(g_data.dir.current);
 		g_data.dir.current = NULL;
-	}
-	if (g_data.dir.home)
-	{
-		free(g_data.dir.home);
-		g_data.dir.home = NULL;
 	}
 }
 
