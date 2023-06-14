@@ -1,5 +1,5 @@
 NAME = minishell
-LIBFT = src/libft
+LIBFT = ./src/libft
 CC = cc
 CFLAGS = -g -I./include
 
@@ -15,7 +15,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ_FILES)
 	make -C $(LIBFT)
-	$(CC) -g $^ -L./src/libft -lft -L/opt/homebrew/opt/readline/lib -lreadline -o bin/$@
+	$(CC) -g $^ -L.$(LIBFT) -lft -L/opt/homebrew/opt/readline/lib -lreadline -o bin/$@
 
 
 run: $(NAME)
