@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:52:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/10 12:19:05 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/14 12:13:34 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,23 @@ void	redir_out(t_pipes *p)
 	}
 }
 
-void handle_input_redirection_for_execution(t_pipes *p)
+void	handle_input_redirection_for_execution(t_pipes *p)
 {
-    if (g_data.cur.cmd_list[p->idx]->input == NULL)
-    {
-        if (p->idx == 0)
-            p->fdin = STDIN;
-        else
-            p->fdin = p->pipes[p->idx - 1][READ_END];
-    }
-    else
+	if (g_data.cur.cmd_list[p->idx]->input == NULL)
 	{
-        redir_input(p);
+		if (p->idx == 0)
+			p->fdin = STDIN;
+		else
+			p->fdin = p->pipes[p->idx - 1][READ_END];
 	}
-    dup2(p->fdin, STDIN);
-    if (p->fdin != STDIN)
-        close(p->fdin);
+	else
+	{
+		redir_input(p);
+	}
+	dup2(p->fdin, STDIN);
+	if (p->fdin != STDIN)
+		close(p->fdin);
 }
-
 
 void	handle_output_redirection_for_execution(t_pipes *p)
 {

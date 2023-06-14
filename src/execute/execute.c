@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/14 12:10:32 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/14 12:13:11 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	command_loop(t_pipes *p)
 		p->idx++;
 	}
 }
+
 void	execute(void)
 {
 	int		original_stdin;
