@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/14 12:13:11 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/15 17:37:31 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	execute(void)
 		{
 			command_loop(&p);
 		}
-		while (wait(NULL) > 0)
+		while (waitpid(-1, &g_data.env.exit_status, 0) > 0)
 			;
 		if (p.idx > 0)
 			close(p.pipes[p.idx - 1][READ_END]);

@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:04:33 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/06 15:27:01 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/15 17:13:45 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	has_option_n(int *ptr_idx)
 	has_option_n = 0;
 	while (g_data.cur.cmd_list[g_data.cur.cmd_index]->args[i] != NULL)
 	{
-		if (is_option_n(g_data.cur.cmd_list[g_data.cur.cmd_index]->args[i]))
+		if (is_option_n(g_data.cur.cmd_list[g_data.cur.cmd_index]->args[i]) == 1)
 		{
 			(*ptr_idx)++;
 			has_option_n = 1;
@@ -42,7 +42,7 @@ static int	has_option_n(int *ptr_idx)
 	return (has_option_n);
 }
 
-static void	with_option(int cmd_idx, int idx, int printed_idx)
+static void	without_option(int cmd_idx, int idx, int printed_idx)
 {
 	while (g_data.cur.cmd_list[cmd_idx]->args[idx] != NULL)
 	{
@@ -55,7 +55,7 @@ static void	with_option(int cmd_idx, int idx, int printed_idx)
 	printf("\n");
 }
 
-static void	without_option(int cmd_idx, int idx)
+static void	with_option(int cmd_idx, int idx)
 {
 	while (g_data.cur.cmd_list[cmd_idx]->args[idx] != NULL)
 	{
@@ -63,7 +63,6 @@ static void	without_option(int cmd_idx, int idx)
 			printf(" ");
 		printf("%s", g_data.cur.cmd_list[cmd_idx]->args[idx]);
 		idx++;
-		cmd_idx++;
 	}
 }
 
@@ -74,13 +73,13 @@ int	ft_echo(int cmd_idx)
 
 	printed_idx = 0;
 	idx = 1;
-	if (has_option_n(&idx) == 0)
+	if (has_option_n(&idx) == 1)
 	{
-		with_option(cmd_idx, idx, printed_idx);
+		with_option(cmd_idx, idx);
 	}
 	else
 	{
-		without_option(cmd_idx, idx);
+		without_option(cmd_idx, idx, printed_idx);
 	}
 	return (0);
 }

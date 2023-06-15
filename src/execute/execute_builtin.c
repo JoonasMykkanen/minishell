@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:51:24 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/10 21:53:51 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/15 17:21:27 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static int	choose_builtin(int idx)
 	return (return_value);
 }
 
-// Function to execute one single builtin command
 void	execute_builtin(t_pipes *p)
 {
 	int		original_stdout;
@@ -50,6 +49,7 @@ void	execute_builtin(t_pipes *p)
 	malloc_error_check(cmd);
 	idx = what_builtin(cmd);
 	return_value = choose_builtin(idx);
+	free(cmd);
 	if (g_data.cur.cmd_count == 1)
 	{
 		close(original_stdout);
@@ -60,7 +60,6 @@ void	execute_builtin(t_pipes *p)
 		dup2(original_stdout, STDOUT);
 	}
 	close(original_stdout);
-	free(cmd);
 	if (g_data.cur.cmd_count > 1)
 		exit(return_value);
 }

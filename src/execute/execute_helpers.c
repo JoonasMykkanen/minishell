@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:24:26 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/14 12:18:28 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/15 17:33:05 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,5 @@ void	execute_fail(int idx)
 		ft_putstr_fd(": Command not found\n", 2);
 	}
 	clean_exit_shell();
-	exit(errno);
+	exit(127);
 }
