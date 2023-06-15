@@ -6,7 +6,7 @@
 #    By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 11:44:25 by joonasmykka       #+#    #+#              #
-#    Updated: 2023/06/15 16:45:05 by joonasmykka      ###   ########.fr        #
+#    Updated: 2023/06/15 17:45:00 by joonasmykka      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,8 @@ run: $(TARGET)
 
 clean:
 	make clean -C $(LIBFT_DIR)
-	rm -rf $(OBJ_DIR)
+	rm -rf $(OBJ_DIR)/**/*.o
+	rm -rf $(OBJ_DIR)/*.o
 
 fclean: clean
 	make fclean -C $(LIBFT_DIR)
