@@ -17,4 +17,4 @@ Basics of how a shell interprets and executes commands and environment variable 
 ### Input Parsing
 Command line parser to process user input into executable commands.
 
-For further details, bash has been taken as the reference, staying as close to its behaviour as possible within the scope of the project. For more details on this assigment, see [./subject.pdf](subject.pdf)`.
+For further details, bash has been taken as the reference, staying as close to its behaviour as possible within the scope of the project. For more details on this assigment, see [subject.pdf](subject.pdf)`.
