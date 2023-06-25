@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:07:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/06 17:01:37 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 11:45:49 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,49 +28,53 @@ static void	handle_int(int sig)
 			g_data.cur.err_flag = 1;
 			ioctl(1, TIOCSTI, eof);
 		}
-		if (g_data.sig.exec_pid == NO_CHILDS)
+		else if (g_data.sig.exec_pid == NO_CHILDS)
 		{
-			g_data.cur.err_flag = 1;
 			rl_on_new_line();
 			ioctl(1, TIOCSTI, nlc);
 		}
 		else
 		{
 			kill(g_data.sig.exec_pid, SIGINT);
+			g_data.cur.err_flag = 1;
 		}
 	}
 }
 
 static void	handle_quit(int sig)
 {
-	if (sig == SIGQUIT)
+	if (sig == SIGQUIT || sig == SIGABRT)
 	{
-		rl_redisplay();
+		rl_on_new_line();
 	}
 }
 
-static void	init_sigint(void)
+void	handle_ctrl_d(void)
 {
-	struct sigaction	act;
-
-	act.sa_handler = handle_int;
-	sigemptyset(&act.sa_mask);
-	act.sa_flags = SA_RESTART;
-	sigaction(SIGINT, &act, NULL);
-}
-
-static void	init_sigquit(void)
-{
-	struct sigaction	act;
-
-	act.sa_handler = handle_quit;
-	sigemptyset(&act.sa_mask);
-	act.sa_flags = SA_RESTART;
-	sigaction(SIGQUIT, &act, NULL);
+	const char	eof[2] = {4, 0};
+	
+	if (g_data.cur.heredoc_mode == 1)
+	{
+		g_data.cur.heredoc_mode = 0;
+		ioctl(1, TIOCSTI, eof);
+	}
+	else if (g_data.sig.exec_pid == NO_CHILDS)
+	{
+		ft_exit();
+	}
 }
 
 void	signal_manager(void)
 {
-	init_sigint();
-	init_sigquit();
+	struct sigaction	act_int;
+	struct sigaction	act_quit;
+
+	act_quit.sa_handler = handle_quit;
+	act_int.sa_handler = handle_int;
+	act_int.sa_flags = SA_RESTART;
+	act_quit.sa_flags = SA_RESTART;
+	sigemptyset(&act_quit.sa_mask);
+	sigemptyset(&act_int.sa_mask);
+	sigaction(SIGINT, &act_int, NULL);
+	sigaction(SIGQUIT, &act_quit, NULL);
 }

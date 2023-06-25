@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:26:35 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/15 17:05:07 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 11:46:09 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int	main(int argc, char **argv, char **envp)
 			execute_loop(input);
 			clean_cur_struct();
 		}
-		else if (input == NULL && g_data.sig.exec_pid == NO_CHILDS)
+		else if (input == NULL)
 		{
-			ft_exit();
+			handle_ctrl_d();
 		}
 	}
 	clean_exit_shell();

@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:47:02 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/14 20:19:49 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 10:32:14 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,8 @@ void	clean_exit_shell(void)
 {
 	free_dir();
 	free_env();
-	clean_cur_struct();
+	if (g_data.cur.raw)
+	{
+		clean_cur_struct();
+	}
 }

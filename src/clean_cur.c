@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:35:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/14 12:10:22 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 10:31:21 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,11 @@ void	clean_cur_struct(void)
 	int	i;
 
 	i = -1;
-	free(g_data.cur.raw);
+	if (g_data.cur.raw)
+	{
+		free(g_data.cur.raw);
+		g_data.cur.raw = NULL;
+	}
 	vec_free(&g_data.cur.token_buffer);
 	free_vec_pointers();
 	vec_free(&g_data.cur.tokens);
@@ -82,4 +86,5 @@ void	clean_cur_struct(void)
 	g_data.cur.cmd_index = 0;
 	g_data.cur.err_flag = 0;
 	handle_heredoc_flag();
+	g_data.sig.exec_pid = NO_CHILDS;
 }
