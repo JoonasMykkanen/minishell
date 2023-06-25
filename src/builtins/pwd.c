@@ -6,21 +6,19 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 10:38:38 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/07 21:34:03 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:29:41 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtins.h"
 
-extern t_data	g_data;
-
-int	ft_pwd(void)
+int	ft_pwd(t_data *data)
 {
-	if (!g_data.dir.current)
+	if (!data->dir.current)
 	{
-		clean_exit_shell();
+		clean_exit_shell(data);
 		exit(1);
 	}
-	printf("%s\n", g_data.dir.current);
+	printf("%s\n", data->dir.current);
 	return (0);
 }

@@ -6,13 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 10:38:38 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/10 21:56:46 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:30:19 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtins.h"
-
-extern t_data	g_data;
 
 int	is_valid_env_variable_value(char *arg)
 {
@@ -60,27 +58,27 @@ int	is_valid_identifier(char *arg)
 	return (is_valid);
 }
 
-char	**add_arg_to_env_vars(char *arg)
+char	**add_arg_to_env_vars(char *arg, t_data *data)
 {
 	char	**new_env_vars;
 	int		i;
 
 	i = 0;
-	new_env_vars = (char **)malloc((get_env_var_count() + 2) * sizeof(char *));
-	string_array_malloc_error_check(new_env_vars);
-	while (g_data.env.vars[i] != NULL)
+	new_env_vars = (char **)malloc((get_env_var_count(data) + 2) * sizeof(char *));
+	string_array_malloc_error_check(new_env_vars, data);
+	while (data->env.vars[i] != NULL)
 	{
-		new_env_vars[i] = ft_strdup(g_data.env.vars[i]);
-		malloc_error_check(new_env_vars[i]);
+		new_env_vars[i] = ft_strdup(data->env.vars[i]);
+		malloc_error_check(new_env_vars[i], data);
 		i++;
 	}
 	new_env_vars[i] = ft_strdup(arg);
 	new_env_vars[i + 1] = NULL;
-	free_env_vars();
+	free_env_vars(data);
 	return (new_env_vars);
 }
 
-int	ft_export(int cmd_idx)
+int	ft_export(int cmd_idx, t_data *data)
 {
 	int		env_var_idx;
 	char	*arg;
@@ -88,19 +86,19 @@ int	ft_export(int cmd_idx)
 
 	i = 1;
 	env_var_idx = 0;
-	arg = ft_strdup(g_data.cur.cmd_list[cmd_idx]->args[i]);
-	malloc_error_check(arg);
-	if (g_data.cur.cmd_list[cmd_idx]->args[1] == NULL)
+	arg = ft_strdup(data->cur.cmd_list[cmd_idx]->args[i]);
+	malloc_error_check(arg, data);
+	if (data->cur.cmd_list[cmd_idx]->args[1] == NULL)
 	{
-		while (g_data.env.vars[env_var_idx] != NULL)
+		while (data->env.vars[env_var_idx] != NULL)
 			env_var_idx++;
 	}
-	while (g_data.cur.cmd_list[cmd_idx]->args[i] != NULL)
+	while (data->cur.cmd_list[cmd_idx]->args[i] != NULL)
 	{
 		if (is_valid_identifier(arg) == 1)
 		{
-			ft_unset(cmd_idx, EXPORT);
-			g_data.env.vars = add_arg_to_env_vars(arg);
+			ft_unset(cmd_idx, EXPORT, data);
+			data->env.vars = add_arg_to_env_vars(arg, data);
 		}
 		else
 			ft_printf("export: `%s': not a valid identifier\n", arg);

@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:17:38 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/14 09:43:29 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:28:42 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,32 @@
 #include "../../include/command.h"
 #include "../../include/minishell.h"
 
-extern t_data	g_data;
-
-void	add_char_to_buffer(char c)
+void	add_char_to_buffer(char c, t_data *data)
 {
-	vec_push(&g_data.cur.token_buffer, (void *)&c);
+	vec_push(&data->cur.token_buffer, (void *)&c);
 }
 
-void	clear_and_init_buffer(void)
+void	clear_and_init_buffer(t_data *data)
 {
-	vec_free(&g_data.cur.token_buffer);
-	vec_new(&g_data.cur.token_buffer, 0, sizeof(char));
+	vec_free(&data->cur.token_buffer);
+	vec_new(&data->cur.token_buffer, 0, sizeof(char));
 }
 
-void	add_char_within_quotes(char c)
+void	add_char_within_quotes(char c, t_data *data)
 {
-	add_char_to_buffer(c);
-	store_token_within_quotes();
+	add_char_to_buffer(c, data);
+	store_token_within_quotes(data);
 }
 
-void	add_double_greater_than_within_quotes(int *i)
+void	add_double_greater_than_within_quotes(int *i, t_data *data)
 {
-	handle_double_greater_than(i);
-	store_token_within_quotes();
+	handle_double_greater_than(i, data);
+	store_token_within_quotes(data);
 }
 
-void	handle_double_greater_than(int *i)
+void	handle_double_greater_than(int *i, t_data *data)
 {
-	add_char_to_buffer('>');
-	add_char_to_buffer('>');
+	add_char_to_buffer('>', data);
+	add_char_to_buffer('>', data);
 	*i = *i + 1;
 }

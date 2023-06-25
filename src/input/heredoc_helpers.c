@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:10:30 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/10 21:58:35 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:29:13 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 #include "../../include/input.h"
 #include "../../include/minishell.h"
 
-extern t_data	g_data;
-
-int	heredoc_start_index(char *input)
+int	heredoc_start_index(char *input, t_data *data)
 {
 	int	i;
 	int	mode;
@@ -25,7 +23,7 @@ int	heredoc_start_index(char *input)
 	mode = DEFAULT_MODE;
 	while (input[i] != '\0')
 	{
-		is_mode_changing_char(input[i], &mode);
+		is_mode_changing_char(input[i], &mode, data);
 		if (input[i] == '<' && input[i + 1] == '<' && mode == DEFAULT_MODE)
 			return (i);
 		i++;
@@ -59,7 +57,7 @@ int	get_delim_end_index(char *input, int delim_start_idx)
 	return (delim_end_idx);
 }
 
-char	*heredoc_delim(char *input, int heredoc_start_idx)
+char	*heredoc_delim(char *input, int heredoc_start_idx, t_data *data)
 {
 	int		delim_start_idx;
 	int		delim_end_idx;
@@ -70,7 +68,7 @@ char	*heredoc_delim(char *input, int heredoc_start_idx)
 	delim_end_idx = get_delim_end_index(input, delim_start_idx);
 	delim_len = delim_end_idx - delim_start_idx;
 	delim = ft_substr(input, delim_start_idx, delim_len);
-	malloc_error_check(delim);
+	malloc_error_check(delim, data);
 	return (delim);
 }
 

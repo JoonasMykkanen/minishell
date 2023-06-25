@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:25:58 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/10 13:47:59 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 14:27:43 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define TOKENIZER_H
 
 # include "../src/libft/libft.h"
+# include "../include/types.h"
 
 # define DEFAULT 0
 # define WITHIN_QUOTES 1
@@ -25,42 +26,42 @@
 # define EXPANSION_MODE_DOUBLE_Q 12
 
 // Expansion mode
-void	handle_expansion_mode(int *mode, int *i);
+void	handle_expansion_mode(int *mode, int *i, t_data *data);
+int		is_exit_status_expansion(int j, t_data *data);
 int		is_valid_subsequent_character(char c);
 int		is_valid_first_character(char c);
-char	*fetch_env_var(char *str);
-int		is_exit_status_expansion(int j);
+char	*fetch_env_var(char *str, t_data *data);
 
 // Edge cases
-int		is_edge_case(char c, char next_c, int *mode, int *i);
-int		handle_within_quotes(char c, char next_c, int *i);
-int		handle_default_mode(char c, char next_c, int *i);
+int		is_edge_case(char c, char next_c, int *mode, int *i, t_data *data);
+int		handle_within_quotes(char c, char next_c, int *i, t_data *data);
+int		handle_default_mode(char c, char next_c, int *i, t_data *data);
 int		is_double_greater_than(char c, char next_c);
 int		is_smaller_than(char c);
 int		is_greater_than(char c);
 
 // Buffer handling
-void	handle_double_greater_than(int *i);
-void	clear_and_init_buffer(void);
-void	add_char_to_buffer(char c);
+void	clear_and_init_buffer(t_data *data);
+void	add_char_to_buffer(char c, t_data *data);
+void	handle_double_greater_than(int *i, t_data *data);
 
 // Store token
-void	add_double_greater_than_within_quotes(int *i);
-void	store_token_within_quotes(void);
-void	add_char_within_quotes(char c);
-void	store_current_token(void);
-void	store_current_token_within_quotes(void);
-void	store_token(void);
-void	store_empty_token(void);
+void	add_double_greater_than_within_quotes(int *i, t_data *data);
+void	store_current_token_within_quotes(t_data *data);
+void	add_char_within_quotes(char c, t_data *data);
+void	store_token_within_quotes(t_data *data);
+void	store_current_token(t_data *data);
+void	store_empty_token(t_data *data);
+void	store_token(t_data *data);
 
 // Char evaluation
-int		evaluate_char(char c, int *mode, int *i);
-int		is_mode_changing_char(char c, int *mode);
+int		evaluate_char(char c, int *mode, int *i, t_data *data);
+int		is_mode_changing_char(char c, int *mode, t_data *data);
 int		is_trigger_char(char c, int	*mode);
 int		is_stored_char(char c, int *mode);
 
 int		is_terminating_char(char c, int *mode);
 int		needs_blanc(char c, int *mode);
-int		tokenize_input(void);
+int		tokenize_input(t_data *data);
 
 #endif

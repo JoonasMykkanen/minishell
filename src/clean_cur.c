@@ -6,54 +6,48 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:35:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 10:31:21 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:24:07 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-extern t_data	g_data;
-
-static void	reset_cmd_struct(int i)
+static void	reset_cmd_struct(int i, t_data *data)
 {
-	if (g_data.cur.cmd_list[i]->cmd)
-		free(g_data.cur.cmd_list[i]->cmd);
-	if (g_data.cur.cmd_list[i]->input)
-		free(g_data.cur.cmd_list[i]->input);
-	if (g_data.cur.cmd_list[i]->output)
-		free(g_data.cur.cmd_list[i]->output);
-	g_data.cur.cmd_list[i]->output_mode = 0;
-	if (g_data.cur.cmd_list[i]->args)
-		free_arr(g_data.cur.cmd_list[i]->args);
-	free(g_data.cur.cmd_list[i]);
+	if (data->cur.cmd_list[i]->cmd)
+		free(data->cur.cmd_list[i]->cmd);
+	if (data->cur.cmd_list[i]->input)
+		free(data->cur.cmd_list[i]->input);
+	if (data->cur.cmd_list[i]->output)
+		free(data->cur.cmd_list[i]->output);
+	data->cur.cmd_list[i]->output_mode = 0;
+	if (data->cur.cmd_list[i]->args)
+		free_arr(data->cur.cmd_list[i]->args);
+	free(data->cur.cmd_list[i]);
 }
 
-static void	handle_heredoc_flag(void)
+static void	handle_heredoc_flag(t_data *data)
 {
-	if (g_data.cur.heredoc_flag == 1)
+	if (data->cur.heredoc_flag == 1)
 	{
 		if (unlink("heredoc_temp_file") == -1)
 		{
 			perror("Error deleting the heredoc temp file");
-			clean_exit_shell();
+			clean_exit_shell(data);
 		}
-		else
-		{
-			printf("\n** Heredoc temp file deleted ** \n");
-		}
-		g_data.cur.heredoc_flag = 0;
+		data->cur.heredoc_flag = 0;
 	}
 }
 
-static void	free_vec_pointers(void)
+static void	free_vec_pointers(t_data *data)
 {
 	char	*str;
 	size_t	i;
 
 	i = -1;
-	while (++i < g_data.cur.tokens.len)
+	while (++i < data->cur.tokens.len)
 	{
-		str = *(char **)vec_get(&g_data.cur.tokens, i);
+		str = *(char **)vec_get(&data->cur.tokens, i);
 		if (str)
 		{
 			free(str);
@@ -61,30 +55,30 @@ static void	free_vec_pointers(void)
 	}
 }
 
-void	clean_cur_struct(void)
+void	clean_cur_struct(t_data *data)
 {
 	int	i;
 
 	i = -1;
-	if (g_data.cur.raw)
+	if (data->cur.raw)
 	{
-		free(g_data.cur.raw);
-		g_data.cur.raw = NULL;
+		free(data->cur.raw);
+		data->cur.raw = NULL;
 	}
-	vec_free(&g_data.cur.token_buffer);
-	free_vec_pointers();
-	vec_free(&g_data.cur.tokens);
-	vec_free(&g_data.cur.types);
-	while (++i < g_data.cur.cmd_count)
-		reset_cmd_struct(i);
-	if (g_data.cur.cmd_list)
+	vec_free(&data->cur.token_buffer);
+	free_vec_pointers(data);
+	vec_free(&data->cur.tokens);
+	vec_free(&data->cur.types);
+	while (++i < data->cur.cmd_count)
+		reset_cmd_struct(i, data);
+	if (data->cur.cmd_list)
 	{
-		free(g_data.cur.cmd_list);
-		g_data.cur.cmd_list = NULL;
+		free(data->cur.cmd_list);
+		data->cur.cmd_list = NULL;
 	}
-	g_data.cur.cmd_count = 0;
-	g_data.cur.cmd_index = 0;
-	g_data.cur.err_flag = 0;
-	handle_heredoc_flag();
-	g_data.sig.exec_pid = NO_CHILDS;
+	data->cur.cmd_count = 0;
+	data->cur.cmd_index = 0;
+	data->cur.err_flag = 0;
+	handle_heredoc_flag(data);
+	data->sig.exec_pid = NO_CHILDS;
 }

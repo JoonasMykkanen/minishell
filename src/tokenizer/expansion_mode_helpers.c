@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:51:57 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/10 22:02:59 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:42:06 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 #include "../../include/command.h"
 #include "../../include/tokenizer.h"
 
-extern t_data	g_data;
-
 // Fetch environment variable
-char	*fetch_env_var(char *str)
+char	*fetch_env_var(char *str, t_data *data)
 {
 	int		idx;
 	int		len;
@@ -27,20 +25,20 @@ char	*fetch_env_var(char *str)
 
 	idx = -1;
 	needle = ft_strjoin(str, "=");
-	malloc_error_check(needle);
+	malloc_error_check(needle, data);
 	len = ft_strlen(needle);
 	free(str);
-	while (g_data.env.vars[++idx] != NULL)
+	while (data->env.vars[++idx] != NULL)
 	{
-		if (ft_strncmp(g_data.env.vars[idx], needle, len) == 0)
+		if (ft_strncmp(data->env.vars[idx], needle, len) == 0)
 			break ;
 	}
-	if (g_data.env.vars[idx] == NULL)
+	if (data->env.vars[idx] == NULL)
 		return (NULL);
-	word_len = ft_strlen(g_data.env.vars[idx]) - len;
+	word_len = ft_strlen(data->env.vars[idx]) - len;
 	var = malloc((word_len + 1) * sizeof(char));
-	malloc_error_check(var);
-	ft_strlcpy(var, &g_data.env.vars[idx][len], word_len + 1);
+	malloc_error_check(var, data);
+	ft_strlcpy(var, &data->env.vars[idx][len], word_len + 1);
 	free(needle);
 	return (var);
 }
@@ -65,10 +63,10 @@ int	is_valid_subsequent_character(char c)
 	return (0);
 }
 
-int	is_exit_status_expansion(int j)
+int	is_exit_status_expansion(int j, t_data *data)
 {
-	if (g_data.cur.raw[j] == '?' && (g_data.cur.raw[j + 1] == ' ' \
-								|| g_data.cur.raw[j + 1] == '\0'))
+	if (data->cur.raw[j] == '?' && (data->cur.raw[j + 1] == ' ' \
+								|| data->cur.raw[j + 1] == '\0'))
 		return (1);
 	else
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:19:52 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/13 10:49:08 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:29:06 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 #include "../../include/command.h"
 #include "../../include/minishell.h"
 
-extern t_data	g_data;
-
-// TODO: add error handling 
-int	handle_input(char *input)
+int	handle_input(char *input, t_data *data)
 {
 	if (ft_strcmp(input, "quit") == 0)
 	{
@@ -26,10 +23,10 @@ int	handle_input(char *input)
 	}
 	else
 	{
-		while (is_multiline(input) != 0)
-			handle_multiline(&input);
-		g_data.cur.raw = ft_strdup(input);
-		malloc_error_check(g_data.cur.raw);
+		while (is_multiline(input, data) != 0)
+			handle_multiline(&input, data);
+		data->cur.raw = ft_strdup(input);
+		malloc_error_check(data->cur.raw, data);
 		free(input);
 	}
 	return (0);

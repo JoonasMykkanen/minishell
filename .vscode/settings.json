@@ -3,6 +3,8 @@
 		"minishell.h": "c",
 		"init.h": "c",
 		"_types.h": "c",
-		"command.h": "c"
+		"command.h": "c",
+		"input.h": "c",
+		"fcntl.h": "c"
 	}
 }

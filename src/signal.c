@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:07:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 11:45:49 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:26:42 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../include/minishell.h"
 
 extern t_data	g_data;
+extern int		sig_status;
 
 static void	handle_int(int sig)
 {
@@ -49,18 +50,18 @@ static void	handle_quit(int sig)
 	}
 }
 
-void	handle_ctrl_d(void)
+void	handle_ctrl_d(t_data *data)
 {
 	const char	eof[2] = {4, 0};
 	
-	if (g_data.cur.heredoc_mode == 1)
+	if (data->cur.heredoc_mode == 1)
 	{
-		g_data.cur.heredoc_mode = 0;
+		data->cur.heredoc_mode = 0;
 		ioctl(1, TIOCSTI, eof);
 	}
-	else if (g_data.sig.exec_pid == NO_CHILDS)
+	else if (data->sig.exec_pid == NO_CHILDS)
 	{
-		ft_exit();
+		ft_exit(data);
 	}
 }
 

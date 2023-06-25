@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:45:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/06 18:52:03 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:35:09 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,22 @@
 #include "../../include/minishell.h"
 #include "../../include/tokenizer.h"
 
-extern t_data	g_data;
-
 // Evaluates a single character
-int	evaluate_char(char c, int *mode, int *i)
+int	evaluate_char(char c, int *mode, int *i, t_data *data)
 {
 	char	next_c;
 
-	next_c = g_data.cur.raw[*i + 1];
+	next_c = data->cur.raw[*i + 1];
 	if (is_terminating_char(c, mode) == true)
-		store_token();
-	if (is_edge_case(c, next_c, mode, i) == 1)
+		store_token(data);
+	if (is_edge_case(c, next_c, mode, i, data) == 1)
 		return (0);
 	else
 	{
-		if (is_mode_changing_char(c, mode) || is_trigger_char(c, mode))
+		if (is_mode_changing_char(c, mode, data) || is_trigger_char(c, mode))
 			return (1);
 		if (is_stored_char(c, mode))
-			add_char_to_buffer(g_data.cur.raw[*i]);
+			add_char_to_buffer(data->cur.raw[*i], data);
 	}
 	return (0);
 }
@@ -81,7 +79,7 @@ static bool	change_mode_check(int *mode, char c)
 }
 
 // Checks if character changes mode
-int	is_mode_changing_char(char c, int *mode)
+int	is_mode_changing_char(char c, int *mode, t_data *data)
 {
 	if (*mode == DEFAULT_MODE)
 	{
@@ -91,15 +89,15 @@ int	is_mode_changing_char(char c, int *mode)
 	else if (*mode == DOUBLE_QUOTES_MODE && c == '\"')
 	{
 		*mode = DEFAULT_MODE;
-		if (g_data.cur.token_buffer.len == 0)
-			store_empty_token();
+		if (data->cur.token_buffer.len == 0)
+			store_empty_token(data);
 		return (true);
 	}
 	else if (*mode == SINGLE_QUOTES_MODE && c == '\'')
 	{
 		*mode = DEFAULT_MODE;
-		if (g_data.cur.token_buffer.len == 0)
-			store_empty_token();
+		if (data->cur.token_buffer.len == 0)
+			store_empty_token(data);
 		return (true);
 	}
 	return (false);

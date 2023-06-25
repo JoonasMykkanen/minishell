@@ -6,13 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:04:33 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/15 17:13:45 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:29:54 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtins.h"
-
-extern t_data	g_data;
 
 static int	is_option_n(char *arg)
 {
@@ -23,16 +21,16 @@ static int	is_option_n(char *arg)
 	return (0);
 }
 
-static int	has_option_n(int *ptr_idx)
+static int	has_option_n(int *ptr_idx, t_data *data)
 {
 	int	i;
 	int	has_option_n;
 
 	i = 1;
 	has_option_n = 0;
-	while (g_data.cur.cmd_list[g_data.cur.cmd_index]->args[i] != NULL)
+	while (data->cur.cmd_list[data->cur.cmd_index]->args[i] != NULL)
 	{
-		if (is_option_n(g_data.cur.cmd_list[g_data.cur.cmd_index]->args[i]) == 1)
+		if (is_option_n(data->cur.cmd_list[data->cur.cmd_index]->args[i]) == 1)
 		{
 			(*ptr_idx)++;
 			has_option_n = 1;
@@ -42,44 +40,44 @@ static int	has_option_n(int *ptr_idx)
 	return (has_option_n);
 }
 
-static void	without_option(int cmd_idx, int idx, int printed_idx)
+static void	without_option(int cmd_idx, int idx, int printed_idx, t_data *data)
 {
-	while (g_data.cur.cmd_list[cmd_idx]->args[idx] != NULL)
+	while (data->cur.cmd_list[cmd_idx]->args[idx] != NULL)
 	{
 		if (printed_idx > 0)
 			printf(" ");
-		printf("%s", g_data.cur.cmd_list[cmd_idx]->args[idx]);
+		printf("%s", data->cur.cmd_list[cmd_idx]->args[idx]);
 		idx++;
 		printed_idx++;
 	}
 	printf("\n");
 }
 
-static void	with_option(int cmd_idx, int idx)
+static void	with_option(int cmd_idx, int idx, t_data *data)
 {
-	while (g_data.cur.cmd_list[cmd_idx]->args[idx] != NULL)
+	while (data->cur.cmd_list[cmd_idx]->args[idx] != NULL)
 	{
 		if (cmd_idx > 0)
 			printf(" ");
-		printf("%s", g_data.cur.cmd_list[cmd_idx]->args[idx]);
+		printf("%s", data->cur.cmd_list[cmd_idx]->args[idx]);
 		idx++;
 	}
 }
 
-int	ft_echo(int cmd_idx)
+int	ft_echo(int cmd_idx, t_data *data)
 {
 	int	idx;
 	int	printed_idx;
 
 	printed_idx = 0;
 	idx = 1;
-	if (has_option_n(&idx) == 1)
+	if (has_option_n(&idx, data) == 1)
 	{
-		with_option(cmd_idx, idx);
+		with_option(cmd_idx, idx, data);
 	}
 	else
 	{
-		without_option(cmd_idx, idx, printed_idx);
+		without_option(cmd_idx, idx, printed_idx, data);
 	}
 	return (0);
 }

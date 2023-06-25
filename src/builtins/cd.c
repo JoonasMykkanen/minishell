@@ -6,59 +6,57 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 09:57:54 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/15 17:27:56 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:29:59 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtins.h"
 
-extern t_data	g_data;
-
-static int	open_and_close(char *target)
+static int	open_and_close(char *target, t_data *data)
 {
-	if (!g_data.dir.ptr_target)
+	if (!data->dir.ptr_target)
 	{
 		perror("shell: cd: ");
 		free(target);
 		return (1);
 	}
-	if (closedir(g_data.dir.ptr_current) != 0)
+	if (closedir(data->dir.ptr_current) != 0)
 	{
 		perror("closedir function failed \n");
-		clean_exit_shell();
+		clean_exit_shell(data);
 	}
 	if (chdir(target) != 0)
 	{
 		perror("chdir function failed \n");
-		clean_exit_shell();
+		clean_exit_shell(data);
 	}
 	free(target);
 	return (0);
 }
 
-int	ft_cd(void)
+int	ft_cd(t_data *data)
 {
 	char	*target;
 	int		len;
 
-	len = arr_len();
+	len = arr_len(data);
 	if (len > 1)
 	{
-		target = ft_strdup(g_data.cur.cmd_list[g_data.cur.cmd_index]->args[1]);
-		g_data.dir.ptr_target = opendir(target);
-		if (open_and_close(target) == 1)
+		target = ft_strdup(data->cur.cmd_list[data->cur.cmd_index]->args[1]);
+		data->dir.ptr_target = opendir(target);
+		if (open_and_close(target, data) == 1)
 			return (errno);
-		getcwd(g_data.dir.current, 1024);
-		g_data.dir.ptr_current = g_data.dir.ptr_target;
+		getcwd(data->dir.current, 1024);
+		data->dir.ptr_current = data->dir.ptr_target;
 	}
 	else
 	{
-		target = fetch_env_var(ft_strdup("HOME"));
-		g_data.dir.ptr_target = opendir(target);
-		if (open_and_close(target) == 1)
+		target = fetch_env_var(ft_strdup("HOME"), data);
+		data->dir.ptr_target = opendir(target);
+		if (open_and_close(target, data) == 1)
 			return (errno);
-		getcwd(g_data.dir.current, 1024);
-		g_data.dir.ptr_current = g_data.dir.ptr_target;
+		getcwd(data->dir.current, 1024);
+		data->dir.ptr_current = data->dir.ptr_target;
 	}
 	return (0);
 }

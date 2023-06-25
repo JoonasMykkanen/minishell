@@ -6,15 +6,13 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:51:42 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/06 18:53:42 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:24:11 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/tokenizer.h"
 #include "../../include/command.h"
 #include "../../include/minishell.h"
-
-extern t_data	g_data;
 
 // Checks if character triggers expansion
 int	is_trigger_char(char c, int *mode)

@@ -6,15 +6,13 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:45:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/05/30 18:17:54 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:27:32 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 #include "../../include/command.h"
 #include "../../include/tokenizer.h"
-
-extern t_data	g_data;
 
 int	is_greater_than(char c)
 {

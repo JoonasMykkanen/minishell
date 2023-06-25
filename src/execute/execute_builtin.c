@@ -6,37 +6,35 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:51:24 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/15 17:21:27 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:29:27 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/execute.h"
 
-extern t_data	g_data;
-
-static int	choose_builtin(int idx)
+static int	choose_builtin(int idx, t_data *data)
 {
 	int	return_value;
 
 	return_value = 0;
 	if (idx == 0)
-		return_value = ft_echo(g_data.cur.cmd_index);
+		return_value = ft_echo(data->cur.cmd_index, data);
 	if (idx == 1)
-		return_value = ft_cd();
+		return_value = ft_cd(data);
 	if (idx == 2)
-		return_value = ft_pwd();
+		return_value = ft_pwd(data);
 	if (idx == 3)
-		return_value = ft_export(g_data.cur.cmd_index);
+		return_value = ft_export(data->cur.cmd_index, data);
 	if (idx == 4)
-		return_value = ft_unset(g_data.cur.cmd_index, SHELL);
+		return_value = ft_unset(data->cur.cmd_index, SHELL, data);
 	if (idx == 5)
-		return_value = ft_env();
+		return_value = ft_env(data);
 	if (idx == 6)
-		ft_exit();
+		ft_exit(data);
 	return (return_value);
 }
 
-void	execute_builtin(t_pipes *p)
+void	execute_builtin(t_pipes *p, t_data *data)
 {
 	int		original_stdout;
 	int		return_value;
@@ -44,13 +42,13 @@ void	execute_builtin(t_pipes *p)
 	int		idx;
 
 	original_stdout = dup(STDOUT);
-	handle_output_redirection_for_execution(p);
-	cmd = ft_strdup(g_data.cur.cmd_list[g_data.cur.cmd_index]->cmd);
-	malloc_error_check(cmd);
-	idx = what_builtin(cmd);
-	return_value = choose_builtin(idx);
+	handle_output_redirection_for_execution(p, data);
+	cmd = ft_strdup(data->cur.cmd_list[data->cur.cmd_index]->cmd);
+	malloc_error_check(cmd, data);
+	idx = what_builtin(cmd, data);
+	return_value = choose_builtin(idx, data);
 	free(cmd);
-	if (g_data.cur.cmd_count == 1)
+	if (data->cur.cmd_count == 1)
 	{
 		close(original_stdout);
 		return ;
@@ -60,6 +58,6 @@ void	execute_builtin(t_pipes *p)
 		dup2(original_stdout, STDOUT);
 	}
 	close(original_stdout);
-	if (g_data.cur.cmd_count > 1)
+	if (data->cur.cmd_count > 1)
 		exit(return_value);
 }

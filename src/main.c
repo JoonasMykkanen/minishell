@@ -6,50 +6,52 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:26:35 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/25 11:46:09 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:38:03 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-extern t_data	g_data;
+extern int		sig_status;
 
-static void	execute_loop(char *input)
+static void	execute_loop(char *input, t_data *data)
 {
 	if (input && *input)
 		add_history(input);
-	handle_input(input);
-	if (g_data.cur.err_flag == 0)
-		tokenize_input();
-	if (g_data.cur.err_flag == 0)
-		parse_commands();
-	if (g_data.cur.err_flag == 0)
-		execute();
+	handle_input(input, data);
+	if (data->cur.err_flag == 0)
+		tokenize_input(data);
+	if (data->cur.err_flag == 0)
+		parse_commands(data);
+	if (data->cur.err_flag == 0)
+		execute(data);
 }
 
 int	main(int argc, char **argv, char **envp)
 {
+	t_data	data;
 	char	*input;
 
 	if (argc != 1 && argv[1] != NULL)
 		return (1);
+
 	signal_manager();
 	termios_settings();
-	if (init_struct(envp) == 1)
+	if (init_struct(envp, &data) == 1)
 		perror("init_struct");
 	while (42)
 	{
-		input = readline(g_data.env.prompt);
+		input = readline(data.env.prompt);
 		if (ft_strlen(input) != 0)
 		{
-			execute_loop(input);
-			clean_cur_struct();
+			execute_loop(input, &data);
+			clean_cur_struct(&data);
 		}
 		else if (input == NULL)
 		{
-			handle_ctrl_d();
+			handle_ctrl_d(&data);
 		}
 	}
-	clean_exit_shell();
-	return (g_data.env.exit_status);
+	clean_exit_shell(&data);
+	return (data.env.exit_status);
 }

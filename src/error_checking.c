@@ -6,28 +6,28 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:47:54 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/08 11:22:08 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 12:06:22 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	malloc_error_check(char *string)
+void	malloc_error_check(char *string, t_data *data)
 {
 	if (!string)
 	{
 		perror("");
-		clean_exit_shell();
+		clean_exit_shell(data);
 		exit(errno);
 	}
 }
 
-void	string_array_malloc_error_check(char **string)
+void	string_array_malloc_error_check(char **string, t_data *data)
 {
 	if (!string)
 	{
 		perror("");
-		clean_exit_shell();
+		clean_exit_shell(data);
 		exit(errno);
 	}
 }

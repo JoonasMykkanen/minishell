@@ -6,15 +6,13 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:08:28 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/10 21:59:28 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:33:11 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/command.h"
 #include "../../include/input.h"
 #include "../../include/minishell.h"
-
-extern t_data	g_data;
 
 void	heredoc_free_delim_and_input(char **delim, char **input)
 {
@@ -24,7 +22,7 @@ void	heredoc_free_delim_and_input(char **delim, char **input)
 	*input = NULL;
 }
 
-int	open_temp_file(void)
+int	open_temp_file(t_data *data)
 {
 	int	fd;
 
@@ -33,21 +31,21 @@ int	open_temp_file(void)
 	if (fd == -1)
 	{
 		perror("");
-		clean_exit_shell();
+		clean_exit_shell(data);
 		exit(errno);
 	}
 	return (fd);
 }
 
-void	get_input(char *delim)
+void	get_input(char *delim, t_data *data)
 {
 	char	*new_input;
 	int		delim_found;
 	int		fd;
 
-	fd = open_temp_file();
+	fd = open_temp_file(data);
 	delim_found = 0;
-	while (delim_found == 0 && g_data.cur.heredoc_mode == 1)
+	while (delim_found == 0 && data->cur.heredoc_mode == 1)
 	{
 		new_input = readline("> ");
 		if (ft_strncmp(new_input, delim, ft_strlen(new_input)) == 0)
@@ -62,7 +60,7 @@ void	get_input(char *delim)
 	close(fd);
 }
 
-char	*get_edited_input(int heredoc_start_idx, char **input)
+char	*get_edited_input(int heredoc_start_idx, char **input, t_data *data)
 {
 	char	*combined;
 	char	*part_a;
@@ -76,7 +74,7 @@ char	*get_edited_input(int heredoc_start_idx, char **input)
 		- delim_end_index);
 	combined = malloc(ft_strlen(part_a) + ft_strlen("heredoc_temp_file") \
 		+ ft_strlen(part_b) + 3);
-	malloc_error_check(combined);
+	malloc_error_check(combined, data);
 	ft_strlcpy(combined, part_a, ft_strlen(part_a) + 1);
 	ft_strlcat(combined, "< ", ft_strlen(combined) + 3);
 	ft_strlcat(combined, "heredoc_temp_file", ft_strlen(combined)
@@ -86,18 +84,18 @@ char	*get_edited_input(int heredoc_start_idx, char **input)
 	return (combined);
 }
 
-char	*handle_heredoc(char **input)
+char	*handle_heredoc(char **input, t_data *data)
 {
 	int		heredoc_start_idx;
 	char	*delim;
 	char	*edited_input;
 
-	g_data.cur.heredoc_mode = 1;
-	heredoc_start_idx = heredoc_start_index(*input);
-	delim = heredoc_delim(*input, heredoc_start_idx);
-	get_input(delim);
-	edited_input = get_edited_input(heredoc_start_idx, input);
-	g_data.cur.heredoc_flag = 1;
+	data->cur.heredoc_mode = 1;
+	heredoc_start_idx = heredoc_start_index(*input, data);
+	delim = heredoc_delim(*input, heredoc_start_idx, data);
+	get_input(delim, data);
+	edited_input = get_edited_input(heredoc_start_idx, input, data);
+	data->cur.heredoc_flag = 1;
 	heredoc_free_delim_and_input(&delim, input);
 	return (edited_input);
 }

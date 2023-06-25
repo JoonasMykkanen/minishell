@@ -6,50 +6,48 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:47:02 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 10:32:14 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:24:03 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-extern t_data	g_data;
-
-static void	free_dir(void)
+static void	free_dir(t_data *data)
 {
-	if (g_data.dir.current)
+	if (data->dir.current)
 	{
-		free(g_data.dir.current);
-		g_data.dir.current = NULL;
+		free(data->dir.current);
+		data->dir.current = NULL;
 	}
 }
 
-static void	free_env(void)
+static void	free_env(t_data *data)
 {
-	free_arr(g_data.env.vars);
-	free_arr(g_data.env.paths);
-	if (g_data.env.user)
+	free_arr(data->env.vars);
+	free_arr(data->env.paths);
+	if (data->env.user)
 	{
-		free(g_data.env.user);
-		g_data.env.user = NULL;
+		free(data->env.user);
+		data->env.user = NULL;
 	}
-	if (g_data.env.prompt)
+	if (data->env.prompt)
 	{
-		free(g_data.env.prompt);
-		g_data.env.prompt = NULL;
+		free(data->env.prompt);
+		data->env.prompt = NULL;
 	}
-	if (g_data.env.machine)
+	if (data->env.machine)
 	{
-		free(g_data.env.machine);
-		g_data.env.machine = NULL;
+		free(data->env.machine);
+		data->env.machine = NULL;
 	}
 }
 
-void	clean_exit_shell(void)
+void	clean_exit_shell(t_data *data)
 {
-	free_dir();
-	free_env();
-	if (g_data.cur.raw)
+	free_dir(data);
+	free_env(data);
+	if (data->cur.raw)
 	{
-		clean_cur_struct();
+		clean_cur_struct(data);
 	}
 }

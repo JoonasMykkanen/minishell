@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:27:09 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/10 13:56:57 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:02:37 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,21 @@
 # include <dirent.h>
 
 // Builtin functions
-int		ft_cd(void);
-int		ft_pwd(void);
-int		ft_env(void);
-void	ft_exit(void);
-int		ft_export(int cmd_idx);
-int		ft_echo(int cmd_index);
-int		ft_unset(int cmd_idx, int caller);
+int		ft_unset(int cmd_idx, int caller, t_data *data);
+int		ft_export(int cmd_idx, t_data *data);
+int		ft_echo(int cmd_index, t_data *data);
+void	ft_exit(t_data *data);
+int		ft_env(t_data *data);
+int		ft_pwd(t_data *data);
+int		ft_cd(t_data *data);
 
 // Helpers for builtins
-int		arr_len(void);
 int		ft_isnum(int c);
-void	free_env_vars(void);
-int		is_env_var(char *arg);
-int		get_env_var_count(void);
-int		get_env_var_count(void);
+int		arr_len(t_data *data);
 int		ft_isvalid_int(char *str);
-char	*extract_until_equal(char *arg);
+void	free_env_vars(t_data *data);
+int		get_env_var_count(t_data *data);
+int		is_env_var(char *arg, t_data *data);
+char	*extract_until_equal(char *arg, t_data *data);
 
 #endif

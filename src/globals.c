@@ -6,10 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:33:10 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/05/30 18:33:40 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/25 15:26:48 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
 t_data	g_data;
+int	sig_status;
