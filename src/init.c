@@ -13,6 +13,9 @@
 #include "../include/init.h"
 #include "../include/types.h"
 #include "../include/minishell.h"
+#include "../include/signal_manager.h"
+
+extern int		sig_status;
 
 char	**get_env_vars(char **envp, t_data *data)
 {
@@ -66,6 +69,7 @@ void	init_directories(t_data *data)
 
 int	init_struct(char **envp, t_data *data)
 {
+	sig_status = SIG_NO_CHILD;
 	set_builtins(data);
 	init_directories(data);
 	data->cur.err_flag = 0;

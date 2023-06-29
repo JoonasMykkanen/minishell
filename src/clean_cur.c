@@ -10,7 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../include/signal_manager.h"
 #include "../include/minishell.h"
+
+extern int		sig_status;
 
 static void	reset_cmd_struct(int i, t_data *data)
 {
@@ -81,4 +84,5 @@ void	clean_cur_struct(t_data *data)
 	data->cur.err_flag = 0;
 	handle_heredoc_flag(data);
 	data->sig.exec_pid = NO_CHILDS;
+	sig_status = SIG_NO_CHILD;
 }

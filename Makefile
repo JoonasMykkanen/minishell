@@ -19,10 +19,8 @@ LIBFT_LIB = $(LIBFT_DIR)/libft.a
 
 CC = cc
 
-INCLUDE = -L$(LIBFT_DIR) -lft -L/opt/homebrew/opt/readline/lib -lreadline
-
 CFLAGS = -g -Wall -Werror -Wextra -I./include
-LDFLAGS = -L$(LIBFT_DIR) -lft -L/opt/homebrew/opt/readline/lib -lreadline
+LDFLAGS = -L$(LIBFT_DIR) -lft -L$(HOME)/.brew/Cellar/readline/8.2.1/lib -lreadline
 
 SRC_FILES := \
     src/tokenizer/tokenizer_helpers.c src/tokenizer/expansion_mode_helpers.c \

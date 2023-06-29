@@ -19,11 +19,11 @@ static void	execute_loop(char *input, t_data *data)
 	if (input && *input)
 		add_history(input);
 	handle_input(input, data);
-	if (data->cur.err_flag == 0)
+	if (data->cur.err_flag == 0 || sig_status != SIG_ERROR)
 		tokenize_input(data);
-	if (data->cur.err_flag == 0)
+	if (data->cur.err_flag == 0 || sig_status != SIG_ERROR)
 		parse_commands(data);
-	if (data->cur.err_flag == 0)
+	if (data->cur.err_flag == 0 || sig_status != SIG_ERROR)
 		execute(data);
 }
 

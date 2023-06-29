@@ -23,13 +23,14 @@ static void	handle_int(int sig)
 
 	if (sig == SIGINT)
 	{
-		if (g_data.cur.heredoc_mode == 1)
+		if (sig_status == SIG_HEREDOC)
 		{
-			g_data.cur.heredoc_mode = 0;
-			g_data.cur.err_flag = 1;
+			// g_data.cur.heredoc_mode = 0;
+			// g_data.cur.err_flag = 1;
+			sig_status = SIG_ERROR;
 			ioctl(1, TIOCSTI, eof);
 		}
-		else if (g_data.sig.exec_pid == NO_CHILDS)
+		else if (sig_status == SIG_NO_CHILD)
 		{
 			rl_on_new_line();
 			ioctl(1, TIOCSTI, nlc);
@@ -37,7 +38,8 @@ static void	handle_int(int sig)
 		else
 		{
 			kill(g_data.sig.exec_pid, SIGINT);
-			g_data.cur.err_flag = 1;
+			sig_status = SIG_ERROR;
+			// g_data.cur.err_flag = 1;
 		}
 	}
 }
@@ -54,12 +56,12 @@ void	handle_ctrl_d(t_data *data)
 {
 	const char	eof[2] = {4, 0};
 	
-	if (data->cur.heredoc_mode == 1)
+	if (sig_status == SIG_HEREDOC)
 	{
-		data->cur.heredoc_mode = 0;
+		// data->cur.heredoc_mode = 0;
 		ioctl(1, TIOCSTI, eof);
 	}
-	else if (data->sig.exec_pid == NO_CHILDS)
+	else if (sig_status == SIG_NO_CHILD)
 	{
 		ft_exit(data);
 	}
@@ -70,12 +72,12 @@ void	signal_manager(void)
 	struct sigaction	act_int;
 	struct sigaction	act_quit;
 
-	act_quit.sa_handler = handle_quit;
-	act_int.sa_handler = handle_int;
-	act_int.sa_flags = SA_RESTART;
-	act_quit.sa_flags = SA_RESTART;
-	sigemptyset(&act_quit.sa_mask);
 	sigemptyset(&act_int.sa_mask);
+	sigemptyset(&act_quit.sa_mask);
+	act_int.sa_flags = SA_RESETHAND;
+	act_int.sa_handler = handle_int;
+	act_quit.sa_flags = SA_RESETHAND;
+	act_quit.sa_handler = handle_quit;
 	sigaction(SIGINT, &act_int, NULL);
 	sigaction(SIGQUIT, &act_quit, NULL);
 }

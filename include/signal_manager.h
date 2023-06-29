@@ -20,10 +20,9 @@
 # include "types.h"
 
 # define SIG_ERROR 2
-# define SIG_DEFAULT 42
-# define INT_HEREDOC 43
-# define INT_NO_CHILD 44
-# define INT_HAS_CHILD 45
+# define SIG_HEREDOC 43
+# define SIG_NO_CHILD 44
+# define SIG_HAS_CHILD 45
 
 void	signal_manager(void);
 void	handle_ctrl_d(t_data *data);
