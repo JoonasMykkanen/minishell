@@ -5,6 +5,7 @@
 		"_types.h": "c",
 		"command.h": "c",
 		"input.h": "c",
-		"fcntl.h": "c"
+		"fcntl.h": "c",
+		"signal_manager.h": "c"
 	}
 }
