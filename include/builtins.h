@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:27:09 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:02:37 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/30 12:25:16 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int		ft_isvalid_int(char *str);
 void	free_env_vars(t_data *data);
 int		get_env_var_count(t_data *data);
 int		is_env_var(char *arg, t_data *data);
+int     handle_no_args(t_data *data, int cmd_idx);
 char	*extract_until_equal(char *arg, t_data *data);
 
 #endif

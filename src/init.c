@@ -66,6 +66,7 @@ int	init_struct(char **envp, t_data *data)
 	data->cur.err_flag = 0;
 	data->sig.exec_pid = -1;
 	data->env.exit_status = 0;
+	data->cur.cmd_index = 0;
 	data->cur.cmd_list = NULL;
 	data->cur.heredoc_mode = 0;
 	data->sig.shell_pid = getpid();

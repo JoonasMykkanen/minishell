@@ -48,7 +48,6 @@ static void	handle_too_many_arguments(int idx, t_data *data)
 	clean_exit_shell(data);
 	ft_putstr_fd("Shell: Exit: Numeric argument required\n", 2);
 	data->env.exit_status = 255;
-	exit(data->env.exit_status);
 }
 
 void	ft_exit(t_data *data)

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+         #
+#    By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 11:44:25 by joonasmykka       #+#    #+#              #
-#    Updated: 2023/06/30 11:22:31 by joonasmykka      ###   ########.fr        #
+#    Updated: 2023/06/30 12:28:43 by jmykkane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ LIBFT_LIB = $(LIBFT_DIR)/libft.a
 CC = cc
 
 CFLAGS = -g -Wall -Werror -Wextra -I./include
-# LDFLAGS = -L$(LIBFT_DIR) -lft -L$(HOME)/.brew/Cellar/readline/8.2.1/lib -lreadline
-LDFLAGS = -L$(LIBFT_DIR) -lft -L/opt/homebrew/opt/readline/lib -lreadline
+LDFLAGS = -L$(LIBFT_DIR) -lft -L$(HOME)/.brew/Cellar/readline/8.2.1/lib -lreadline
+# LDFLAGS = -L$(LIBFT_DIR) -lft -L/opt/homebrew/opt/readline/lib -lreadline
 
 SRC_FILES := \
     src/tokenizer/tokenizer_helpers.c src/tokenizer/expansion_mode_helpers.c \
@@ -34,7 +34,7 @@ SRC_FILES := \
     src/builtins/unset_helper.c src/execute/child_parent.c \
     src/execute/execute.c src/execute/execute_helpers.c \
     src/execute/execute_builtin.c src/execute/redirs.c \
-    src/builtins/builltin_helpers.c src/builtins/env.c \
+    src/builtins/builtin_helpers.c src/builtins/env.c \
     src/input/heredoc_helpers.c src/input/multiline.c \
     src/parser/parser.c src/parser/redirections.c \
     src/clean_exit_helper.c src/error_checking.c \
@@ -44,18 +44,18 @@ SRC_FILES := \
     src/builtins/pwd.c src/builtins/cd.c \
     src/clean_cur.c src/clean_exit.c \
     src/init_helpers.c src/debug.c \
+    src/builtins/export_helper.c \
     src/globals.c src/init.c \
     src/main.c src/signal.c \
 	src/input/prompt.c\
 	src/termios.c
 
-BONUS_SRC_FILES = 
-	
-	
+# BONUS_SRC_FILES = 
+
 OBJ_DIR = obj
 OBJ_FILES := $(patsubst src/%,$(OBJ_DIR)/%, $(SRC_FILES:.c=.o))
 
-BONUS_OBJ_FILES =
+# BONUS_OBJ_FILES =
 
 .PHONY: all clean fclean re leaks bonus
 
@@ -88,6 +88,6 @@ re: fclean all
 leaks: $(TARGET)
 	leaks --atExit -- ./$(TARGET)
 
-bonus: $(LIBFT_LIB) $(BONUS_TARGET)
+# bonus: $(LIBFT_LIB) $(BONUS_TARGET)
 
-$(BONUS_TARGET)
+# $(BONUS_TARGET)

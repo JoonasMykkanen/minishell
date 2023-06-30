@@ -51,5 +51,6 @@ int	main(int argc, char **argv, char **envp)
 		update_prompt(&data);		
 	}
 	clean_exit_shell(&data);
+	printf("%d \n", data.env.exit_status);
 	return (data.env.exit_status);
 }
