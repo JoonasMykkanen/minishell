@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 07:55:31 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:30:25 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/30 15:03:11 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ char	**remove_env_var(char *arg, t_data *data)
 	return (new_env_vars);
 }
 
-// Unset identifiers can not contain = and they obey the same rules for first
-// and subsequent characters as export variables
 int	is_valid_unset_identified(char *arg)
 {
 	int	i;

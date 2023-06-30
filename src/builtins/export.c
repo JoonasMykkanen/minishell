@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 10:38:38 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/30 13:29:41 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/30 15:27:47 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,30 +80,28 @@ char	**add_arg_to_env_vars(char *arg, t_data *data)
 
 int	ft_export(int cmd_idx, t_data *data)
 {
-	int		env_var_idx;
 	char	*arg;
 	int		i;
 
 	i = 1;
-	env_var_idx = 0;
 	if (handle_no_args(data) == 1)
 		return (0);
-	arg = ft_strdup(data->cur.cmd_list[cmd_idx]->args[i]);
-	malloc_error_check(arg, data);
-	if (data->cur.cmd_list[cmd_idx]->args[1] == NULL)
-	{
-		while (data->env.vars[env_var_idx] != NULL)
-			env_var_idx++;
-	}
+
 	while (data->cur.cmd_list[cmd_idx]->args[i] != NULL)
 	{
+		arg = ft_strdup(data->cur.cmd_list[cmd_idx]->args[i]);
+		// printf("arg: %s, index: %d \n", arg, i);
+		malloc_error_check(arg, data);
 		if (is_valid_identifier(arg) == 1)
 		{
-			ft_unset(cmd_idx, EXPORT, data);
+			char *str = find_env_var(arg, data);
+			printf("return: %s \n", str);
+			// ft_unset(cmd_idx, EXPORT, data);
 			data->env.vars = add_arg_to_env_vars(arg, data);
 		}
 		else
 			ft_printf("export: `%s': not a valid identifier\n", arg);
+		free(arg);
 		i++;
 	}
 	return (0);
