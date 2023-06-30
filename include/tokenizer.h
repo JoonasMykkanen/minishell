@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:25:58 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 14:27:43 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/30 09:35:56 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include "../src/libft/libft.h"
 # include "../include/types.h"
+
+# define YES 1
+# define NO 0
 
 # define DEFAULT 0
 # define WITHIN_QUOTES 1

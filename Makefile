@@ -6,7 +6,7 @@
 #    By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 11:44:25 by joonasmykka       #+#    #+#              #
-#    Updated: 2023/06/29 08:54:15 by joonasmykka      ###   ########.fr        #
+#    Updated: 2023/06/30 09:52:15 by joonasmykka      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,8 @@ SRC_FILES := \
     src/tokenizer/tokenize.c src/tokenizer/expansion_mode.c \
     src/builtins/unset_helper.c src/execute/child_parent.c \
     src/execute/execute.c src/execute/execute_helpers.c \
-    src/builtins/builltin_helpers.c src/builtins/env.c \
     src/execute/execute_builtin.c src/execute/redirs.c \
+    src/builtins/builltin_helpers.c src/builtins/env.c \
     src/input/heredoc_helpers.c src/input/multiline.c \
     src/parser/parser.c src/parser/redirections.c \
     src/clean_exit_helper.c src/error_checking.c \
@@ -42,11 +42,13 @@ SRC_FILES := \
     src/input/heredoc.c src/input/input.c \
     src/builtins/pwd.c src/builtins/cd.c \
     src/clean_cur.c src/clean_exit.c \
+    src/init_helpers.c src/debug.c \
     src/globals.c src/init.c \
     src/main.c src/signal.c \
-    src/init_helpers.c \
-	src/debug.c
-
+	src/input/prompt.c\
+	src/termios.c
+	
+	
 OBJ_DIR = obj
 OBJ_FILES := $(patsubst src/%,$(OBJ_DIR)/%, $(SRC_FILES:.c=.o))
 

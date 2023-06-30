@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:26:35 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/30 08:15:42 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/30 10:59:42 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,6 @@ char	**get_env_vars(char **envp, t_data *data)
 	}
 	vars[idx] = NULL;
 	return (vars);
-}
-
-void	termios_settings(void)
-{
-	struct termios	term;
-
-	tcgetattr(STDIN_FILENO, &term);
-	term.c_lflag &= ~ECHOCTL;
-	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 }
 
 void	set_builtins(t_data *data)
@@ -81,6 +72,6 @@ int	init_struct(char **envp, t_data *data)
 	data->env.vars = get_env_vars(envp, data);
 	data->env.paths = get_paths(data);
 	data->env.user = find_env_var("USER", data);
-	data->env.prompt = ft_strjoin(data->env.user, " --> ");
+	update_prompt(data);
 	return (0);
 }

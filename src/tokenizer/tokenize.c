@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:45:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:36:47 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/30 10:38:49 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	tokenize_input(t_data *data)
 
 	idx = 0;
 	mode = DEFAULT_MODE;
+	data->cur.vec_init = YES;
 	vec_new(&data->cur.tokens, 0, sizeof(char *));
 	vec_new(&data->cur.types, 0, sizeof(int));
 	vec_new(&data->cur.token_buffer, 0, sizeof(char));

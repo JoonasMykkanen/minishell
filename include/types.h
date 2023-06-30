@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:26:28 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/14 08:51:15 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/30 09:34:36 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_current
 	t_cmd	**cmd_list;
 	int		cmd_count;
 	int		cmd_index;
+	int		vec_init;
 	char	*raw;
 	t_vec	types;
 	t_vec	tokens;

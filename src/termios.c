@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.h                                             :+:      :+:    :+:   */
+/*   termios.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/30 18:20:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/30 09:45:10 by joonasmykka      ###   ########.fr       */
+/*   Created: 2023/06/30 09:43:49 by joonasmykka       #+#    #+#             */
+/*   Updated: 2023/06/30 10:32:35 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_H
-# define INIT_H
+#include "../include/minishell.h"
 
-# include "../src/libft/libft.h"
-# include "types.h"
-# include <fcntl.h>
+void	termios_settings(void)
+{
+	struct termios	term;
 
-void	free_arr(char **arr);
-void	reset_cur(t_data *data);
-char	**get_paths(t_data *data);
-void	set_builtins(t_data *data);
-void	clean_cur_struct(t_data *data);
-int		init_struct(char **envp, t_data *data);
-char	*find_env_var(char *str, t_data *data);
-char	**get_env_vars(char **envp, t_data *data);
-
-#endif
+	tcgetattr(STDIN_FILENO, &term);
+	term.c_lflag &= ~ECHOCTL;
+	tcsetattr(STDIN_FILENO, TCSANOW, &term);
+}
