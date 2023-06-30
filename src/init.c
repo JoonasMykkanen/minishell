@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:26:35 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/25 15:44:31 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/30 08:15:42 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ void	init_directories(t_data *data)
 {
 	data->dir.current = (char *)malloc(1024);
 	malloc_error_check(data->dir.current, data);
-	getcwd(data->dir.current, 1024);
-	data->dir.ptr_current = opendir(data->dir.current);
-	chdir(data->dir.current);
 	data->dir.home = getenv("HOME");
+	data->dir.ptr_current = opendir(data->dir.home);
+	chdir(data->dir.home);
+	getcwd(data->dir.current, 1024);
 }
 
 int	init_struct(char **envp, t_data *data)

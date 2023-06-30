@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:10:30 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/25 15:29:13 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/30 08:11:46 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	get_delim_start_index(char *input, int heredoc_start_idx)
 	while (input[i] && input[i] != '\0' && ft_isalpha(input[i]) == 0)
 		i++;
 	delim_start_idx = i;
-	printf("Delim start idx: %d\n", delim_start_idx);
 	return (delim_start_idx);
 }
 
@@ -53,7 +52,6 @@ int	get_delim_end_index(char *input, int delim_start_idx)
 	while (ft_isalnum(input[i]) == 1 && input[i] != '\0')
 		i++;
 	delim_end_idx = i;
-	printf("Delim end idx: %d\n", delim_end_idx);
 	return (delim_end_idx);
 }
 

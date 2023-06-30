@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:08:06 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:10:08 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/30 08:09:34 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <signal.h>
 # include <fcntl.h>
 # include "types.h"
+
+# define CHILDS 0
 
 # define SIG_ERROR 2
 # define SIG_HEREDOC 43

@@ -6,14 +6,13 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:07:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/29 08:54:31 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/30 08:10:01 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/signal_manager.h"
 #include "../include/minishell.h"
 
-extern t_data	g_data;
 extern int		sig_status;
 
 static void	handle_int(int sig)
@@ -25,8 +24,6 @@ static void	handle_int(int sig)
 	{
 		if (sig_status == SIG_HEREDOC)
 		{
-			// g_data.cur.heredoc_mode = 0;
-			// g_data.cur.err_flag = 1;
 			sig_status = SIG_ERROR;
 			ioctl(1, TIOCSTI, eof);
 		}
@@ -37,9 +34,8 @@ static void	handle_int(int sig)
 		}
 		else
 		{
-			kill(g_data.sig.exec_pid, SIGINT);
+			kill(CHILDS, SIGINT);
 			sig_status = SIG_ERROR;
-			// g_data.cur.err_flag = 1;
 		}
 	}
 }
@@ -58,7 +54,6 @@ void	handle_ctrl_d(t_data *data)
 	
 	if (sig_status == SIG_HEREDOC)
 	{
-		// data->cur.heredoc_mode = 0;
 		ioctl(1, TIOCSTI, eof);
 	}
 	else if (sig_status == SIG_NO_CHILD)
