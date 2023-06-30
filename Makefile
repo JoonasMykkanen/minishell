@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+         #
+#    By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 11:44:25 by joonasmykka       #+#    #+#              #
-#    Updated: 2023/06/30 12:28:43 by jmykkane         ###   ########.fr        #
+#    Updated: 2023/06/30 12:58:37 by joonasmykka      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ LIBFT_LIB = $(LIBFT_DIR)/libft.a
 CC = cc
 
 CFLAGS = -g -Wall -Werror -Wextra -I./include
-LDFLAGS = -L$(LIBFT_DIR) -lft -L$(HOME)/.brew/Cellar/readline/8.2.1/lib -lreadline
-# LDFLAGS = -L$(LIBFT_DIR) -lft -L/opt/homebrew/opt/readline/lib -lreadline
+# LDFLAGS = -L$(LIBFT_DIR) -lft -L$(HOME)/.brew/Cellar/readline/8.2.1/lib -lreadline
+LDFLAGS = -L$(LIBFT_DIR) -lft -L/opt/homebrew/opt/readline/lib -lreadline
 
 SRC_FILES := \
     src/tokenizer/tokenizer_helpers.c src/tokenizer/expansion_mode_helpers.c \

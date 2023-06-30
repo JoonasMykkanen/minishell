@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 10:38:38 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/30 12:56:55 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/06/30 13:29:41 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int	ft_export(int cmd_idx, t_data *data)
 
 	i = 1;
 	env_var_idx = 0;
+	if (handle_no_args(data) == 1)
+		return (0);
 	arg = ft_strdup(data->cur.cmd_list[cmd_idx]->args[i]);
 	malloc_error_check(arg, data);
 	if (data->cur.cmd_list[cmd_idx]->args[1] == NULL)
