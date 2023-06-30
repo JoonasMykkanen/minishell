@@ -6,13 +6,14 @@
 #    By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 11:44:25 by joonasmykka       #+#    #+#              #
-#    Updated: 2023/06/30 09:52:15 by joonasmykka      ###   ########.fr        #
+#    Updated: 2023/06/30 11:22:31 by joonasmykka      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 BIN_DIR = bin
 TARGET = $(BIN_DIR)/$(NAME)
+BONUS_TARGET = $(BIN_DIR)/BONUS_$(NAME)
 
 LIBFT_DIR = ./src/libft
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
@@ -47,12 +48,16 @@ SRC_FILES := \
     src/main.c src/signal.c \
 	src/input/prompt.c\
 	src/termios.c
+
+BONUS_SRC_FILES = 
 	
 	
 OBJ_DIR = obj
 OBJ_FILES := $(patsubst src/%,$(OBJ_DIR)/%, $(SRC_FILES:.c=.o))
 
-.PHONY: all clean fclean re leaks
+BONUS_OBJ_FILES =
+
+.PHONY: all clean fclean re leaks bonus
 
 all: $(TARGET)
 
@@ -79,5 +84,10 @@ fclean: clean
 
 re: fclean all
 
+
 leaks: $(TARGET)
 	leaks --atExit -- ./$(TARGET)
+
+bonus: $(LIBFT_LIB) $(BONUS_TARGET)
+
+$(BONUS_TARGET)
