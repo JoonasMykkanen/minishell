@@ -6,14 +6,14 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:35:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/30 14:45:58 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 12:06:18 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/signal_manager.h"
 #include "../include/minishell.h"
+#include "../include/signal_manager.h"
 
-extern int		sig_status;
+extern int	g_sig_status;
 
 static void	reset_cmd_struct(int i, t_data *data)
 {
@@ -87,5 +87,5 @@ void	clean_cur_struct(t_data *data)
 	data->cur.err_flag = 0;
 	handle_heredoc_flag(data);
 	data->sig.exec_pid = NO_CHILDS;
-	sig_status = SIG_NO_CHILD;
+	g_sig_status = SIG_NO_CHILD;
 }

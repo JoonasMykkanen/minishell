@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:45:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:35:09 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 11:54:14 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,9 @@
 // Evaluates a single character
 int	evaluate_char(char c, int *mode, int *i, t_data *data)
 {
-	char	next_c;
-
-	next_c = data->cur.raw[*i + 1];
 	if (is_terminating_char(c, mode) == true)
 		store_token(data);
-	if (is_edge_case(c, next_c, mode, i, data) == 1)
+	if (is_edge_case(&data->cur.raw[*i], mode, i, data) == 1)
 		return (0);
 	else
 	{

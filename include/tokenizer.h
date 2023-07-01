@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:25:58 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/30 09:35:56 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 11:53:51 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		is_valid_first_character(char c);
 char	*fetch_env_var(char *str, t_data *data);
 
 // Edge cases
-int		is_edge_case(char c, char next_c, int *mode, int *i, t_data *data);
+int		is_edge_case(char *ptr, int *mode, int *i, t_data *data);
 int		handle_within_quotes(char c, char next_c, int *i, t_data *data);
 int		handle_default_mode(char c, char next_c, int *i, t_data *data);
 int		is_double_greater_than(char c, char next_c);

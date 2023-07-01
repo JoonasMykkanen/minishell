@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:02:11 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:34:15 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 11:35:54 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ int	is_builtin(char *cmd, t_data *data)
 	return (0);
 }
 
-/*
-	Counts cmds in input by counting unquoted pipes
-*/
 int	get_cmd_count(t_data *data)
 {
 	int		i;
@@ -80,7 +77,6 @@ int	allocate_cmd_list(t_data *data)
 	return (0);
 }
 
-// Checks the token type and if it's within_quotes, does not even compare it
 int	is_delim(int i, t_data *data)
 {
 	t_token	*t;
@@ -98,7 +94,6 @@ int	is_delim(int i, t_data *data)
 	return (0);
 }
 
-/* Handles checking if mode should be changed during parsing */
 int	check_mode(char *token, int type, int cmd_idx, t_data *data)
 {
 	if (type == DEFAULT)

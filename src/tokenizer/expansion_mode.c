@@ -6,12 +6,12 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:41:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:35:39 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 11:50:23 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
 #include "../../include/command.h"
+#include "../../include/minishell.h"
 #include "../../include/tokenizer.h"
 
 // env_var_idx = index in the value e.g. 123 in abc=123
@@ -36,13 +36,16 @@ void	handle_exit_status_expansion(int *mode, int *input_idx, t_data *data)
 char	*get_identifier(int *input_idx, int *identifier_idx, t_data *data)
 {
 	char	*identifier;
+	int		start;
+	int		len;
 
 	if (is_valid_first_character(data->cur.raw[*identifier_idx]))
 		(*identifier_idx)++;
 	while (is_valid_subsequent_character(data->cur.raw[*identifier_idx]))
 		(*identifier_idx)++;
-	identifier = ft_substr(data->cur.raw, (*input_idx + 1), \
-						(*identifier_idx - 1) - *input_idx);
+	start = (*input_idx + 1);
+	len = (*identifier_idx - 1) - *input_idx;
+	identifier = ft_substr(data->cur.raw, start, len);
 	malloc_error_check(identifier, data);
 	return (identifier);
 }
@@ -65,7 +68,8 @@ static void	handle_expanded_value(char *identifier, t_data *data)
 	}
 }
 
-void	handle_env_var_expansion(int *mode, int *input_idx, int identifier_idx, t_data *data)
+void	handle_env_var_expansion(int *mode, int *input_idx, int identifier_idx,
+		t_data *data)
 {
 	char	*identifier;
 
@@ -87,7 +91,7 @@ void	handle_env_var_expansion(int *mode, int *input_idx, int identifier_idx, t_d
 // identifier_idx = index in the identifier, e.g. abc in abc=123
 void	handle_expansion_mode(int *mode, int *input_idx, t_data *data)
 {
-	int		identifier_idx;
+	int	identifier_idx;
 
 	identifier_idx = *input_idx + 1;
 	if (is_exit_status_expansion(identifier_idx, data) == 1)

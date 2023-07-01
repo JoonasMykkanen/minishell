@@ -6,16 +6,16 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:22:37 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:28:46 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 12:01:51 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
 #include "../../include/command.h"
 #include "../../include/debug.h"
+#include "../../include/minishell.h"
 
 /*
-	Redirections can only accept certain tokens as arguments 
+	Redirections can only accept certain tokens as arguments
 	and an invalid is a syntax error.
 */
 int	is_valid_arg_for_redirection(char *token)
@@ -29,7 +29,7 @@ int	is_valid_arg_for_redirection(char *token)
 	return (1);
 }
 
-int	handle_input_redirection(int cmd_idx, char *token, int *mode, t_data *data)
+int	input_redirection(int cmd_idx, char *token, int *mode, t_data *data)
 {
 	if (is_valid_arg_for_redirection(token) == 0)
 	{
@@ -42,7 +42,7 @@ int	handle_input_redirection(int cmd_idx, char *token, int *mode, t_data *data)
 	return (0);
 }
 
-int	handle_output_redirection(int cmd_idx, char *token, int *mode, t_data *data)
+int	output_redirection(int cmd_idx, char *token, int *mode, t_data *data)
 {
 	if (is_valid_arg_for_redirection(token) == 0)
 	{
@@ -57,4 +57,16 @@ int	handle_output_redirection(int cmd_idx, char *token, int *mode, t_data *data)
 		data->cur.cmd_list[cmd_idx]->output_mode = OVERWRITE_MODE;
 	*mode = DEFAULT_MODE;
 	return (0);
+}
+
+void	redirections(int cmd_idx, t_token *t, int *mode, t_data *data)
+{
+	if (*mode == INPUT_REDIR)
+	{
+		input_redirection(cmd_idx, t->token, mode, data);
+	}
+	else if (*mode == OUTPUT_REDIR_APPEND || *mode == OUTPUT_REDIR_OVERWRITE)
+	{
+		output_redirection(cmd_idx, t->token, mode, data);
+	}
 }

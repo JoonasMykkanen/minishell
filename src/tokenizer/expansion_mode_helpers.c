@@ -6,12 +6,12 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:51:57 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/25 15:42:06 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 11:48:38 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
 #include "../../include/command.h"
+#include "../../include/minishell.h"
 #include "../../include/tokenizer.h"
 
 // Fetch environment variable
@@ -46,8 +46,8 @@ char	*fetch_env_var(char *str, t_data *data)
 // Check if the character is a letter or underscore
 int	is_valid_first_character(char c)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') \
-								|| c == '_' || c == '=')
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_'
+		|| c == '=')
 		return (1);
 	return (0);
 }
@@ -55,18 +55,16 @@ int	is_valid_first_character(char c)
 // Check if the character is a letter, digit, or underscore
 int	is_valid_subsequent_character(char c)
 {
-	if ((c >= 'a' && c <= 'z')
-		|| (c >= 'A' && c <= 'Z')
-		|| (c >= '0' && c <= '9')
-		|| c == '_')
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0'
+			&& c <= '9') || c == '_')
 		return (1);
 	return (0);
 }
 
 int	is_exit_status_expansion(int j, t_data *data)
 {
-	if (data->cur.raw[j] == '?' && (data->cur.raw[j + 1] == ' ' \
-								|| data->cur.raw[j + 1] == '\0'))
+	if (data->cur.raw[j] == '?' && (data->cur.raw[j + 1] == ' '
+			|| data->cur.raw[j + 1] == '\0'))
 		return (1);
 	else
 		return (0);

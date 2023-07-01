@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:16:08 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:28:39 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 11:54:55 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,13 @@ int	handle_default_mode(char c, char next_c, int *i, t_data *data)
 	return (0);
 }
 
-int	is_edge_case(char c, char next_c, int *mode, int *i, t_data *data)
+int	is_edge_case(char *ptr, int *mode, int *i, t_data *data)
 {
+	char	next_c;
+	char	c;
+
+	c = *ptr;
+	next_c = *(ptr + 1);
 	if ((*mode == SINGLE_QUOTES_MODE || *mode == DOUBLE_QUOTES_MODE))
 	{
 		return (handle_within_quotes(c, next_c, i, data));

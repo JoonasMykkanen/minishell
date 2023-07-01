@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:13:09 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:39:30 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/06/30 17:50:16 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ char	*find_env_var(char *str, t_data *data)
 	}
 	word_len = ft_strlen(data->env.vars[idx]) - len - 1;
 	user = malloc((word_len + 1) * sizeof(char));
+	if (!user)
+		return (NULL);
 	malloc_error_check(user, data);
 	ft_memcpy(user, &data->env.vars[idx][len + 1], word_len);
 	user[word_len] = '\0';

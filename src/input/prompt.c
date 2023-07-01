@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 08:18:38 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/30 11:06:53 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 12:08:28 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 static char	*if_home(t_data *data, char *string)
 {
 	char	*temp;
-	
+
 	if (strncmp(data->env.user, string, ft_strlen(string)) == 0)
 	{
 		free(string);
 		string = malloc(sizeof(char) * 2);
 		malloc_error_check(string, data);
 		string[0] = '~';
-		string[5] = '\0';
+		string[1] = '\0';
 	}
 	temp = ft_strjoin(string, " >");
 	free(string);

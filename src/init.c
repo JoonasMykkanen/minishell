@@ -6,16 +6,16 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:26:35 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/30 10:59:42 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 12:06:18 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/init.h"
-#include "../include/types.h"
-#include "../include/minishell.h"
 #include "../include/signal_manager.h"
+#include "../include/minishell.h"
+#include "../include/types.h"
+#include "../include/init.h"
 
-extern int		sig_status;
+extern int	g_sig_status;
 
 char	**get_env_vars(char **envp, t_data *data)
 {
@@ -60,7 +60,7 @@ void	init_directories(t_data *data)
 
 int	init_struct(char **envp, t_data *data)
 {
-	sig_status = SIG_NO_CHILD;
+	g_sig_status = SIG_NO_CHILD;
 	set_builtins(data);
 	init_directories(data);
 	data->cur.err_flag = 0;

@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 07:55:31 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/30 15:03:11 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/01 11:44:04 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtins.h"
 
-int	is_var_to_be_removed(char *to_be_removed, char *current_env_var, t_data *data)
+int	is_var_to_be_removed(char *to_be_removed, char *cur_env_var, t_data *data)
 {
 	char	*needle;
 
 	needle = ft_strjoin(to_be_removed, "=");
 	malloc_error_check(needle, data);
-	if (ft_strncmp(current_env_var, needle, ft_strlen(needle)) == 0)
+	if (ft_strncmp(cur_env_var, needle, ft_strlen(needle)) == 0)
 		return (1);
 	free(needle);
 	return (0);
@@ -97,12 +97,14 @@ void	handle_unset_env_var(char *arg, int caller, t_data *data)
 
 int	ft_unset(int cmd_idx, int caller, t_data *data)
 {
-	int	i;
+	char	*ptr;
+	int		i;
 
 	i = 1;
 	while (data->cur.cmd_list[cmd_idx]->args[i] != NULL)
 	{
-		handle_unset_env_var(data->cur.cmd_list[cmd_idx]->args[i], caller, data);
+		ptr = data->cur.cmd_list[cmd_idx]->args[i];
+		handle_unset_env_var(ptr, caller, data);
 		i++;
 	}
 	return (0);

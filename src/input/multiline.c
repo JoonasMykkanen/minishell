@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:22:42 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:29:03 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 12:04:29 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*update_multiline_buffer(char *buffer, char *new_input, t_data *data)
 }
 
 // Combines the original input with the buffer containing multiline input
-char	*combine_input_and_multiline_buffer(char *input, char *buffer, t_data *data)
+char	*combine_buffers(char *input, char *buffer, t_data *data)
 {
 	char	*temp;
 
@@ -62,7 +62,7 @@ char	*handle_unclosed_quote(char *input, int mode, t_data *data)
 		}
 		buffer = update_multiline_buffer(buffer, new_input, data);
 	}
-	return (combine_input_and_multiline_buffer(input, buffer, data));
+	return (combine_buffers(input, buffer, data));
 }
 
 int	is_multiline(char *input, t_data *data)

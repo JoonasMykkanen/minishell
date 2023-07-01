@@ -6,17 +6,16 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:08:28 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/25 15:33:11 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 12:08:07 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/input.h"
 #include "../../include/command.h"
+#include "../../include/input.h"
 #include "../../include/minishell.h"
 #include "../../include/signal_manager.h"
 
-
-extern int		sig_status;
+extern int	g_sig_status;
 
 void	heredoc_free_delim_and_input(char **delim, char **input)
 {
@@ -72,12 +71,12 @@ char	*get_edited_input(int heredoc_start_idx, char **input, t_data *data)
 	int		delim_end_index;
 
 	part_a = ft_substr(*input, 0, heredoc_start_idx);
-	delim_end_index = get_delim_end_index(*input, get_delim_start_index(*input, \
-		heredoc_start_idx));
-	part_b = ft_substr(*input, delim_end_index, ft_strlen(*input) \
-		- delim_end_index);
-	combined = malloc(ft_strlen(part_a) + ft_strlen("heredoc_temp_file") \
-		+ ft_strlen(part_b) + 3);
+	delim_end_index = get_delim_end_index(*input, get_delim_start_index(*input,
+				heredoc_start_idx));
+	part_b = ft_substr(*input, delim_end_index, ft_strlen(*input)
+			- delim_end_index);
+	combined = malloc(ft_strlen(part_a) + ft_strlen("heredoc_temp_file")
+			+ ft_strlen(part_b) + 3);
 	malloc_error_check(combined, data);
 	ft_strlcpy(combined, part_a, ft_strlen(part_a) + 1);
 	ft_strlcat(combined, "< ", ft_strlen(combined) + 3);
@@ -95,8 +94,8 @@ char	*handle_heredoc(char **input, t_data *data)
 	char	*delim;
 	char	*edited_input;
 
-	original_status = sig_status;
-	sig_status = SIG_HEREDOC;
+	original_status = g_sig_status;
+	g_sig_status = SIG_HEREDOC;
 	data->cur.heredoc_mode = 1;
 	heredoc_start_idx = heredoc_start_index(*input, data);
 	delim = heredoc_delim(*input, heredoc_start_idx, data);
@@ -104,6 +103,6 @@ char	*handle_heredoc(char **input, t_data *data)
 	edited_input = get_edited_input(heredoc_start_idx, input, data);
 	data->cur.heredoc_flag = 1;
 	heredoc_free_delim_and_input(&delim, input);
-	sig_status = original_status;
+	g_sig_status = original_status;
 	return (edited_input);
 }

@@ -6,14 +6,14 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:07:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/30 08:10:01 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 12:13:44 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/signal_manager.h"
 #include "../include/minishell.h"
 
-extern int		sig_status;
+extern int		g_sig_status;
 
 static void	handle_int(int sig)
 {
@@ -22,12 +22,12 @@ static void	handle_int(int sig)
 
 	if (sig == SIGINT)
 	{
-		if (sig_status == SIG_HEREDOC)
+		if (g_sig_status == SIG_HEREDOC)
 		{
-			sig_status = SIG_ERROR;
+			g_sig_status = SIG_ERROR;
 			ioctl(1, TIOCSTI, eof);
 		}
-		else if (sig_status == SIG_NO_CHILD)
+		else if (g_sig_status == SIG_NO_CHILD)
 		{
 			rl_on_new_line();
 			ioctl(1, TIOCSTI, nlc);
@@ -35,7 +35,7 @@ static void	handle_int(int sig)
 		else
 		{
 			kill(CHILDS, SIGINT);
-			sig_status = SIG_ERROR;
+			g_sig_status = SIG_ERROR;
 		}
 	}
 }
@@ -51,12 +51,12 @@ static void	handle_quit(int sig)
 void	handle_ctrl_d(t_data *data)
 {
 	const char	eof[2] = {4, 0};
-	
-	if (sig_status == SIG_HEREDOC)
+
+	if (g_sig_status == SIG_HEREDOC)
 	{
 		ioctl(1, TIOCSTI, eof);
 	}
-	else if (sig_status == SIG_NO_CHILD)
+	else if (g_sig_status == SIG_NO_CHILD)
 	{
 		ft_exit(data);
 	}

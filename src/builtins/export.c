@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 10:38:38 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/30 15:27:47 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/01 11:48:22 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,22 @@ int	is_valid_identifier(char *arg)
 
 char	**add_arg_to_env_vars(char *arg, t_data *data)
 {
-	char	**new_env_vars;
-	int		i;
+	char	**new;
+	int		index;
 
-	i = 0;
-	new_env_vars = (char **)malloc((get_env_var_count(data) + 2) * sizeof(char *));
-	string_array_malloc_error_check(new_env_vars, data);
-	while (data->env.vars[i] != NULL)
+	index = 0;
+	new = (char **)malloc((get_env_var_count(data) + 2) * sizeof(char *));
+	string_array_malloc_error_check(new, data);
+	while (data->env.vars[index] != NULL)
 	{
-		new_env_vars[i] = ft_strdup(data->env.vars[i]);
-		malloc_error_check(new_env_vars[i], data);
-		i++;
+		new[index] = ft_strdup(data->env.vars[index]);
+		malloc_error_check(new[index], data);
+		index++;
 	}
-	new_env_vars[i] = ft_strdup(arg);
-	new_env_vars[i + 1] = NULL;
+	new[index] = ft_strdup(arg);
+	new[index + 1] = NULL;
 	free_env_vars(data);
-	return (new_env_vars);
+	return (new);
 }
 
 int	ft_export(int cmd_idx, t_data *data)
@@ -86,17 +86,16 @@ int	ft_export(int cmd_idx, t_data *data)
 	i = 1;
 	if (handle_no_args(data) == 1)
 		return (0);
-
 	while (data->cur.cmd_list[cmd_idx]->args[i] != NULL)
 	{
 		arg = ft_strdup(data->cur.cmd_list[cmd_idx]->args[i]);
-		// printf("arg: %s, index: %d \n", arg, i);
 		malloc_error_check(arg, data);
 		if (is_valid_identifier(arg) == 1)
 		{
-			char *str = find_env_var(arg, data);
-			printf("return: %s \n", str);
-			// ft_unset(cmd_idx, EXPORT, data);
+			if (need_to_update(arg, data) == 1)
+			{
+				ft_unset(cmd_idx, EXPORT, data);
+			}
 			data->env.vars = add_arg_to_env_vars(arg, data);
 		}
 		else
