@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 09:57:54 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:29:59 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 14:26:38 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	ft_cd(t_data *data)
 	else
 	{
 		target = fetch_env_var(ft_strdup("HOME"), data);
+		if (target == NULL)
+			return (errno);
 		data->dir.ptr_target = opendir(target);
 		if (open_and_close(target, data) == 1)
 			return (errno);

@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:16:08 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/01 11:54:55 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 14:09:19 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ int	handle_default_mode(char c, char next_c, int *i, t_data *data)
 		return (1);
 	}
 	else if (c == '>' && next_c != '>')
+	{
+		add_char_to_buffer(c, data);
+		store_token(data);
+		return (1);
+	}
+	else if (c == '<' && next_c == '>')
 	{
 		add_char_to_buffer(c, data);
 		store_token(data);

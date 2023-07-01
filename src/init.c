@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:26:35 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/01 12:06:18 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 13:35:59 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,10 @@ int	init_struct(char **envp, t_data *data)
 	data->sig.exec_pid = -1;
 	data->env.exit_status = 0;
 	data->cur.cmd_index = 0;
+	data->env.prompt = NULL;
 	data->cur.cmd_list = NULL;
 	data->cur.heredoc_mode = 0;
+	data->cur.heredoc_flag = 0;
 	data->sig.shell_pid = getpid();
 	data->env.vars = get_env_vars(envp, data);
 	data->env.paths = get_paths(data);

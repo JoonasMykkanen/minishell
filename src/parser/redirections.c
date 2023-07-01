@@ -6,18 +6,19 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:22:37 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/01 12:01:51 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 14:05:18 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/command.h"
 #include "../../include/debug.h"
 #include "../../include/minishell.h"
+#include "../../include/signal_manager.h"
 
-/*
-	Redirections can only accept certain tokens as arguments
-	and an invalid is a syntax error.
-*/
+extern	int g_sig_status;
+
+// Redirections can only accept certain tokens as arguments
+// and an invalid is a syntax error.
 int	is_valid_arg_for_redirection(char *token)
 {
 	if (ft_strncmp("|", token, ft_strlen(token)) == 0)
@@ -34,6 +35,7 @@ int	input_redirection(int cmd_idx, char *token, int *mode, t_data *data)
 	if (is_valid_arg_for_redirection(token) == 0)
 	{
 		data->cur.err_flag = 1;
+		g_sig_status = SIG_ERROR;
 		printf("syntax error near unexpected token `%s'\n", token);
 		return (1);
 	}
@@ -47,6 +49,7 @@ int	output_redirection(int cmd_idx, char *token, int *mode, t_data *data)
 	if (is_valid_arg_for_redirection(token) == 0)
 	{
 		data->cur.err_flag = 1;
+		g_sig_status = SIG_ERROR;
 		printf("syntax error near unexpected token `%s'\n", token);
 		return (1);
 	}

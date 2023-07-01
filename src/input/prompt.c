@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 08:18:38 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/01 12:08:28 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 13:52:25 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,15 @@ void	update_prompt(t_data *data)
 	string_array_malloc_error_check(arr, data);
 	while (arr[index] != NULL)
 		index++;
-	string = ft_strdup(arr[index - 1]);
+	if (index > 0)
+		string = ft_strdup(arr[index - 1]);
+	else
+		string = ft_strdup("/");
 	malloc_error_check(string, data);
 	free_arr(arr);
 	string = if_home(data, string);
-	free(data->env.prompt);
+	if (data->env.prompt != NULL)
+		free(data->env.prompt);
 	temp = ft_strjoin(data->env.user, "@");
 	data->env.prompt = ft_strjoin(temp, string);
 	free(string);

@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:10:30 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/30 08:11:46 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/01 13:32:40 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@
 
 int	heredoc_start_index(char *input, t_data *data)
 {
-	int	i;
+	int	idx;
 	int	mode;
 
-	i = 0;
+	idx = 0;
 	mode = DEFAULT_MODE;
-	while (input[i] != '\0')
+	while (input[idx] != '\0')
 	{
-		is_mode_changing_char(input[i], &mode, data);
-		if (input[i] == '<' && input[i + 1] == '<' && mode == DEFAULT_MODE)
-			return (i);
-		i++;
+		is_mode_changing_char(input[idx], &mode, data);
+		if (input[idx] == '<' && input[idx + 1] == '<' && mode == DEFAULT_MODE)
+			return (idx);
+		idx++;
 	}
 	return (-1);
 }
@@ -34,24 +34,24 @@ int	heredoc_start_index(char *input, t_data *data)
 int	get_delim_start_index(char *input, int heredoc_start_idx)
 {
 	int	delim_start_idx;
-	int	i;
+	int	idx;
 
-	i = heredoc_start_idx;
-	while (input[i] && input[i] != '\0' && ft_isalpha(input[i]) == 0)
-		i++;
-	delim_start_idx = i;
+	idx = heredoc_start_idx;
+	while (input[idx] && input[idx] != '\0' && ft_isalpha(input[idx]) == 0)
+		idx++;
+	delim_start_idx = idx;
 	return (delim_start_idx);
 }
 
 int	get_delim_end_index(char *input, int delim_start_idx)
 {
 	int	delim_end_idx;
-	int	i;
+	int	idx;
 
-	i = delim_start_idx;
-	while (ft_isalnum(input[i]) == 1 && input[i] != '\0')
-		i++;
-	delim_end_idx = i;
+	idx = delim_start_idx;
+	while (ft_isalnum(input[idx]) == 1 && input[idx] != '\0')
+		idx++;
+	delim_end_idx = idx;
 	return (delim_end_idx);
 }
 
