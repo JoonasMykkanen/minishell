@@ -6,14 +6,14 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 11:12:44 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/01 11:59:29 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/02 14:05:16 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/command.h"
 #include "../../include/debug.h"
 #include "../../include/minishell.h"
-#include "../../include/types.h"
+#include "../../include/ft_types.h"
 
 t_token	*get_token(int token_idx, t_data *data)
 {

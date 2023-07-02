@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   termios_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 16:14:27 by jmykkane          #+#    #+#             */
-/*   Updated: 2023/07/02 12:05:01 by joonasmykka      ###   ########.fr       */
+/*   Created: 2023/06/30 09:43:49 by joonasmykka       #+#    #+#             */
+/*   Updated: 2023/07/02 17:42:22 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "../../include/minishell.h"
+
+// For bonus ICANON flag will disable canonical mode (buffered i/o)
+void	termios_settings(void)
 {
-	if (c >= 32 && c < 127)
-		return (1);
-	else
-		return (0);
+	struct termios	term;
+
+	tcgetattr(STDIN_FILENO, &term);
+	term.c_lflag &= ~ECHOCTL;
+	term.c_lflag &= (~ICANON & ~ECHO);
+	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 }

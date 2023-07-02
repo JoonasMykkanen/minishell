@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 09:44:43 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/01 12:02:01 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/02 13:54:50 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../src/libft/libft.h"
 # include "minishell.h"
-# include "types.h"
+# include "ft_types.h"
 # include <fcntl.h>
 
 # define INPUT_REDIR 2

@@ -6,23 +6,25 @@
 #    By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 11:44:25 by joonasmykka       #+#    #+#              #
-#    Updated: 2023/07/01 11:26:41 by joonasmykka      ###   ########.fr        #
+#    Updated: 2023/07/02 16:32:13 by joonasmykka      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+DEBUG = -g -fsanitize=address
 
 NAME = minishell
 BIN_DIR = bin
 TARGET = $(BIN_DIR)/$(NAME)
-BONUS_TARGET = $(BIN_DIR)/BONUS_$(NAME)
+BONUS_TARGET = $(BIN_DIR)/$(NAME)_BONUS
 
 LIBFT_DIR = ./src/libft
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
 
 CC = cc
 
-CFLAGS = -g -Wall -Werror -Wextra -I./include
+CFLAGS = $(DEBUG) -Wall -Werror -Wextra -I./include
 # LDFLAGS = -L$(LIBFT_DIR) -lft -L$(HOME)/.brew/Cellar/readline/8.2.1/lib -lreadline
-LDFLAGS = -L$(LIBFT_DIR) -lft -L/opt/homebrew/opt/readline/lib -lreadline
+LDFLAGS = $(DEBUG) -L$(LIBFT_DIR) -lft -L/opt/homebrew/opt/readline/lib -lreadline
 
 SRC_FILES := \
     src/tokenizer/tokenizer_helpers.c src/tokenizer/expansion_mode_helpers.c \
@@ -50,22 +52,39 @@ SRC_FILES := \
 	src/input/prompt.c\
 	src/termios.c
 
-# BONUS_SRC_FILES = 
-
 OBJ_DIR = obj
 OBJ_FILES := $(patsubst src/%,$(OBJ_DIR)/%, $(SRC_FILES:.c=.o))
 
-# BONUS_OBJ_FILES =
+BONUS_DIR = src/bonus
+BONUS_FILES := \
+	$(BONUS_DIR)/rl_helpers_bonus.c \
+	$(BONUS_DIR)/readline_bonus.c \
+	$(BONUS_DIR)/termios_bonus.c \
+	$(BONUS_DIR)/signal_bonus.c \
+	$(BONUS_DIR)/main_bonus.c
 
-.PHONY: all clean fclean re leaks bonus
+BONUS_FILTER := $(patsubst src/bonus/%_bonus.c, src/%.c, $(filter src/bonus/%_bonus.c, $(BONUS_FILES)))
+BONUS_SRC_FILES := $(filter-out $(BONUS_FILTER), $(SRC_FILES))
+BONUS_SRC_FILES += $(BONUS_FILES)
+BONUS_OBJ_FILES := $(patsubst %.o, $(OBJ_DIR)/%.o, $(BONUS_SRC_FILES))
+
+.PHONY: all run bonus clean fclean re leaks 
 
 all: $(TARGET)
 
+bonus: $(BONUS_TARGET)
+
 $(TARGET): $(LIBFT_LIB) $(OBJ_FILES)
-	$(CC) -g -fsanitize=address $(OBJ_FILES) $(LDFLAGS) -o $@
+	$(CC) $(OBJ_FILES) $(LDFLAGS) -o $@
 
 $(OBJ_DIR)/%.o: src/%.c
-	$(CC) -g -fsanitize=address $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BONUS_TARGET): $(LIBFT_LIB) $(BONUS_OBJ_FILES)
+	$(CC) $(BONUS_OBJ_FILES) $(LDFLAGS) -o $@
+
+$(OBJ_DIR)/%_bonus.o: src/%_bonus.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(LIBFT_LIB):
 	make -C $(LIBFT_DIR)
@@ -87,7 +106,3 @@ re: fclean all
 
 leaks: $(TARGET)
 	leaks --atExit -- ./$(TARGET)
-
-# bonus: $(LIBFT_LIB) $(BONUS_TARGET)
-
-# $(BONUS_TARGET)

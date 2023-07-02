@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:25:58 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/01 11:53:51 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/02 13:54:44 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define TOKENIZER_H
 
 # include "../src/libft/libft.h"
-# include "../include/types.h"
+# include "../include/ft_types.h"
 
 # define YES 1
 # define NO 0

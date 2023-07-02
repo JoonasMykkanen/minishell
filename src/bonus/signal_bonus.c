@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signal.c                                           :+:      :+:    :+:   */
+/*   signal_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:07:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/02 16:48:30 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/02 18:34:46 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/signal_manager.h"
-#include "../include/minishell.h"
+#include "../../include/signal_manager.h"
+#include "../../include/minishell.h"
+#include "../../include/bonus.h"
 
 extern int		g_sig_status;
 
@@ -29,7 +30,7 @@ static void	handle_int(int sig)
 		}
 		else if (g_sig_status == SIG_NO_CHILD)
 		{
-			rl_on_new_line();
+			g_sig_status = SIG_ERROR;
 			ioctl(1, TIOCSTI, nlc);
 		}
 		else

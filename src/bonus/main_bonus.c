@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:26:35 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/02 17:16:20 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/02 18:34:23 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
+#include "../../include/bonus.h"
 
 extern int	g_sig_status;
 
@@ -46,7 +47,7 @@ int	main(int argc, char **argv, char **envp)
 		perror("init_struct");
 	while (42)
 	{
-		input = readline(data.env.prompt);
+		input = ft_readline(data.env.prompt);
 		execute_loop(input, &data);
 		clean_cur_struct(&data);
 		update_prompt(&data);

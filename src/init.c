@@ -6,13 +6,13 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:26:35 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/01 13:35:59 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/02 17:30:41 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/signal_manager.h"
 #include "../include/minishell.h"
-#include "../include/types.h"
+#include "../include/ft_types.h"
 #include "../include/init.h"
 
 extern int	g_sig_status;
@@ -66,7 +66,9 @@ int	init_struct(char **envp, t_data *data)
 	data->cur.err_flag = 0;
 	data->sig.exec_pid = -1;
 	data->env.exit_status = 0;
+	data->cur.cmd_count = 0;
 	data->cur.cmd_index = 0;
+	data->cur.raw = NULL;
 	data->env.prompt = NULL;
 	data->cur.cmd_list = NULL;
 	data->cur.heredoc_mode = 0;

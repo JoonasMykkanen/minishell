@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:08:06 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/30 09:51:44 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/02 13:54:42 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <termios.h>
 # include <signal.h>
 # include <fcntl.h>
-# include "types.h"
+# include "ft_types.h"
 
 # define CHILDS 0
 

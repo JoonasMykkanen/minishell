@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:35:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/01 13:34:44 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/02 16:50:24 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static void	free_vec_pointers(t_data *data)
 	i = -1;
 	if (data->cur.vec_init == NO)
 		return ;
-	vec_free(&data->cur.token_buffer);
 	while (++i < data->cur.tokens.len)
 	{
 		str = *(char **)vec_get(&data->cur.tokens, i);
@@ -72,8 +71,8 @@ void	clean_cur_struct(t_data *data)
 	{
 		free(data->cur.raw);
 		data->cur.raw = NULL;
+		free_vec_pointers(data);
 	}
-	free_vec_pointers(data);
 	while (++i < data->cur.cmd_count)
 		reset_cmd_struct(i, data);
 	if (data->cur.cmd_list)

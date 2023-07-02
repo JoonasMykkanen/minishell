@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 08:56:37 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/01 12:03:58 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/02 13:54:57 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define INPUT_H
 
 # include "../src/libft/libft.h"
-# include "types.h"
+# include "ft_types.h"
 
 void	update_prompt(t_data *data);
 int		handle_input(char *input, t_data *data);

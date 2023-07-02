@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.h                                             :+:      :+:    :+:   */
+/*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/30 18:20:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/02 13:54:53 by joonasmykka      ###   ########.fr       */
+/*   Created: 2023/07/02 09:17:14 by joonasmykka       #+#    #+#             */
+/*   Updated: 2023/07/02 17:51:11 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_H
-# define INIT_H
+#ifndef BONUS_H
+# define BONUS_H
 
+# define MAX_LINE 96
+
+# define ESCAPE_SEQUENCE '\033'
+# define ARROW_UP 65
+# define ARROW_DOWN 66
+
+# define ERASE "\b \b"
+# define CTRL_D 4
+# define BACKSPACE 0x7F
+# define PRINTABLE 1
+# define START 0
+
+# include <readline/history.h>
+# include <readline/readline.h> 
+# include <ctype.h>
+# include <signal.h>
 # include "../src/libft/libft.h"
 # include "ft_types.h"
-# include <fcntl.h>
 
-void	free_arr(char **arr);
-void	reset_cur(t_data *data);
-char	**get_paths(t_data *data);
-void	set_builtins(t_data *data);
-void	clean_cur_struct(t_data *data);
-int		init_struct(char **envp, t_data *data);
-char	*find_env_var(char *str, t_data *data);
-char	**get_env_vars(char **envp, t_data *data);
+char	*ft_readline(char *prompt);
+void	handle_history(char c, t_vec *buf, char *prompt);
 
-#endif
+#endif // !BONUS_H
