@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:47:02 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 15:15:30 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/03 17:31:14 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static void	free_env(t_data *data)
 // Free's everything that is malloced and reset terminal settings to original state
 void	clean_exit_shell(t_data *data)
 {
-	tcsetattr(STDIN_FILENO, TCSANOW, &data->env.settings);
 	free_dir(data);
 	free_env(data);
 	clean_cur_struct(data);

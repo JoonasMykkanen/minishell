@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+         #
+#    By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 11:44:25 by joonasmykka       #+#    #+#              #
-#    Updated: 2023/07/03 15:51:58 by jmykkane         ###   ########.fr        #
+#    Updated: 2023/07/03 17:17:12 by joonasmykka      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-DEBUG = -g -fsanitize=address
+DEBUG =
 
 NAME = minishell
 BIN_DIR = bin
@@ -23,8 +23,8 @@ LIBFT_LIB = $(LIBFT_DIR)/libft.a
 CC = cc
 
 CFLAGS = $(DEBUG) -Wall -Werror -Wextra -I./inc
-LDFLAGS = $(DEBUG) -L$(LIBFT_DIR) -lft -L$(HOME)/.brew/Cellar/readline/8.2.1/lib -lreadline
-# LDFLAGS = $(DEBUG) -L$(LIBFT_DIR) -lft -L/opt/homebrew/opt/readline/lib -lreadline
+# LDFLAGS = $(DEBUG) -L$(LIBFT_DIR) -lft -L$(HOME)/.brew/Cellar/readline/8.2.1/lib -lreadline
+LDFLAGS = $(DEBUG) -L$(LIBFT_DIR) -lft -L/opt/homebrew/opt/readline/lib -lreadline
 
 SRC_FILES := \
     src/tokenizer/tokenizer_helpers.c src/tokenizer/expansion_mode_helpers.c \
