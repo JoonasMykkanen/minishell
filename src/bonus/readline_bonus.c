@@ -6,10 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 09:01:56 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/02 18:33:51 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 09:19:25 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/signal_manager.h"
 #include "../../include/bonus.h"
 
 extern int	g_sig_status;
@@ -48,7 +49,7 @@ char	*ft_readline(char *prompt)
 	char	*line;
 	t_vec	buf;
 	char	c;
-	
+
 	init(&buf, prompt);
 	while (buf.len < MAX_LINE)
 	{
@@ -57,7 +58,7 @@ char	*ft_readline(char *prompt)
 			break ;
 		else if (c == CTRL_D)
 		{
-			if (buf.len == 0)
+			if (buf.len == 0 || g_sig_status == SIG_HEREDOC)
 			{
 				while (buf.len > 0)
 				{

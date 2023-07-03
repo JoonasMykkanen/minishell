@@ -6,11 +6,14 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:32:24 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 08:57:53 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/signal_manager.h"
 #include "../../include/execute.h"
+
+extern int	g_sig_status;
 
 int	do_checks(char *cmd)
 {
@@ -50,6 +53,7 @@ void	command_loop(t_pipes *p, t_data *data)
 	{
 		pipe(p->pipes[p->idx]);
 	}
+	g_sig_status = SIG_HAS_CHILD;
 	data->sig.exec_pid = fork();
 	if (data->sig.exec_pid == 0)
 	{
@@ -84,6 +88,7 @@ void	execute(t_data *data)
 			;
 		if (p.idx > 0)
 			close(p.pipes[p.idx - 1][READ_END]);
+		g_sig_status = SIG_NO_CHILD;
 		dup2(original_stdin, STDIN);
 		close(original_stdin);
 		if (WIFEXITED(data->env.exit_status))

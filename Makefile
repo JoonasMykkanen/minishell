@@ -6,7 +6,7 @@
 #    By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 11:44:25 by joonasmykka       #+#    #+#              #
-#    Updated: 2023/07/02 16:32:13 by joonasmykka      ###   ########.fr        #
+#    Updated: 2023/07/03 09:15:35 by joonasmykka      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,11 +60,13 @@ BONUS_FILES := \
 	$(BONUS_DIR)/rl_helpers_bonus.c \
 	$(BONUS_DIR)/readline_bonus.c \
 	$(BONUS_DIR)/termios_bonus.c \
+	$(BONUS_DIR)/heredoc_bonus.c \
 	$(BONUS_DIR)/signal_bonus.c \
 	$(BONUS_DIR)/main_bonus.c
 
 BONUS_FILTER := $(patsubst src/bonus/%_bonus.c, src/%.c, $(filter src/bonus/%_bonus.c, $(BONUS_FILES)))
-BONUS_SRC_FILES := $(filter-out $(BONUS_FILTER), $(SRC_FILES))
+BONUS_FILTER += $(patsubst src/bonus/%_bonus.c, src/input/%.c, $(filter src/bonus/%_bonus.c, $(BONUS_FILES)))
+BONUS_SRC_FILES := $(filter-out $(BONUS_FILTER), $(SRC_FILES))	
 BONUS_SRC_FILES += $(BONUS_FILES)
 BONUS_OBJ_FILES := $(patsubst %.o, $(OBJ_DIR)/%.o, $(BONUS_SRC_FILES))
 
@@ -99,7 +101,7 @@ clean:
 
 fclean: clean
 	make fclean -C $(LIBFT_DIR)
-	rm -f $(TARGET)
+	rm -f $(TARGET) $(BONUS_TARGET)
 
 re: fclean all
 
