@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:26:35 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/03 13:27:19 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 14:43:58 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,15 @@ void	init_directories(t_data *data)
 
 int	init_struct(char **envp, t_data *data)
 {
+	*data = (t_data){};
+	data->cur = (t_cur){};
+	data->env = (t_env){};
+	data->his = (t_his){};
+	data->sig = (t_sig){};
+	data->dir = (t_dir){};
 	g_sig_status = SIG_NO_CHILD;
 	set_builtins(data);
 	init_directories(data);
-	data->cur.err_flag = 0;
-	data->sig.exec_pid = -1;
-	data->env.exit_status = 0;
-	data->cur.cmd_count = 0;
-	data->cur.cmd_index = 0;
-	data->cur.raw = NULL;
-	data->env.prompt = NULL;
-	data->cur.cmd_list = NULL;
-	data->cur.heredoc_mode = 0;
-	data->cur.heredoc_flag = 0;
 	data->sig.shell_pid = getpid();
 	data->env.vars = get_env_vars(envp, data);
 	data->env.paths = get_paths(data);

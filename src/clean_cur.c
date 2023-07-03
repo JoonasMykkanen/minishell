@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:35:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 13:27:51 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 14:54:40 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,10 @@ extern int	g_sig_status;
 
 static void	reset_cmd_struct(int i, t_data *data)
 {
-	if (data->cur.cmd_list[i]->cmd)
-		free(data->cur.cmd_list[i]->cmd);
-	if (data->cur.cmd_list[i]->input)
-		free(data->cur.cmd_list[i]->input);
-	if (data->cur.cmd_list[i]->output)
-		free(data->cur.cmd_list[i]->output);
-	data->cur.cmd_list[i]->output_mode = 0;
-	if (data->cur.cmd_list[i]->args)
-		free_arr(data->cur.cmd_list[i]->args);
+	free_arr(data->cur.cmd_list[i]->args);
+	free(data->cur.cmd_list[i]->output);
+	free(data->cur.cmd_list[i]->input);	
+	free(data->cur.cmd_list[i]->cmd);
 	free(data->cur.cmd_list[i]);
 }
 
@@ -67,23 +62,12 @@ void	clean_cur_struct(t_data *data)
 	int	i;
 
 	i = -1;
-	if (data->cur.raw)
-	{
-		free(data->cur.raw);
-		data->cur.raw = NULL;
-		free_vec_pointers(data);
-	}
+	free(data->cur.raw);
+	free_vec_pointers(data);
 	while (++i < data->cur.cmd_count)
 		reset_cmd_struct(i, data);
-	if (data->cur.cmd_list)
-	{
-		free(data->cur.cmd_list);
-		data->cur.cmd_list = NULL;
-	}
-	data->cur.vec_init = 0;
-	data->cur.cmd_count = 0;
-	data->cur.cmd_index = 0;
-	data->cur.err_flag = 0;
+	free(data->cur.cmd_list);
+	data->cur = (t_cur){};
 	handle_heredoc_flag(data);
 	data->sig.exec_pid = NO_CHILDS;
 	g_sig_status = SIG_NO_CHILD;
