@@ -6,15 +6,15 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:08:28 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/03 09:00:18 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:32:16 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/bonus.h"
-#include "../../include/command.h"
-#include "../../include/input.h"
-#include "../../include/minishell.h"
-#include "../../include/signal_manager.h"
+#include "bonus.h"
+#include "command.h"
+#include "input.h"
+#include "minishell.h"
+#include "signal_manager.h"
 
 extern int	g_sig_status;
 
@@ -104,6 +104,9 @@ char	*handle_heredoc(char **input, t_data *data)
 	edited_input = get_edited_input(heredoc_start_idx, input, data);
 	data->cur.heredoc_flag = 1;
 	heredoc_free_delim_and_input(&delim, input);
-	g_sig_status = original_status;
+	if (g_sig_status != SIG_ERROR)
+		g_sig_status = original_status;
+	else
+		data->cur.heredoc_flag = 0;
 	return (edited_input);
 }

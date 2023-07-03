@@ -6,12 +6,12 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 08:57:53 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:30:00 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/signal_manager.h"
-#include "../../include/execute.h"
+#include "signal_manager.h"
+#include "execute.h"
 
 extern int	g_sig_status;
 
@@ -53,8 +53,8 @@ void	command_loop(t_pipes *p, t_data *data)
 	{
 		pipe(p->pipes[p->idx]);
 	}
-	g_sig_status = SIG_HAS_CHILD;
 	data->sig.exec_pid = fork();
+	g_sig_status = data->sig.exec_pid;
 	if (data->sig.exec_pid == 0)
 	{
 		handle_child(p, data);

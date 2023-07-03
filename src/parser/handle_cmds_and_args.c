@@ -6,14 +6,14 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:21:26 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/02 14:06:19 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:28:45 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/command.h"
-#include "../../include/debug.h"
-#include "../../include/minishell.h"
-#include "../../include/ft_types.h"
+#include "command.h"
+#include "debug.h"
+#include "minishell.h"
+#include "ft_types.h"
 
 void	handle_cmd(int cmd_idx, char *token, int *args_index, t_data *data)
 {

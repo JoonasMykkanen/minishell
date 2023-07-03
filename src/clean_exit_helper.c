@@ -10,18 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "minishell.h"
 
-void	free_arr(char **arr)
-{
-	int	idx;
+void free_arr(char **arr) {
+  int idx;
 
-	idx = -1;
-	if (arr != NULL)
-	{
-		while (arr[++idx] != NULL)
-			free(arr[idx]);
-		free(arr);
-		arr = NULL;
-	}
+  idx = -1;
+  if (arr != NULL) {
+    while (arr[++idx] != NULL)
+      free(arr[idx]);
+    free(arr);
+    arr = NULL;
+  }
 }

@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:08:06 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/02 13:54:42 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 10:40:01 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define SIG_HAS_CHILD 45
 
 void	signal_manager(void);
-void	termios_settings(void);
 void	handle_ctrl_d(t_data *data);
+void	termios_settings(t_data *data);
 
 #endif

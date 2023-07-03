@@ -6,12 +6,12 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:13:09 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/30 17:50:16 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:27:26 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
-#include "../include/init.h"
+#include "minishell.h"
+#include "init.h"
 
 void	reset_cur(t_data *data)
 {

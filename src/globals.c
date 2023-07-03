@@ -6,10 +6,10 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:33:10 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/01 12:09:24 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:27:30 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "minishell.h"
 
 int	g_sig_status;

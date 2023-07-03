@@ -6,12 +6,12 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:26:35 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/02 18:34:23 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:32:23 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
-#include "../../include/bonus.h"
+#include "minishell.h"
+#include "bonus.h"
 
 extern int	g_sig_status;
 
@@ -42,7 +42,7 @@ int	main(int argc, char **argv, char **envp)
 	if (argc != 1 && argv[1] != NULL)
 		return (1);
 	signal_manager();
-	termios_settings();
+	termios_settings(&data);
 	if (init_struct(envp, &data) == 1)
 		perror("init_struct");
 	while (42)

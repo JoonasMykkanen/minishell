@@ -6,12 +6,12 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 09:01:56 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 09:19:25 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:32:29 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/signal_manager.h"
-#include "../../include/bonus.h"
+#include "signal_manager.h"
+#include "bonus.h"
 
 extern int	g_sig_status;
 

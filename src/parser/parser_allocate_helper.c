@@ -6,12 +6,12 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:21:26 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/01 11:46:23 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:28:32 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/command.h"
-#include "../../include/minishell.h"
+#include "command.h"
+#include "minishell.h"
 
 int	parser_allocate(int i, t_data *data)
 {

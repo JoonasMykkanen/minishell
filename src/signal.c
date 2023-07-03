@@ -6,12 +6,12 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:07:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/02 16:48:30 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:27:01 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/signal_manager.h"
-#include "../include/minishell.h"
+#include "signal_manager.h"
+#include "minishell.h"
 
 extern int		g_sig_status;
 
@@ -27,14 +27,14 @@ static void	handle_int(int sig)
 			g_sig_status = SIG_ERROR;
 			ioctl(1, TIOCSTI, eof);
 		}
-		else if (g_sig_status == SIG_NO_CHILD)
+		else if (g_sig_status == SIG_NO_CHILD || g_sig_status == SIG_ERROR)
 		{
 			rl_on_new_line();
 			ioctl(1, TIOCSTI, nlc);
 		}
 		else
 		{
-			kill(CHILDS, SIGINT);
+			kill(g_sig_status, SIGINT);
 			g_sig_status = SIG_ERROR;
 		}
 	}

@@ -6,11 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 09:57:54 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/01 14:26:38 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:31:00 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/builtins.h"
+#include "builtins.h"
 
 static int	open_and_close(char *target, t_data *data)
 {

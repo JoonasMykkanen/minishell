@@ -6,13 +6,13 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:19:52 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/01 11:40:57 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:29:27 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/command.h"
-#include "../../include/input.h"
-#include "../../include/minishell.h"
+#include "command.h"
+#include "input.h"
+#include "minishell.h"
 
 int	handle_input(char *input, t_data *data)
 {

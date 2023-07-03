@@ -6,12 +6,12 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:02:11 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/01 11:35:54 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:28:26 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/command.h"
-#include "../../include/minishell.h"
+#include "command.h"
+#include "minishell.h"
 
 int	is_builtin(char *cmd, t_data *data)
 {

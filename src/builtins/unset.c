@@ -6,11 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 07:55:31 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/01 11:44:04 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:30:16 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/builtins.h"
+#include "builtins.h"
 
 int	is_var_to_be_removed(char *to_be_removed, char *cur_env_var, t_data *data)
 {

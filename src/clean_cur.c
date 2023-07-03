@@ -6,12 +6,12 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:35:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/02 18:52:38 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:27:51 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
-#include "../include/signal_manager.h"
+#include "minishell.h"
+#include "signal_manager.h"
 
 extern int	g_sig_status;
 

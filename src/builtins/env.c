@@ -6,11 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 07:47:13 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:29:51 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:30:49 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/builtins.h"
+#include "builtins.h"
 
 int	ft_env(t_data *data)
 {

@@ -6,13 +6,13 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:10:30 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/01 13:32:40 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:29:47 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/command.h"
-#include "../../include/input.h"
-#include "../../include/minishell.h"
+#include "command.h"
+#include "input.h"
+#include "minishell.h"
 
 int	heredoc_start_index(char *input, t_data *data)
 {

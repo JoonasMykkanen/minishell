@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:26:28 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/02 13:55:55 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 10:45:38 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@
 # include "../src/libft/libft.h"
 # include <sys/types.h>
 # include <stdbool.h>
+# include "termios.h"
 # include <dirent.h>
+
+typedef struct termios	t_term;
 
 typedef struct s_sig
 {
@@ -47,6 +50,7 @@ typedef struct s_env
 	char	*prompt;
 	char	*machine;
 	int		exit_status;
+	t_term	settings;
 }								t_env;
 
 // struct which contains details for one command

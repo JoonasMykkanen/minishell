@@ -6,11 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:47:02 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:24:03 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:27:42 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "minishell.h"
 
 static void	free_dir(t_data *data)
 {
@@ -42,6 +42,7 @@ static void	free_env(t_data *data)
 	}
 }
 
+// Free's everything that is malloced and reset terminal settings to original state
 void	clean_exit_shell(t_data *data)
 {
 	free_dir(data);
@@ -50,4 +51,5 @@ void	clean_exit_shell(t_data *data)
 	{
 		clean_cur_struct(data);
 	}
+	tcsetattr(STDIN_FILENO, TCSANOW, &data->env.settings);
 }

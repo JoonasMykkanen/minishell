@@ -6,12 +6,12 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 08:18:38 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/02 14:05:21 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:29:04 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
-#include "../../include/ft_types.h"
+#include "minishell.h"
+#include "ft_types.h"
 
 static char	*if_home(t_data *data, char *string)
 {

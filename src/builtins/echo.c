@@ -6,11 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:04:33 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/25 15:29:54 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:30:53 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/builtins.h"
+#include "builtins.h"
 
 static int	is_option_n(char *arg)
 {

@@ -6,11 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:24:26 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:32:36 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:30:04 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/execute.h"
+#include "execute.h"
 
 int	what_builtin(char *cmd, t_data *data)
 {

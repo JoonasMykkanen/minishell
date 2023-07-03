@@ -6,14 +6,14 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:26:35 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/02 17:30:41 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:27:19 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/signal_manager.h"
-#include "../include/minishell.h"
-#include "../include/ft_types.h"
-#include "../include/init.h"
+#include "signal_manager.h"
+#include "minishell.h"
+#include "ft_types.h"
+#include "init.h"
 
 extern int	g_sig_status;
 

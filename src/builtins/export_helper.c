@@ -6,11 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 12:17:13 by jmykkane          #+#    #+#             */
-/*   Updated: 2023/07/01 11:44:15 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:30:36 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/builtins.h"
+#include "builtins.h"
 
 int	need_to_update(char *arg, t_data *data)
 {

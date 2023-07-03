@@ -6,11 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 15:11:12 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/30 17:04:42 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:31:04 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/builtins.h"
+#include "builtins.h"
 
 void	free_env_vars(t_data *data)
 {

@@ -6,11 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 17:05:30 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/01 11:58:10 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:27:38 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/debug.h"
+#include "debug.h"
 
 extern t_data	g_data;
 

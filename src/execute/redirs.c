@@ -6,11 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:52:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:29:17 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:29:53 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/execute.h"
+#include "execute.h"
 
 void	redir_input(t_pipes *p, t_data *data)
 {

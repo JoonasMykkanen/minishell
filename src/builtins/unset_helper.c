@@ -6,11 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:58:44 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:29:38 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:30:20 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/builtins.h"
+#include "builtins.h"
 
 // add the functio nto extract until first '=' here
 char	*extract_until_equal(char *arg, t_data *data)

@@ -6,11 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:51:24 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:29:27 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:30:08 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/execute.h"
+#include "execute.h"
 
 static int	choose_builtin(int idx, t_data *data)
 {

@@ -6,11 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 12:42:23 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/02 17:58:55 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 13:32:38 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/bonus.h"
+#include "bonus.h"
 
 static void	refresh_output(t_vec *buf, const char *line)
 {
