@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rl_helpers_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 12:42:23 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 13:32:38 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 16:00:01 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	handle_up(int *index, t_vec *buf)
 	}
 }
 
-static void	handle_down(int *index, t_vec *buf, char *prompt)
+static void	handle_down(int *index, t_vec *buf)
 {
 	HIST_ENTRY *entry;
 
@@ -73,7 +73,7 @@ static void	handle_down(int *index, t_vec *buf, char *prompt)
 // It will continue with '[' that we will skip with empty getchar()
 // afterwards will come actual key value pressed ( arrow up / arrow down)
 // Uses readline library functions to use history
-void	handle_history(char c, t_vec *buf, char *prompt)
+void	handle_history(t_vec *buf)
 {
 	static int	index = -1;
 	int			key;
@@ -86,6 +86,6 @@ void	handle_history(char c, t_vec *buf, char *prompt)
     }
     else if (key == ARROW_DOWN)
     {
-        handle_down(&index, buf, prompt);
+        handle_down(&index, buf);
     }
 }

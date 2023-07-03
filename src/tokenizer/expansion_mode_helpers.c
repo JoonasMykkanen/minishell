@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   expansion_mode_helpers.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:51:57 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/01 11:48:38 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 15:07:23 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/command.h"
-#include "../../include/minishell.h"
-#include "../../include/tokenizer.h"
+#include "command.h"
+#include "minishell.h"
+#include "tokenizer.h"
 
 // Fetch environment variable
 char	*fetch_env_var(char *str, t_data *data)

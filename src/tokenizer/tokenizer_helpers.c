@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_helpers.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:51:42 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:24:11 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 15:07:54 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/tokenizer.h"
-#include "../../include/command.h"
-#include "../../include/minishell.h"
+#include "tokenizer.h"
+#include "command.h"
+#include "minishell.h"
 
 // Checks if character triggers expansion
 int	is_trigger_char(char c, int *mode)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   readline_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 09:01:56 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 13:32:29 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 16:07:46 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	custom_backspace(t_vec *buf)
 	}
 }
 
-static void	handle_output(t_vec *buf, char c, char *prompt)
+static void	handle_output(t_vec *buf, char c)
 {
 	if (ft_isprint(c) == PRINTABLE)
 	{
@@ -34,7 +34,7 @@ static void	handle_output(t_vec *buf, char c, char *prompt)
 	}
 	else if (c == ESCAPE_SEQUENCE)
 	{
-		handle_history(c, buf, prompt);
+		handle_history(buf);
 	}
 }
 
@@ -73,7 +73,7 @@ char	*ft_readline(char *prompt)
 			custom_backspace(&buf);
 			continue ;
 		}
-		handle_output(&buf, c, prompt);
+		handle_output(&buf, c);
 	}
 	vec_push(&buf, "\0");
 	if (buf.len > 1 || c == '\n')

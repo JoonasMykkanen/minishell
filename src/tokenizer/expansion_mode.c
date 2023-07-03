@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   expansion_mode.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:41:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/01 11:50:23 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 15:07:29 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/command.h"
-#include "../../include/minishell.h"
-#include "../../include/tokenizer.h"
+#include "command.h"
+#include "minishell.h"
+#include "tokenizer.h"
 
 // env_var_idx = index in the value e.g. 123 in abc=123
 void	handle_exit_status_expansion(int *mode, int *input_idx, t_data *data)

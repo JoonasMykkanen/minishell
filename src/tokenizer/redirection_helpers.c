@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   redirection_helpers.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:45:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:27:32 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 15:07:37 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
-#include "../../include/command.h"
-#include "../../include/tokenizer.h"
+#include "minishell.h"
+#include "command.h"
+#include "tokenizer.h"
 
 int	is_greater_than(char c)
 {

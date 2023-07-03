@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   buffer.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:17:38 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/01 00:37:50 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 15:06:59 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/tokenizer.h"
-#include "../../include/command.h"
-#include "../../include/minishell.h"
+#include "tokenizer.h"
+#include "command.h"
+#include "minishell.h"
 
 void	add_char_to_buffer(char c, t_data *data)
 {

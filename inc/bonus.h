@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 09:17:14 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/02 17:51:11 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 16:00:08 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@
 # include "ft_types.h"
 
 char	*ft_readline(char *prompt);
-void	handle_history(char c, t_vec *buf, char *prompt);
+void	handle_history(t_vec *buf);
 
 #endif // !BONUS_H

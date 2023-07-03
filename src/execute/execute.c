@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 13:30:00 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 16:32:32 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void	execute(t_data *data)
 		execute_builtin(&p, data);
 	else
 	{
-		original_stdin = dup(STDIN);
-		p.fdin = STDIN;
+		original_stdin = dup(STDIN_FILENO);
+		p.fdin = STDIN_FILENO;
 		while (p.idx < data->cur.cmd_count)
 		{
 			command_loop(&p, data);
@@ -89,7 +89,7 @@ void	execute(t_data *data)
 		if (p.idx > 0)
 			close(p.pipes[p.idx - 1][READ_END]);
 		g_sig_status = SIG_NO_CHILD;
-		dup2(original_stdin, STDIN);
+		dup2(original_stdin, STDIN_FILENO);
 		close(original_stdin);
 		if (WIFEXITED(data->env.exit_status))
 			data->env.exit_status = WEXITSTATUS(data->env.exit_status);

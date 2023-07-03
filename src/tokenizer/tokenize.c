@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:45:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/30 17:25:13 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 15:06:40 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/tokenizer.h"
-#include "../../include/command.h"
-#include "../../include/minishell.h"
+#include "tokenizer.h"
+#include "command.h"
+#include "minishell.h"
 
 // Tokenize input
 // stores the last token once the input string ends

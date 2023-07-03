@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:25:58 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/02 13:54:44 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 15:09:50 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define TOKENIZER_H
 
 # include "../src/libft/libft.h"
-# include "../include/ft_types.h"
+# include "ft_types.h"
 
 # define YES 1
 # define NO 0

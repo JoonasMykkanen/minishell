@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:52:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 13:29:53 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 16:31:45 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	handle_input_redirection_for_execution(t_pipes *p, t_data *data)
 	if (data->cur.cmd_list[p->idx]->input == NULL)
 	{
 		if (p->idx == 0)
-			p->fdin = STDIN;
+			p->fdin = STDIN_FILENO;
 		else
 			p->fdin = p->pipes[p->idx - 1][READ_END];
 	}
@@ -60,8 +60,8 @@ void	handle_input_redirection_for_execution(t_pipes *p, t_data *data)
 	{
 		redir_input(p, data);
 	}
-	dup2(p->fdin, STDIN);
-	if (p->fdin != STDIN)
+	dup2(p->fdin, STDIN_FILENO);
+	if (p->fdin != STDIN_FILENO)
 		close(p->fdin);
 }
 

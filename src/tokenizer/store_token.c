@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   store_token.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:45:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/25 15:36:11 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 15:07:44 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/tokenizer.h"
-#include "../../include/command.h"
-#include "../../include/minishell.h"
+#include "tokenizer.h"
+#include "command.h"
+#include "minishell.h"
 
 // Store token if buffer is not empty
 void	store_token(t_data *data)

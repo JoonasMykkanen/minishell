@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   evaluate_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:45:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/01 14:20:01 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 15:07:16 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/command.h"
-#include "../../include/minishell.h"
-#include "../../include/tokenizer.h"
+#include "command.h"
+#include "minishell.h"
+#include "tokenizer.h"
 
 // Evaluates a single character
 int	evaluate_char(char c, int *mode, int *i, t_data *data)
