@@ -6,13 +6,15 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:19:52 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 13:29:27 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/04 17:48:05 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "command.h"
 #include "input.h"
 #include "minishell.h"
+
+extern int	g_sig_status;
 
 int	handle_input(char *input, t_data *data)
 {
@@ -24,7 +26,11 @@ int	handle_input(char *input, t_data *data)
 	else
 	{
 		while (is_multiline(input, data) != 0)
+		{
 			handle_multiline(&input, data);
+			if (g_sig_status == SIG_ERROR)
+				return (1);
+		}
 		data->cur.raw = ft_strdup(input);
 		malloc_error_check(data->cur.raw, data);
 		free(input);
