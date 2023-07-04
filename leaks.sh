@@ -1,6 +1,6 @@
 while TRUE
 do
-	echo "Checking for memory leaks ....."
+	clear
 	leaks minishell
-	sleep 3
+	sleep 1
 done

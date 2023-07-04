@@ -6,39 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:04:33 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/04 09:36:18 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/04 16:55:57 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
-
-static int	is_option_n(char *arg)
-{
-	if (ft_strncmp(arg, "-n", ft_strlen(arg)) == 0)
-	{
-		return (1);
-	}
-	return (0);
-}
-
-static int	has_option_n(int *ptr_idx, t_data *data)
-{
-	int	i;
-	int	has_option_n;
-
-	i = 1;
-	has_option_n = 0;
-	while (data->cur.cmd_list[data->cur.cmd_index]->args[i] != NULL)
-	{
-		if (is_option_n(data->cur.cmd_list[data->cur.cmd_index]->args[i]) == 1)
-		{
-			(*ptr_idx)++;
-			has_option_n = 1;
-		}
-		i++;
-	}
-	return (has_option_n);
-}
 
 static void	without_option(int cmd_idx, int idx, int printed_idx, t_data *data)
 {
@@ -51,6 +23,46 @@ static void	without_option(int cmd_idx, int idx, int printed_idx, t_data *data)
 		printed_idx++;
 	}
 	printf("\n");
+}
+
+static int	is_option_n(char *arg)
+{
+	if (ft_strncmp(arg, "-n", 2) == 0)
+	{
+		return (1);
+	}
+	return (0);
+}
+
+static int	has_option_n(int *ptr_idx, t_data *data)
+{
+	int	printable_found;
+	int	has_option_n;
+	int	i;
+
+	i = 1;
+	has_option_n = 0;
+	printable_found = 0;
+	while (data->cur.cmd_list[data->cur.cmd_index]->args[i] != NULL)
+	{
+		if (is_option_n(data->cur.cmd_list[data->cur.cmd_index]->args[i]) == 1)
+		{
+			if (i > 1 && printable_found == 1)
+			{
+				i++;
+				continue ;
+			}
+			if (i > 1 && has_option_n == 0)
+				break ;
+			(*ptr_idx)++;
+			if (i == 1)
+				has_option_n = 1;
+		}
+		else
+			printable_found = 1;
+		i++;
+	}
+	return (has_option_n);
 }
 
 static void	with_option(int cmd_idx, int idx, t_data *data)
