@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   readline_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 09:01:56 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 16:07:46 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/04 10:34:31 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*ft_readline(char *prompt)
 	char	c;
 
 	init(&buf, prompt);
-	while (buf.len < MAX_LINE)
+	while (buf.len < MAX_LINE_LEN)
 	{
 		c = getchar();
 		if (c == '\n')

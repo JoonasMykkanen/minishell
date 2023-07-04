@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:07:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 14:57:28 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/04 14:05:50 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void	handle_int(int sig)
 		{
 			g_sig_status = SIG_ERROR;
 			ioctl(1, TIOCSTI, eof);
+			rl_redisplay();
 		}
 		else if (g_sig_status == SIG_NO_CHILD || g_sig_status == SIG_ERROR)
 		{
@@ -33,10 +34,7 @@ static void	handle_int(int sig)
 			ioctl(1, TIOCSTI, nlc);
 		}
 		else
-		{
-			kill(g_sig_status, SIGINT);
-			g_sig_status = SIG_ERROR;
-		}
+			printf("\n");
 	}
 }
 

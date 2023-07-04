@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:35:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 14:54:40 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/04 15:33:12 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	handle_heredoc_flag(t_data *data)
 		if (unlink("heredoc_temp_file") == -1)
 		{
 			perror("Error deleting the heredoc temp file");
-			clean_exit_shell(data);
+			clean_exit_shell(data, PARENT);
 		}
 		data->cur.heredoc_flag = 0;
 	}
@@ -71,4 +71,5 @@ void	clean_cur_struct(t_data *data)
 	handle_heredoc_flag(data);
 	data->sig.exec_pid = NO_CHILDS;
 	g_sig_status = SIG_NO_CHILD;
+	termios_settings(YES);
 }

@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:26:28 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 10:45:38 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/04 12:27:47 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,18 @@ typedef struct s_env
 	char	**paths;
 	char	*prompt;
 	char	*machine;
-	int		exit_status;
 	t_term	settings;
+	int		exit_status;
 }								t_env;
 
 // struct which contains details for one command
 // If path = "builtin" 
 typedef struct s_command
 {
-	char	*output;
-	char	*input;
 	int		output_mode;
 	int		builtin;
+	char	*output;
+	char	*input;
 	char	**args;
 	char	*cmd;
 }								t_cmd;

@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 11:12:44 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 13:28:19 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 17:44:08 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_token	*get_token(int token_idx, t_data *data)
 	if (!t)
 	{
 		perror("");
-		clean_exit_shell(data);
+		clean_exit_shell(data, PARENT);
 		exit(errno);
 	}
 	t->token = *(char **)vec_get(&data->cur.tokens, token_idx);

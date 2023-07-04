@@ -3,22 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   termios.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:43:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 16:24:59 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/04 14:43:35 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	termios_settings(t_data *data)
+void	termios_settings(int disable)
 {
 	t_term	new;
 	
-	
-	tcgetattr(STDIN_FILENO, &data->env.settings);
-	tcgetattr(STDIN_FILENO, &new);
-	new.c_lflag &= ~ECHOCTL;
-	tcsetattr(STDIN_FILENO, TCSANOW, &new);
+	if (disable == YES)
+	{
+		tcgetattr(STDIN_FILENO, &new);
+		new.c_lflag &= (~ECHOCTL);
+		tcsetattr(STDIN_FILENO, TCSANOW, &new);
+	}
+	else
+	{
+		tcgetattr(STDIN_FILENO, &new);
+		new.c_lflag |= ECHOCTL;
+		tcsetattr(STDIN_FILENO, TCSANOW, &new);
+	}
 }

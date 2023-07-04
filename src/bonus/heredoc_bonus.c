@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:08:28 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/03 13:32:16 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 17:40:22 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "input.h"
 #include "minishell.h"
 #include "signal_manager.h"
+#include "execute.h"
 
 extern int	g_sig_status;
 
@@ -35,7 +36,7 @@ int	open_temp_file(t_data *data)
 	if (fd == -1)
 	{
 		perror("");
-		clean_exit_shell(data);
+		clean_exit_shell(data, PARENT);
 		exit(errno);
 	}
 	return (fd);

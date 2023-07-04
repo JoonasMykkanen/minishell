@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:21:26 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 13:28:32 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 17:44:08 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	parser_allocate(int i, t_data *data)
 	if (!data->cur.cmd_list[i])
 	{
 		perror("");
-		clean_exit_shell(data);
+		clean_exit_shell(data, PARENT);
 		return (1);
 	}
 	data->cur.cmd_list[i]->args = NULL;
@@ -37,7 +37,7 @@ void	initialize_cmd_if_needed(int cmd_idx, t_data *data)
 		data->cur.cmd_list[cmd_idx] = (t_cmd *)malloc(sizeof(t_cmd));
 		if (data->cur.cmd_list[cmd_idx] == NULL)
 		{
-			clean_exit_shell(data);
+			clean_exit_shell(data, PARENT);
 			perror("Error creating cmd_list");
 			exit(errno);
 		}

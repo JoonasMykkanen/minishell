@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 10:38:38 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 13:30:28 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/04 15:38:18 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ int	is_valid_env_variable_name(char *arg)
 
 	i = 0;
 	if (is_valid_first_character(arg[i]) != 1)
+	{
 		return (0);
+	}
 	i++;
-	while (arg[i] != '=')
+	while (arg[i] != '=' && arg[i] != '\0')
 	{
 		if (is_valid_subsequent_character(arg[i]) != 1)
 			return (0);
@@ -46,6 +48,10 @@ int	is_valid_identifier(char *arg)
 	if (equal_sign_ptr == NULL)
 	{
 		is_valid = 0;
+		if (is_valid_env_variable_name(arg) == 1)
+		{
+			return (1);
+		}
 	}
 	if (is_valid == 1 && is_valid_env_variable_name(arg) != 1)
 	{
@@ -93,9 +99,7 @@ int	ft_export(int cmd_idx, t_data *data)
 		if (is_valid_identifier(arg) == 1)
 		{
 			if (need_to_update(arg, data) == 1)
-			{
 				ft_unset(cmd_idx, EXPORT, data);
-			}
 			data->env.vars = add_arg_to_env_vars(arg, data);
 		}
 		else

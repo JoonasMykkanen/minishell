@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:26:35 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/03 15:21:44 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/04 14:42:07 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ int	main(int argc, char **argv, char **envp)
 
 	if (argc != 1 && argv[1] != NULL)
 		return (1);
-	signal_manager();
-	termios_settings(&data);
 	if (init_struct(envp, &data) == 1)
 		perror("init_struct");
+	termios_settings(YES);
+	signal_manager();
 	while (42)
 	{
 		input = readline(data.env.prompt);
@@ -51,6 +51,6 @@ int	main(int argc, char **argv, char **envp)
 		clean_cur_struct(&data);
 		update_prompt(&data);
 	}
-	clean_exit_shell(&data);
+	clean_exit_shell(&data, PARENT);
 	return (data.env.exit_status);
 }

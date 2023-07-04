@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansion_mode_helpers.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:51:57 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/03 15:07:23 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/03 21:11:56 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ int	is_valid_subsequent_character(char c)
 int	is_exit_status_expansion(int j, t_data *data)
 {
 	if (data->cur.raw[j] == '?' && (data->cur.raw[j + 1] == ' '
-			|| data->cur.raw[j + 1] == '\0'))
+			|| data->cur.raw[j + 1] == '\0'
+			|| data->cur.raw[j + 1] == '"'))
 		return (1);
 	else
 		return (0);

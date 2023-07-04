@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:27:09 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 12:48:21 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/04 15:38:15 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int		handle_no_args(t_data *data);
 int		get_env_var_count(t_data *data);
 int		is_env_var(char *arg, t_data *data);
 int		need_to_update(char *arg, t_data *data);
+char	**remove_env_var(char *arg, t_data *data);
 char	*extract_until_equal(char *arg, t_data *data);
+char	**add_arg_to_env_vars(char *arg, t_data *data);
 
 #endif

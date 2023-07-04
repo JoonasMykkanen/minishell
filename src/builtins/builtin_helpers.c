@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 15:11:12 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 13:31:04 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/04 15:21:26 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,19 +69,14 @@ int	ft_isvalid_int(char *str)
 int	is_env_var(char *arg, t_data *data)
 {
 	int		idx;
-	char	*needle;
 
 	idx = -1;
-	needle = ft_strjoin(arg, "=");
-	malloc_error_check(needle, data);
 	while (data->env.vars[++idx] != NULL)
 	{
-		if (ft_strncmp(data->env.vars[idx], needle, ft_strlen(needle)) == 0)
+		if (ft_strncmp(data->env.vars[idx], arg, ft_strlen(arg)) == 0)
 		{
-			free(needle);
 			return (1);
 		}
 	}
-	free(needle);
 	return (0);
 }

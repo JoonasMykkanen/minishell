@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:24:26 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 17:31:43 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 17:51:28 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	execute_fail(int idx, t_data *data)
 		ft_putstr_fd(data->cur.cmd_list[idx]->cmd, 2);
 		ft_putstr_fd(": Command not found\n", 2);
 	}
-	printf("clean exiting \n");
-	clean_exit_shell(data);
+	clean_exit_shell(data, CHILD);
 	exit(127);
 }

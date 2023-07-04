@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:02:11 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 13:28:26 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 17:44:08 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	allocate_cmd_list(t_data *data)
 	if (!data->cur.cmd_list)
 	{
 		perror("Error allocating command lists, will exit");
-		clean_exit_shell(data);
+		clean_exit_shell(data, PARENT);
 		exit(errno);
 	}
 	while (i < data->cur.cmd_count)

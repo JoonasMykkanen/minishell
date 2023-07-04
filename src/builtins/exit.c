@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 07:49:15 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 13:30:44 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 17:43:35 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ static void	handle_with_argument(int idx, t_data *data)
 	if (ft_isvalid_int(data->cur.cmd_list[idx]->args[1]))
 	{
 		data->env.exit_status = ft_atoi(data->cur.cmd_list[idx]->args[1]);
-		clean_exit_shell(data);
+		clean_exit_shell(data, PARENT);
 		exit(data->env.exit_status);
 	}
 	else
 	{
 		ft_putstr_fd("Shell: Exit: Numeric argument required\n", 2);
 		data->env.exit_status = 255;
-		clean_exit_shell(data);
+		clean_exit_shell(data, PARENT);
 		exit(data->env.exit_status);
 	}
 }
@@ -40,12 +40,12 @@ static void	handle_too_many_arguments(int idx, t_data *data)
 		}
 		else
 		{
-			clean_exit_shell(data);
+			clean_exit_shell(data, PARENT);
 			ft_putstr_fd("Shell: Exit: too many arguments\n", 2);
 			exit(255);
 		}
 	}
-	clean_exit_shell(data);
+	clean_exit_shell(data, PARENT);
 	ft_putstr_fd("Shell: Exit: Numeric argument required\n", 2);
 	data->env.exit_status = 255;
 }
@@ -60,7 +60,7 @@ void	ft_exit(t_data *data)
 	printf("exit\n");
 	if (len == 1)
 	{
-		clean_exit_shell(data);
+		clean_exit_shell(data, PARENT);
 		exit(data->env.exit_status);
 	}
 	else if (len == 2)

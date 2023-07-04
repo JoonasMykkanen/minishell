@@ -6,11 +6,11 @@
 #    By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 11:44:25 by joonasmykka       #+#    #+#              #
-#    Updated: 2023/07/03 17:17:12 by joonasmykka      ###   ########.fr        #
+#    Updated: 2023/07/04 10:20:20 by joonasmykka      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-DEBUG =
+DEBUG = -g -fsanitize=address
 
 NAME = minishell
 BIN_DIR = bin
@@ -57,6 +57,7 @@ OBJ_FILES := $(patsubst src/%,$(OBJ_DIR)/%, $(SRC_FILES:.c=.o))
 
 BONUS_DIR = src/bonus
 BONUS_FILES := \
+	$(BONUS_DIR)/rl_history_bonus.c \
 	$(BONUS_DIR)/rl_helpers_bonus.c \
 	$(BONUS_DIR)/readline_bonus.c \
 	$(BONUS_DIR)/termios_bonus.c \

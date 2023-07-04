@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:08:06 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 10:40:01 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/04 14:36:14 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@
 # define SIG_NO_CHILD 44
 # define SIG_HAS_CHILD 45
 
+# define YES 1
+# define NO 0
+
 void	signal_manager(void);
 void	handle_ctrl_d(t_data *data);
-void	termios_settings(t_data *data);
+void	termios_settings(int disable);
 
 #endif

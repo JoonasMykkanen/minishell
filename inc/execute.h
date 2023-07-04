@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:46:59 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/06/25 14:48:16 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/03 17:38:40 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@
 
 # define TRUE 1
 # define FALSE 0
+
+# define CHILD 0
+# define PARENT 1
 
 typedef struct s_pipex_data
 {

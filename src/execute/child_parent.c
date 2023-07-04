@@ -6,11 +6,12 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:53:39 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 13:30:11 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/04 13:05:38 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
+#include "termios.h"
 
 void	handle_child(t_pipes *p, t_data *data)
 {

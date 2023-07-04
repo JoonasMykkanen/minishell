@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:52:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 16:31:45 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/03 17:44:08 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	redir_input(t_pipes *p, t_data *data)
 	if (p->fdin < 0)
 	{
 		perror("input file");
-		clean_exit_shell(data);
+		clean_exit_shell(data, PARENT);
 		exit(1);
 	}
 }
@@ -36,13 +36,13 @@ void	redir_out(t_pipes *p, t_data *data)
 	else
 	{
 		perror("invalid output mode");
-		clean_exit_shell(data);
+		clean_exit_shell(data, PARENT);
 		exit(1);
 	}
 	if (p->fdout < 0)
 	{
 		perror("output file");
-		clean_exit_shell(data);
+		clean_exit_shell(data, PARENT);
 		exit(1);
 	}
 }

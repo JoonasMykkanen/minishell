@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 17:30:16 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/04 14:43:52 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	command_loop(t_pipes *p, t_data *data)
 		pipe(p->pipes[p->idx]);
 	}
 	data->sig.exec_pid = fork();
-	printf("Report after fork %d \n", getpid());
 	g_sig_status = data->sig.exec_pid;
 	if (data->sig.exec_pid == 0)
 	{
@@ -79,14 +78,13 @@ void	execute(t_data *data)
 	else
 	{
 		p.fdin = STDIN_FILENO;
+		termios_settings(NO);
 		while (p.idx < data->cur.cmd_count)
 		{
 			command_loop(&p, data);
 		}
 		while (waitpid(-1, &data->env.exit_status, 0) > 0)
-		{
-			printf("waiting for child \n");
-		}
+			;
 		if (p.idx > 0)
 			close(p.pipes[p.idx - 1][READ_END]);
 		g_sig_status = SIG_NO_CHILD;

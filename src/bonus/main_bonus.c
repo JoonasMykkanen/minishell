@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:26:35 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/03 13:32:23 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/04 13:48:27 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int argc, char **argv, char **envp)
 	if (argc != 1 && argv[1] != NULL)
 		return (1);
 	signal_manager();
-	termios_settings(&data);
+	termios_settings(YES);
 	if (init_struct(envp, &data) == 1)
 		perror("init_struct");
 	while (42)
@@ -52,6 +52,6 @@ int	main(int argc, char **argv, char **envp)
 		clean_cur_struct(&data);
 		update_prompt(&data);
 	}
-	clean_exit_shell(&data);
+	clean_exit_shell(&data, PARENT);
 	return (data.env.exit_status);
 }

@@ -6,21 +6,16 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 07:55:31 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 13:30:16 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/04 15:24:08 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 
-int	is_var_to_be_removed(char *to_be_removed, char *cur_env_var, t_data *data)
+int	is_var_to_be_removed(char *to_be_removed, char *cur_env_var)
 {
-	char	*needle;
-
-	needle = ft_strjoin(to_be_removed, "=");
-	malloc_error_check(needle, data);
-	if (ft_strncmp(cur_env_var, needle, ft_strlen(needle)) == 0)
+	if (ft_strncmp(cur_env_var, to_be_removed, ft_strlen(to_be_removed)) == 0)
 		return (1);
-	free(needle);
 	return (0);
 }
 
@@ -36,7 +31,7 @@ char	**remove_env_var(char *arg, t_data *data)
 	string_array_malloc_error_check(new_env_vars, data);
 	while (data->env.vars[i] != NULL)
 	{
-		if (is_var_to_be_removed(arg, data->env.vars[i], data) == 0)
+		if (is_var_to_be_removed(arg, data->env.vars[i]) == 0)
 		{
 			new_env_vars[j] = ft_strdup(data->env.vars[i]);
 			malloc_error_check(new_env_vars[j], data);
@@ -90,9 +85,7 @@ void	handle_unset_env_var(char *arg, int caller, t_data *data)
 		free(arg_without_equal);
 	}
 	else
-	{
 		printf("shell: unset: `%s': not a valid identifier\n", arg);
-	}
 }
 
 int	ft_unset(int cmd_idx, int caller, t_data *data)
