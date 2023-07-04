@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:20:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/02 13:54:53 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/04 22:33:45 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <fcntl.h>
 
 void	free_arr(char **arr);
-void	reset_cur(t_data *data);
 char	**get_paths(t_data *data);
 void	set_builtins(t_data *data);
 void	clean_cur_struct(t_data *data);

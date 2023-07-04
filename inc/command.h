@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 09:44:43 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/02 13:54:50 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/04 22:13:23 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 # define APPEND_MODE 1
 # define OVERWRITE_MODE 2
 
-int		is_delim(int i, t_data *data);
 int		get_cmd_count(t_data *data);
 int		parse_commands(t_data *data);
+int		is_delim(int i, t_data *data);
 int		allocate_cmd_list(t_data *data);
 int		is_builtin(char *cmd, t_data *data);
 int		parser_allocate(int i, t_data *data);

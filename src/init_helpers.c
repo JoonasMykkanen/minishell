@@ -6,18 +6,12 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:13:09 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 13:27:26 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/04 22:33:50 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "init.h"
-
-void	reset_cur(t_data *data)
-{
-	data->cur.cmd_index = 0;
-	data->cur.cmd_count = 0;
-}
 
 char	**get_paths(t_data *data)
 {

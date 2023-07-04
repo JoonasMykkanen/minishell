@@ -6,13 +6,11 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 17:05:30 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 13:27:38 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/04 22:34:48 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "debug.h"
-
-extern t_data	g_data;
 
 // All functions in this file are only meant to be debugged with
 // they are not in use at all when this project is submitted but

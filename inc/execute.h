@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:46:59 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/03 17:38:40 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/04 22:12:58 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef struct s_pipex_data
 }				t_pipes;
 
 void	execute(t_data *data);
-void	init(t_pipes *p);
 void	execute_fail(int idx, t_data *data);
 void	redir_out(t_pipes *p, t_data *data);
 void	redir_input(t_pipes *p, t_data *data);
@@ -56,7 +55,6 @@ int		what_builtin(char *cmd, t_data *data);
 void	handle_child(t_pipes *p, t_data *data);
 void	handle_parent(t_pipes *p, t_data *data);
 void	execute_builtin(t_pipes *p, t_data *data);
-void	pipes_and_forks(t_pipes *p);
 char	*get_command_path(char *token, t_data *data);
 void	execute_cmd(t_pipes *p, int idx, t_data *data);
 void	handle_input_redirection_for_execution(t_pipes *p, t_data *data);
