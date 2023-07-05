@@ -1,42 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_filter.c                                       :+:      :+:    :+:   */
+/*   vec_push.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oanttoor <oanttoor@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:04:53 by jmykkane          #+#    #+#             */
-/*   Updated: 2023/03/28 16:54:10 by oanttoor         ###   ########.fr       */
+/*   Updated: 2023/06/24 14:58:35 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec.h"
 
-int	vec_filter(t_vec *dst, t_vec *src, bool (*f) (void *))
+int	vec_push(t_vec *dst, void *src)
 {
-	void	*res;
-	size_t	idx;
-
-	if (!dst || !src || !src->memory)
+	if (!dst || !src)
 		return (-1);
 	else if (!dst->memory)
 	{
-		if (vec_new(dst, 1, src->elem_size) < 0)
+		if (vec_new(dst, 1, dst->elem_size) < 0)
 			return (-1);
 	}
-	res = malloc(src->elem_size);
-	if (!res)
-		return (-1);
-	idx = -1;
-	while (++idx < src->len)
+	if (dst->elem_size * dst->len >= dst->alloc_size)
 	{
-		ft_memcpy(res, &src->memory[src->elem_size * idx], src->elem_size);
-		if (f(res) == true)
-		{
-			if (vec_push(dst, res) < 0)
-				return (-1);
-		}
+		if (vec_resize(dst, dst->len * 2) < 0)
+			return (-1);
 	}
-	free(res);
+	ft_memcpy(&dst->memory[dst->elem_size * dst->len], src, dst->elem_size);
+	dst->len++;
 	return (1);
 }

@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_from.c                                         :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmykkane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 16:04:53 by jmykkane          #+#    #+#             */
-/*   Updated: 2022/10/26 16:04:54 by jmykkane         ###   ########.fr       */
+/*   Created: 2022/10/28 10:45:55 by jmykkane          #+#    #+#             */
+/*   Updated: 2022/10/28 10:45:56 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec.h"
+#include "libft.h"
 
-int	vec_from(t_vec *dst, void *src, size_t len, size_t elem_size)
-{	
-	if (!dst | !src)
-		return (-1);
-	if (vec_new(dst, len, elem_size) == 1)
-		ft_memcpy(dst->memory, src, dst->alloc_size);
-	else
-		return (-1);
-	return (1);
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	int				i;
+	unsigned char	*str1;
+	unsigned char	*str2;
+
+	i = 0;
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	while (n > 0 && str1[i] != '\0' && str1[i] == str2[i])
+	{
+		n--;
+		i++;
+	}
+	if (n == 0)
+		return (0);
+	return (str1[i] - str2[i]);
 }

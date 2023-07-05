@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isnum.c                                         :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 15:28:54 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/06/06 15:29:05 by joonasmykka      ###   ########.fr       */
+/*   Created: 2022/11/08 11:07:55 by jmykkane          #+#    #+#             */
+/*   Updated: 2022/11/08 11:07:58 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isnum(int c)
+t_list	*ft_lstnew(void *content)
 {
-	if (c >= 47 && c <= 57)
-		return (1);
-	return (0);
+	t_list	*new;
+
+	new = malloc(sizeof(t_list));
+	if (!new)
+	{
+		return (NULL);
+	}
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }

@@ -1,16 +1,8 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/24 14:22:41 by jmykkane          #+#    #+#              #
-#    Updated: 2023/06/14 08:57:19 by joonasmykka      ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = libft.a
+
+SRC_DIR = src/
+OBJ_DIR = obj/
+INC_DIR = inc/
 
 SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c\
 ft_isdigit.c ft_isprint.c ft_itoa.c ft_memcpy.c ft_memmove.c ft_memset.c\
@@ -25,25 +17,35 @@ convert_d_i.c convert_p.c convert_s.c convert_u.c convert_x.c\
 convert_precentage.c dir_check.c\
 vec_append.c vec_copy.c vec_filter.c vec_free.c vec_from.c vec_get.c\
 vec_insert.c vec_iter.c vec_map.c vec_new.c vec_pop.c vec_prepend.c\
-vec_push.c vec_remove.c vec_resize.c ft_strcmp.c ft_isnum.c
+vec_push.c vec_remove.c vec_resize.c
 
-SRC_O = $(SRC:.c=.o)
+SRCS = $(addprefix $(SRC_DIR), $(SRC))
+OBJS = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
-INCLUDES = ./
+INCLUDES = libft.h get_next_line.h ft_printf.h vec.h
+INCS = $(addprefix $(INC_DIR), $(INCLUDES))
 
-FLAGS = -Wall -Werror -Wextra -g -I $(INCLUDES)
+FLAGS = -Wall -Werror -Wextra -I $(INC_DIR)
 
 all: $(NAME)
 
-$(NAME): $(SRC_O)
-	cc -c $(FLAGS) $(SRC)
-	ar rc $(NAME) $(SRC_O)
+$(NAME): $(OBJS)
+	@echo "Creating archive $(NAME)..."
+	ar rc $(NAME) $(OBJS)
+	@echo "Archive $(NAME) created."
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCS)
+	@mkdir -p $(OBJ_DIR)
+	cc -c $(FLAGS) $< -o $@
 
 clean:
-	rm -f $(SRC_O)
+	@echo "Cleaning object files..."
+	rm -f $(OBJS)
+	@echo "Object files cleaned."
 
-fclean:
-	rm -f $(SRC_O)
+fclean: clean
+	@echo "Cleaning library..."
 	rm -f $(NAME)
+	@echo "Library cleaned."
 
 re: fclean all

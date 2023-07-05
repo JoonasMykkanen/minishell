@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oanttoor <oanttoor@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmykkane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 11:07:55 by jmykkane          #+#    #+#             */
-/*   Updated: 2023/03/29 11:34:51 by oanttoor         ###   ########.fr       */
+/*   Created: 2022/10/25 15:46:49 by jmykkane          #+#    #+#             */
+/*   Updated: 2022/10/25 15:46:51 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+char	*ft_strdup(char *src)
 {
-	t_list	*new_list;
+	int		i;
+	char	*ptr;
 
-	new_list = malloc(sizeof(t_list));
-	if (!new_list)
-	{
+	i = 0;
+	i = ft_strlen(src);
+	ptr = malloc(sizeof(*ptr) * (i + 1));
+	if (ptr == NULL)
 		return (NULL);
+	i = 0;
+	while (src[i] != '\0')
+	{
+		ptr[i] = src[i];
+		i ++;
 	}
-	new_list->content = content;
-	new_list->next = NULL;
-	return (new_list);
+	ptr[i] = '\0';
+	return (ptr);
 }

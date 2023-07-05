@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   vec_free.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/17 16:34:44 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/05/30 18:29:45 by joonasmykka      ###   ########.fr       */
+/*   Created: 2022/10/26 16:04:53 by jmykkane          #+#    #+#             */
+/*   Updated: 2022/10/26 16:04:54 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vec.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+int	vec_free(t_vec *src)
 {
-	if (s1 == NULL || s2 == NULL)
-	{
+	if (!src || src->alloc_size == 0)
 		return (-1);
-	}
-	while (*s1 && (*s1 == *s2))
-	{
-		s1++;
-		s2++;
-	}
-	return (*(const unsigned char *)s1 - *(const unsigned char *)s2);
+	free(src->memory);
+	src->memory = NULL;
+	src->alloc_size = 0;
+	src->elem_size = 0;
+	src->len = 0;
+	return (1);
 }
