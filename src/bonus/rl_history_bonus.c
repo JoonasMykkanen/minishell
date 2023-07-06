@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 10:19:02 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/04 10:21:47 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/05 18:44:05 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,18 @@ static void	handle_down(int *index, t_vec *buf)
 // It will continue with '[' that we will skip with empty getchar()
 // afterwards will come actual key value pressed ( arrow up / arrow down)
 // Uses readline library functions to use history
-void	handle_history(t_vec *buf)
+void	handle_history(t_vec *buf, int key, size_t *cursor_idx)
 {
 	static int	index = -1;
-	int			key;
 
-	getchar();
-	key = getchar();
     if (key == ARROW_UP)
     {
         handle_up(&index, buf);
+		*cursor_idx = buf->len;
     }
     else if (key == ARROW_DOWN)
     {
         handle_down(&index, buf);
+		*cursor_idx = buf->len;
     }
 }

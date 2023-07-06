@@ -6,14 +6,14 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:26:28 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/04 12:27:47 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/05 11:39:15 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_TYPES_H
 # define FT_TYPES_H
 
-# include "../src/libft/libft.h"
+# include "../src/libft/inc/libft.h"
 # include <sys/types.h>
 # include <stdbool.h>
 # include "termios.h"

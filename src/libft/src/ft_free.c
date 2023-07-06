@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   termios.c                                          :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/30 09:43:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/05 11:53:41 by joonasmykka      ###   ########.fr       */
+/*   Created: 2023/07/05 12:07:38 by joonasmykka       #+#    #+#             */
+/*   Updated: 2023/07/05 12:07:56 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	termios_settings(int disable)
+void	ft_free(void *ptr)
 {
-	t_term	term_settings;
-	
-	if (disable == YES)
-	{
-		tcgetattr(STDIN_FILENO, &term_settings);
-		term_settings.c_lflag &= (~ECHOCTL);
-		tcsetattr(STDIN_FILENO, TCSANOW, &term_settings);
-	}
-	else
-	{
-		tcgetattr(STDIN_FILENO, &term_settings);
-		term_settings.c_lflag |= ECHOCTL;
-		tcsetattr(STDIN_FILENO, TCSANOW, &term_settings);
-	}
+	free(ptr);
+	ptr = NULL;
 }

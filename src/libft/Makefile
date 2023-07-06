@@ -2,7 +2,6 @@ NAME = libft.a
 
 SRC_DIR = src/
 OBJ_DIR = obj/
-INC_DIR = inc/
 
 SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c\
 ft_isdigit.c ft_isprint.c ft_itoa.c ft_memcpy.c ft_memmove.c ft_memset.c\
@@ -14,7 +13,7 @@ ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstadd_back.c ft_lstlast.c\
 ft_puthex_lower_fd.c ft_puthex_upper_fd.c ft_memrcpy.c ft_hexlen.c\
 get_next_line.c get_next_line_utils.c ft_printf.c convert_c.c\
 convert_d_i.c convert_p.c convert_s.c convert_u.c convert_x.c\
-convert_precentage.c dir_check.c\
+convert_precentage.c dir_check.c ft_strcmp.c ft_isnum.c ft_free.c\
 vec_append.c vec_copy.c vec_filter.c vec_free.c vec_from.c vec_get.c\
 vec_insert.c vec_iter.c vec_map.c vec_new.c vec_pop.c vec_prepend.c\
 vec_push.c vec_remove.c vec_resize.c
@@ -22,10 +21,8 @@ vec_push.c vec_remove.c vec_resize.c
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 OBJS = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
-INCLUDES = libft.h get_next_line.h ft_printf.h vec.h
-INCS = $(addprefix $(INC_DIR), $(INCLUDES))
-
-FLAGS = -Wall -Werror -Wextra -I $(INC_DIR)
+INCLUDES = -I./inc
+FLAGS = -Wall -Werror -Wextra $(INCLUDES)
 
 all: $(NAME)
 

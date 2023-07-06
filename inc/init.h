@@ -6,14 +6,14 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:20:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/04 22:33:45 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/05 11:39:15 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INIT_H
 # define INIT_H
 
-# include "../src/libft/libft.h"
+# include "../src/libft/inc/libft.h"
 # include "ft_types.h"
 # include <fcntl.h>
 

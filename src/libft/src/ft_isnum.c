@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   termios.c                                          :+:      :+:    :+:   */
+/*   ft_isnum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/30 09:43:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/05 11:53:41 by joonasmykka      ###   ########.fr       */
+/*   Created: 2023/07/05 11:47:34 by joonasmykka       #+#    #+#             */
+/*   Updated: 2023/07/05 11:47:35 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	termios_settings(int disable)
+int	ft_isnum(int c)
 {
-	t_term	term_settings;
-	
-	if (disable == YES)
-	{
-		tcgetattr(STDIN_FILENO, &term_settings);
-		term_settings.c_lflag &= (~ECHOCTL);
-		tcsetattr(STDIN_FILENO, TCSANOW, &term_settings);
-	}
-	else
-	{
-		tcgetattr(STDIN_FILENO, &term_settings);
-		term_settings.c_lflag |= ECHOCTL;
-		tcsetattr(STDIN_FILENO, TCSANOW, &term_settings);
-	}
+	if (c >= 47 && c <= 57)
+		return (1);
+	return (0);
 }

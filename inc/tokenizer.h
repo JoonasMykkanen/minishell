@@ -6,14 +6,14 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:25:58 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/04 22:06:37 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/05 11:39:15 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOKENIZER_H
 # define TOKENIZER_H
 
-# include "../src/libft/libft.h"
+# include "../src/libft/inc/libft.h"
 # include "ft_types.h"
 
 # define YES 1

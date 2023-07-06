@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   termios.c                                          :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/30 09:43:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/05 11:53:41 by joonasmykka      ###   ########.fr       */
+/*   Created: 2023/05/17 16:34:44 by joonasmykka       #+#    #+#             */
+/*   Updated: 2023/07/05 11:42:13 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	termios_settings(int disable)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	t_term	term_settings;
-	
-	if (disable == YES)
+	if (s1 == NULL || s2 == NULL)
 	{
-		tcgetattr(STDIN_FILENO, &term_settings);
-		term_settings.c_lflag &= (~ECHOCTL);
-		tcsetattr(STDIN_FILENO, TCSANOW, &term_settings);
+		return (-1);
 	}
-	else
+	while (*s1 && (*s1 == *s2))
 	{
-		tcgetattr(STDIN_FILENO, &term_settings);
-		term_settings.c_lflag |= ECHOCTL;
-		tcsetattr(STDIN_FILENO, TCSANOW, &term_settings);
+		s1++;
+		s2++;
 	}
+	return (*(const unsigned char *)s1 - *(const unsigned char *)s2);
 }

@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 09:17:14 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/04 12:52:48 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/05 21:01:09 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define ESCAPE_SEQUENCE '\033'
 # define ARROW_UP 65
 # define ARROW_DOWN 66
+# define ARROW_LEFT 68
+# define ARROW_RIGHT 67
 
 // erase printed character
 # define ERASE "\b \b"
@@ -35,7 +37,7 @@
 # define YES 1
 # define NO 0
 
-# include "../src/libft/libft.h"
+# include "../src/libft/inc/libft.h"
 # include <readline/readline.h> 
 # include <readline/history.h>
 # include "ft_types.h"
@@ -43,7 +45,8 @@
 # include <ctype.h>
 
 char	*ft_readline(char *prompt);
-void	handle_history(t_vec *buf);
 void	refresh_output(t_vec *buf, const char *line);
+void	refresh_prompt(t_vec *buf, size_t *cursor_idx);
+void    handle_history(t_vec *buf, int key, size_t *cursor_idx);
 
 #endif // !BONUS_H
