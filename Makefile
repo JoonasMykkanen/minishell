@@ -6,7 +6,7 @@
 #    By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 11:44:25 by joonasmykka       #+#    #+#              #
-#    Updated: 2023/07/06 09:22:30 by joonasmykka      ###   ########.fr        #
+#    Updated: 2023/07/07 14:02:30 by joonasmykka      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,11 +59,13 @@ BONUS_DIR = src/bonus
 BONUS_FILES := \
 	$(BONUS_DIR)/rl_history_bonus.c \
 	$(BONUS_DIR)/rl_helpers_bonus.c \
+	$(BONUS_DIR)/clean_exit_bonus.c \
 	$(BONUS_DIR)/readline_bonus.c \
 	$(BONUS_DIR)/termios_bonus.c \
 	$(BONUS_DIR)/heredoc_bonus.c \
 	$(BONUS_DIR)/signal_bonus.c \
 	$(BONUS_DIR)/cursor_bonus.c \
+	$(BONUS_DIR)/prompt_bonus.c \
 	$(BONUS_DIR)/main_bonus.c
 
 BONUS_FILTER := $(patsubst src/bonus/%_bonus.c, src/%.c, $(filter src/bonus/%_bonus.c, $(BONUS_FILES)))

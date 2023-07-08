@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 09:01:56 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/06 12:49:29 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/07 13:33:04 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ extern int	g_sig_status;
 
 int	refresh_input(char c, t_vec *buf)
 {
+	if (c == '\n')
+	{
+		printf(RIGHT);
+		printf(ERASE);
+		return (-1);
+	}
 	if (c != CTRL_D)
 		return (0);
 	if (buf->len == 0 || g_sig_status == SIG_HEREDOC)
@@ -38,7 +44,10 @@ static void	custom_backspace(t_vec *buf, size_t *cursor_idx)
 		*cursor_idx -= 1;
 		vec_remove(buf, *cursor_idx);
 		refresh_prompt(buf, cursor_idx);
+		update_cursor(BACKSPACE);
 	}
+	else
+		update_cursor(PRINTABLE);	
 }
 
 void	handle_cursor(t_vec *buf, int key, size_t *cursor_idx)
@@ -64,6 +73,7 @@ static void	handle_output(t_vec *buf, char c, size_t *cursor_idx)
 		*cursor_idx += 1;
 		vec_push(buf, &c);
 		printf("%c", c);
+		update_cursor(PRINTABLE);
 	}
 	else if (c == ESCAPE_SEQUENCE)
 	{
@@ -78,7 +88,9 @@ static void	handle_output(t_vec *buf, char c, size_t *cursor_idx)
 
 static void	init(t_vec *buf, char *prompt)
 {
+	printf(DISABLE_CURSOR);
 	printf("%s", prompt);
+	printf(INPUT_EMOJI);
 	vec_new(buf, 0, sizeof(char));
 }
 
@@ -93,9 +105,7 @@ char	*ft_readline(char *prompt)
 	while (buf.len < MAX_LINE_LEN)
 	{
 		c = getchar();
-		if (c == '\n')
-			break ;
-		else if (refresh_input(c, &buf) < 0)
+		if (refresh_input(c, &buf) < 0)
 			break ;
 		else if (c == BACKSPACE)
 		{

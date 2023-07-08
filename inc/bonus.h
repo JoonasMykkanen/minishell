@@ -6,30 +6,34 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 09:17:14 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/05 21:01:09 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/07 14:05:34 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BONUS_H
 # define BONUS_H
 
-// Moving cursor left and right
+# define MAX_LINE_LEN 100
+
+// Used to manipulate cursor
+# define TRACTOR_EMOJI "\U0001F69C\033[1D\033[1D"
+# define INPUT_EMOJI "\U0001F448\033[1D\033[1D"
+# define ENABLE_CURSOR "\033[?25h"
+# define DISABLE_CURSOR "\033[?25l"
 # define RIGHT "\033[1C"
 # define LEFT "\033[1D"
-# define MOVE_RIGHT 1
-# define MOVE_LEFT 2
+# define ERASE "\b \b"
+
+# define PROMPT_AT "\U0001F300"
 
 // detecting arrow key presses and identifying if up or down
 # define ESCAPE_SEQUENCE '\033'
-# define ARROW_UP 65
-# define ARROW_DOWN 66
-# define ARROW_LEFT 68
 # define ARROW_RIGHT 67
+# define ARROW_LEFT 68
+# define ARROW_DOWN 66
+# define ARROW_UP 65
 
-// erase printed character
-# define ERASE "\b \b"
-
-# define MAX_LINE_LEN 100
+// miscellaneous
 # define BACKSPACE 0x7F
 # define PRINTABLE 1
 # define CTRL_D 4
@@ -44,6 +48,7 @@
 # include <signal.h>
 # include <ctype.h>
 
+void	update_cursor(int mode);
 char	*ft_readline(char *prompt);
 void	refresh_output(t_vec *buf, const char *line);
 void	refresh_prompt(t_vec *buf, size_t *cursor_idx);

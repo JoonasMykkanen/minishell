@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:07:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/04 14:05:33 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/08 10:36:14 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void	handle_ctrl_d(t_data *data)
 	}
 	else if (g_sig_status == SIG_NO_CHILD)
 	{
-		ft_exit(data);
+		clean_exit_shell(data, PARENT);
+		exit(data->env.exit_status);
 	}
 }
 
@@ -71,8 +72,8 @@ void	signal_manager(void)
 	sigemptyset(&act_int.sa_mask);
 	sigemptyset(&act_quit.sa_mask);
 	act_int.sa_flags = SA_RESTART;
-	act_int.sa_handler = handle_int;
 	act_quit.sa_flags = SA_RESTART;
+	act_int.sa_handler = handle_int;
 	act_quit.sa_handler = handle_quit;
 	sigaction(SIGINT, &act_int, NULL);
 	sigaction(SIGQUIT, &act_quit, NULL);

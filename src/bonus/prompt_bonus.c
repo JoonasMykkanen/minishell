@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt.c                                           :+:      :+:    :+:   */
+/*   prompt_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 08:18:38 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/07 14:01:24 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/07 14:05:21 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "ft_types.h"
+#include "bonus.h"
 
 static char	*if_home(t_data *data, char *string)
 {
@@ -25,7 +26,7 @@ static char	*if_home(t_data *data, char *string)
 		string[0] = '~';
 		string[1] = '\0';
 	}
-	temp = ft_strjoin(string, " >");
+	temp = ft_strjoin(string, "\u27A1\uFE0F ");
 	free(string);
 	return (temp);
 }
@@ -51,7 +52,7 @@ void	update_prompt(t_data *data)
 	string = if_home(data, string);
 	if (data->env.prompt != NULL)
 		free(data->env.prompt);
-	temp = ft_strjoin(data->env.user, "@");
+	temp = ft_strjoin(data->env.user, PROMPT_AT);
 	data->env.prompt = ft_strjoin(temp, string);
 	free(string);
 	free(temp);
