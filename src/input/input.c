@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:19:52 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/04 17:48:05 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/08 10:51:06 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	handle_input(char *input, t_data *data)
 	if (ft_strcmp(input, "quit") == 0)
 	{
 		free(input);
+		clean_exit_shell(data, PARENT);
 		exit(0);
 	}
 	else
