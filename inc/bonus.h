@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 09:17:14 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/07 14:05:34 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/10 13:00:29 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,10 @@
 
 void	update_cursor(int mode);
 char	*ft_readline(char *prompt);
+int		refresh_input(char c, t_vec *buf);
 void	refresh_output(t_vec *buf, const char *line);
 void	refresh_prompt(t_vec *buf, size_t *cursor_idx);
-void    handle_history(t_vec *buf, int key, size_t *cursor_idx);
+void	handle_cursor(t_vec *buf, int key, size_t *cursor_idx);
+void	handle_history(t_vec *buf, int key, size_t *cursor_idx);
 
 #endif // !BONUS_H

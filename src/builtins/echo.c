@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:04:33 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/04 16:55:57 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/10 12:48:05 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,15 @@ static int	has_option_n(int *ptr_idx, t_data *data)
 	int	has_option_n;
 	int	i;
 
-	i = 1;
+	i = 0;
 	has_option_n = 0;
 	printable_found = 0;
-	while (data->cur.cmd_list[data->cur.cmd_index]->args[i] != NULL)
+	while (data->cur.cmd_list[data->cur.cmd_index]->args[++i] != NULL)
 	{
 		if (is_option_n(data->cur.cmd_list[data->cur.cmd_index]->args[i]) == 1)
 		{
-			if (i > 1 && printable_found == 1)
-			{
-				i++;
+			if (i > 0 && printable_found == 1)
 				continue ;
-			}
 			if (i > 1 && has_option_n == 0)
 				break ;
 			(*ptr_idx)++;
@@ -60,7 +57,6 @@ static int	has_option_n(int *ptr_idx, t_data *data)
 		}
 		else
 			printable_found = 1;
-		i++;
 	}
 	return (has_option_n);
 }

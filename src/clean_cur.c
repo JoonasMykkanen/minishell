@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:35:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/04 15:33:12 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/10 13:00:17 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	reset_cmd_struct(int i, t_data *data)
 {
 	free_arr(data->cur.cmd_list[i]->args);
 	free(data->cur.cmd_list[i]->output);
-	free(data->cur.cmd_list[i]->input);	
+	free(data->cur.cmd_list[i]->input);
 	free(data->cur.cmd_list[i]->cmd);
 	free(data->cur.cmd_list[i]);
 }

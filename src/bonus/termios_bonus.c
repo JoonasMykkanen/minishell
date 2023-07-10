@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:43:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/07 13:16:40 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/10 12:51:06 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 #include "termios.h"
 #include "bonus.h"
 
-// For bonus ICANON flag will disable canonical mode (buffered i/o)
 void	termios_settings(int disable)
 {
 	t_term			new;
-	
+
 	if (disable == YES)
 	{
 		tcgetattr(STDIN_FILENO, &new);
@@ -30,8 +29,8 @@ void	termios_settings(int disable)
 	else
 	{
 		tcgetattr(STDIN_FILENO, &new);
-        new.c_lflag |= ECHOCTL;
-        new.c_lflag |= (ICANON | ECHO);
-        tcsetattr(STDIN_FILENO, TCSANOW, &new);
+		new.c_lflag |= ECHOCTL;
+		new.c_lflag |= (ICANON | ECHO);
+		tcsetattr(STDIN_FILENO, TCSANOW, &new);
 	}
 }

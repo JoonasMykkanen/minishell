@@ -6,7 +6,7 @@
 #    By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 11:44:25 by joonasmykka       #+#    #+#              #
-#    Updated: 2023/07/08 10:46:06 by joonasmykka      ###   ########.fr        #
+#    Updated: 2023/07/10 12:52:05 by joonasmykka      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,10 +45,10 @@ SRC_FILES := \
     src/input/heredoc.c src/input/input.c \
     src/builtins/pwd.c src/builtins/cd.c \
     src/clean_cur.c src/clean_exit.c \
-    src/init_helpers.c src/debug.c \
     src/builtins/export_helper.c \
     src/globals.c src/init.c \
     src/main.c src/signal.c \
+    src/init_helpers.c \
 	src/input/prompt.c\
 	src/termios.c
 

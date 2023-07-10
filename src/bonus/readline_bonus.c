@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 09:01:56 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/07 13:33:04 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/10 12:58:39 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,10 @@
 
 extern int	g_sig_status;
 
-int	refresh_input(char c, t_vec *buf)
+static int	custom_backspace(char c, t_vec *buf, size_t *cursor_idx)
 {
-	if (c == '\n')
-	{
-		printf(RIGHT);
-		printf(ERASE);
-		return (-1);
-	}
-	if (c != CTRL_D)
+	if (c != BACKSPACE)
 		return (0);
-	if (buf->len == 0 || g_sig_status == SIG_HEREDOC)
-	{
-		while (buf->len > 0)
-		{
-			printf(ERASE);
-			vec_pop(NULL, buf);
-		}
-		return (-1);
-	}
-	return (0);
-}
-
-static void	custom_backspace(t_vec *buf, size_t *cursor_idx)
-{
 	if (buf->len > 0 && *cursor_idx >= 0)
 	{
 		*cursor_idx -= 1;
@@ -47,27 +27,14 @@ static void	custom_backspace(t_vec *buf, size_t *cursor_idx)
 		update_cursor(BACKSPACE);
 	}
 	else
-		update_cursor(PRINTABLE);	
-}
-
-void	handle_cursor(t_vec *buf, int key, size_t *cursor_idx)
-{
-	if (key == ARROW_LEFT && *cursor_idx > 0)
-	{
-		*cursor_idx -= 1;
-		printf(LEFT);
-	}
-	if (key == ARROW_RIGHT && *cursor_idx < buf->len)
-	{
-		*cursor_idx += 1;
-		printf(RIGHT);
-	}
+		update_cursor(PRINTABLE);
+	return (1);
 }
 
 static void	handle_output(t_vec *buf, char c, size_t *cursor_idx)
 {
 	int	key;
-	
+
 	if (ft_isprint(c) == PRINTABLE)
 	{
 		*cursor_idx += 1;
@@ -107,11 +74,8 @@ char	*ft_readline(char *prompt)
 		c = getchar();
 		if (refresh_input(c, &buf) < 0)
 			break ;
-		else if (c == BACKSPACE)
-		{
-			custom_backspace(&buf, &cursor_idx);
+		if (custom_backspace(c, &buf, &cursor_idx) == 1)
 			continue ;
-		}
 		handle_output(&buf, c, &cursor_idx);
 	}
 	vec_push(&buf, "\0");

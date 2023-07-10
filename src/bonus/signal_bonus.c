@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:07:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/08 10:36:14 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/10 12:53:56 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	handle_int(int sig)
 static void	handle_quit(int sig)
 {
 	const char	nlc[2] = {10, 0};
-	
+
 	if (sig == SIGQUIT || sig == SIGABRT)
 	{
 		g_sig_status = SIG_ERROR;

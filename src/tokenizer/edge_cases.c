@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   edge_cases.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:16:08 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 15:07:07 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:49:36 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,36 +44,19 @@ int	handle_within_quotes(char c, char next_c, int *i, t_data *data)
 int	handle_default_mode(char c, char next_c, int *i, t_data *data)
 {
 	if (c == '>' && next_c == '>')
-	{
 		handle_double_greater_than(i, data);
-		store_token(data);
-		return (1);
-	}
 	else if (c == '>' && next_c != '>')
-	{
 		add_char_to_buffer(c, data);
-		store_token(data);
-		return (1);
-	}
 	else if (c == '<' && next_c == '>')
-	{
 		add_char_to_buffer(c, data);
-		store_token(data);
-		return (1);
-	}
 	else if (c == '<')
-	{
 		add_char_to_buffer(c, data);
-		store_token(data);
-		return (1);
-	}
 	else if (c == '|')
-	{
 		add_char_to_buffer(c, data);
-		store_token(data);
-		return (1);
-	}
-	return (0);
+	else
+		return (0);
+	store_token(data);
+	return (1);
 }
 
 int	is_edge_case(char *ptr, int *mode, int *i, t_data *data)

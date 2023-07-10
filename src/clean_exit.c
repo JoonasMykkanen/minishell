@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:47:02 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/08 10:42:44 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/10 12:59:48 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ static void	free_env(t_data *data)
 	data->env.machine = NULL;
 }
 
-// Free's everything that is malloced and reset terminal settings to original state
-void	clean_exit_shell(t_data *data, int	caller)
+void	clean_exit_shell(t_data *data, int caller)
 {
 	free_dir(data);
 	free_env(data);

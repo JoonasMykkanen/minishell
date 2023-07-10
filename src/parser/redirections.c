@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:22:37 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 13:28:02 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/10 12:42:51 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 #include "minishell.h"
 #include "signal_manager.h"
 
-extern	int g_sig_status;
+extern int	g_sig_status;
 
-// Redirections can only accept certain tokens as arguments
-// and an invalid is a syntax error.
 int	is_valid_arg_for_redirection(char *token)
 {
 	if (ft_strncmp("|", token, ft_strlen(token)) == 0)

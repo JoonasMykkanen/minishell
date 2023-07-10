@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 09:22:00 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/07 13:19:07 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/10 12:59:14 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	update_cursor(int mode)
 	}
 }
 
-static void remove_old_prompt(size_t *idx, size_t len)
+static void	remove_old_prompt(size_t *idx, size_t len)
 {
 	while (*idx <= len && len >= 0)
 	{
