@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:08:28 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/03 17:44:08 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/10 13:21:46 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	get_input(char *delim, t_data *data)
 	delim_found = 0;
 	while (delim_found == 0 && data->cur.heredoc_mode == 1)
 	{
+		if (g_sig_status == SIG_ERROR)
+			break ;
 		new_input = readline("> ");
 		if (ft_strncmp(new_input, delim, ft_strlen(new_input)) == 0)
 			delim_found = 1;

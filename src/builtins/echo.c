@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:04:33 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/10 12:48:05 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/10 13:13:41 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ static void	without_option(int cmd_idx, int idx, int printed_idx, t_data *data)
 
 static int	is_option_n(char *arg)
 {
+	if (ft_strlen(arg) > 2)
+	{
+		if (arg[2] != 'n')
+			return (0);
+	}
 	if (ft_strncmp(arg, "-n", 2) == 0)
 	{
 		return (1);
