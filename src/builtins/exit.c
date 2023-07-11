@@ -6,7 +6,7 @@
 /*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 07:49:15 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/11 13:33:46 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/11 15:49:28 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ static void	handle_too_many_arguments(int idx, t_data *data)
 			ft_putstr_fd("Shell: exit: too many arguments\n", 2);
 			exit(255);
 		}
-	}
-	clean_exit_shell(data, PARENT);
+	}	
 	ft_putstr_fd("Shell: exit: Numeric argument required\n", 2);
 	data->env.exit_status = 255;
 }
