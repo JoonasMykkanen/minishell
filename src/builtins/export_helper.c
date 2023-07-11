@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 12:17:13 by jmykkane          #+#    #+#             */
-/*   Updated: 2023/07/11 21:36:53 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/11 22:02:46 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ int	need_to_update(char *arg, t_data *data)
 	temp = ft_split(arg, '=');
 	needle = ft_strdup(temp[0]);
 	free_arr(temp);
+	if (temp[2] == NULL)
+	{
+		free(needle);
+		return (0);
+	}
 	while (data->env.vars[++idx] != NULL)
 	{
 		if (ft_strncmp(data->env.vars[idx], needle, ft_strlen(needle)) == 0)
