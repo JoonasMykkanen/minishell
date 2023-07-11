@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/11 14:30:28 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/11 19:12:27 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,7 @@ void	execute(t_data *data)
 		while (p.idx < data->cur.cmd_count)
 			command_loop(&p, data);
 		while (waitpid(-1, &data->env.exit_status, 0) > 0)
-			;
-		if (p.idx > 0)
-			close(p.pipes[p.idx - 1][READ_END]);
+			;	
 		g_sig_status = SIG_NO_CHILD;
 		if (WIFEXITED(data->env.exit_status))
 			WEXITSTATUS(data->env.exit_status);
