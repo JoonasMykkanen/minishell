@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 07:49:15 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/07 13:52:27 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/11 11:20:00 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	handle_with_argument(int idx, t_data *data)
 	}
 	else
 	{
-		ft_putstr_fd("Shell: Exit: Numeric argument required\n", 2);
+		ft_putstr_fd("Shell: exit: Numeric argument required\n", 2);
 		data->env.exit_status = 255;
 		clean_exit_shell(data, PARENT);
 		exit(data->env.exit_status);
@@ -35,18 +35,18 @@ static void	handle_too_many_arguments(int idx, t_data *data)
 	{
 		if (data->cur.cmd_count == 1)
 		{
-			ft_putstr_fd("Shell: Exit: too many arguments\n", 2);
+			ft_putstr_fd("Shell: exit: too many arguments\n", 2);
 			return ;
 		}
 		else
 		{
 			clean_exit_shell(data, PARENT);
-			ft_putstr_fd("Shell: Exit: too many arguments\n", 2);
+			ft_putstr_fd("Shell: exit: too many arguments\n", 2);
 			exit(255);
 		}
 	}
 	clean_exit_shell(data, PARENT);
-	ft_putstr_fd("Shell: Exit: Numeric argument required\n", 2);
+	ft_putstr_fd("Shell: exit: Numeric argument required\n", 2);
 	data->env.exit_status = 255;
 }
 

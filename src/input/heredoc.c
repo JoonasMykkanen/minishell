@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:08:28 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/10 13:21:46 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/11 11:01:14 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
