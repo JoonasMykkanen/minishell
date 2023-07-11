@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/04 14:43:52 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/11 14:30:28 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,18 @@ void	command_loop(t_pipes *p, t_data *data)
 	}
 }
 
+static void	handle_errors(t_data *data)
+{
+	if (data->env.exit_status == SIGQUIT)
+		ft_putstr_fd("Quit: 3\n", 2);
+	else if (data->env.exit_status == SIGSEGV)
+		ft_putstr_fd("Segmentation fault: 11\n", 2);
+	else if (data->env.exit_status == SIGABRT)
+		ft_putstr_fd("Abort: 6\n", 2);
+	else if (data->env.exit_status == SIGBUS)
+		ft_putstr_fd("Bus error: 10\n", 2);
+}
+
 void	execute(t_data *data)
 {
 	t_pipes	p;
@@ -80,15 +92,15 @@ void	execute(t_data *data)
 		p.fdin = STDIN_FILENO;
 		termios_settings(NO);
 		while (p.idx < data->cur.cmd_count)
-		{
 			command_loop(&p, data);
-		}
 		while (waitpid(-1, &data->env.exit_status, 0) > 0)
 			;
 		if (p.idx > 0)
 			close(p.pipes[p.idx - 1][READ_END]);
 		g_sig_status = SIG_NO_CHILD;
 		if (WIFEXITED(data->env.exit_status))
-			data->env.exit_status = WEXITSTATUS(data->env.exit_status);
+			WEXITSTATUS(data->env.exit_status);
+		else
+			handle_errors(data);
 	}
 }

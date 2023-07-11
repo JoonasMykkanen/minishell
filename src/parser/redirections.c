@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:22:37 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/10 12:42:51 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/11 13:21:58 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	input_redirection(int cmd_idx, char *token, int *mode, t_data *data)
 
 int	output_redirection(int cmd_idx, char *token, int *mode, t_data *data)
 {
+	int fd;
+
 	if (is_valid_arg_for_redirection(token) == 0)
 	{
 		data->cur.err_flag = 1;
@@ -51,6 +53,14 @@ int	output_redirection(int cmd_idx, char *token, int *mode, t_data *data)
 		printf("syntax error near unexpected token `%s'\n", token);
 		return (1);
 	}
+	fd = open(token, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+	{
+		perror("Error output file creation");
+		clean_exit_shell(data, PARENT);
+	}
+	else
+		close(fd);
 	data->cur.cmd_list[cmd_idx]->output = ft_strdup(token);
 	if (*mode == OUTPUT_REDIR_APPEND)
 		data->cur.cmd_list[cmd_idx]->output_mode = APPEND_MODE;

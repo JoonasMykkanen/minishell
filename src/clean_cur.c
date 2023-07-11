@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_cur.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:35:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/10 13:00:17 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/11 13:01:35 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,11 @@ static void	handle_heredoc_flag(t_data *data)
 {
 	if (data->cur.heredoc_flag == 1)
 	{
-		if (unlink("heredoc_temp_file") == -1)
+		if (unlink(".heredoc_temp_file") == -1)
 		{
 			perror("Error deleting the heredoc temp file");
 			clean_exit_shell(data, PARENT);
 		}
-		data->cur.heredoc_flag = 0;
 	}
 }
 
@@ -67,8 +66,8 @@ void	clean_cur_struct(t_data *data)
 	while (++i < data->cur.cmd_count)
 		reset_cmd_struct(i, data);
 	free(data->cur.cmd_list);
-	data->cur = (t_cur){};
 	handle_heredoc_flag(data);
+	data->cur = (t_cur){};
 	data->sig.exec_pid = NO_CHILDS;
 	g_sig_status = SIG_NO_CHILD;
 	termios_settings(YES);

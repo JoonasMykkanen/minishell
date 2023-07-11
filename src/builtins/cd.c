@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 09:57:54 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/04 16:00:51 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/11 14:38:14 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,22 +67,22 @@ int	ft_cd(t_data *data)
 	if (len > 1)
 	{
 		target = ft_strdup(data->cur.cmd_list[data->cur.cmd_index]->args[1]);
-		data->dir.ptr_target = opendir(target);
-		if (open_and_close(target, data) == 1)
-			return (errno);
-		getcwd(data->dir.current, 1024);
-		data->dir.ptr_current = data->dir.ptr_target;
+		if (ft_strlen(target) < 1)
+		{
+			free(target);
+			return (0);
+		}
 	}
 	else
 	{
 		target = fetch_env_var(ft_strdup("HOME"), data);
 		if (target == NULL)
 			return (home_not_set(data));
-		data->dir.ptr_target = opendir(target);
-		if (open_and_close(target, data) == 1)
-			return (errno);
-		getcwd(data->dir.current, 1024);
-		data->dir.ptr_current = data->dir.ptr_target;
 	}
+	data->dir.ptr_target = opendir(target);
+	if (open_and_close(target, data) == 1)
+		return (errno);
+	getcwd(data->dir.current, 1024);
+	data->dir.ptr_current = data->dir.ptr_target;
 	return (0);
 }

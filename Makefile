@@ -6,11 +6,11 @@
 #    By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 11:44:25 by joonasmykka       #+#    #+#              #
-#    Updated: 2023/07/11 10:57:06 by jmykkane         ###   ########.fr        #
+#    Updated: 2023/07/11 12:52:40 by jmykkane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-DEBUG = -g -fsanitize=address
+DEBUG =
 
 NAME = minishell
 BIN_DIR = bin

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:08:28 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/03 17:40:22 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/11 12:57:50 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,5 @@ char	*handle_heredoc(char **input, t_data *data)
 	heredoc_free_delim_and_input(&delim, input);
 	if (g_sig_status != SIG_ERROR)
 		g_sig_status = original_status;
-	else
-		data->cur.heredoc_flag = 0;
 	return (edited_input);
 }

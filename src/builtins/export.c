@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 10:38:38 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/04 15:38:18 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/11 14:43:47 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,14 @@ int	is_valid_identifier(char *arg)
 	{
 		is_valid = 0;
 		if (is_valid_env_variable_name(arg) == 1)
-		{
 			return (1);
-		}
 	}
 	if (is_valid == 1 && is_valid_env_variable_name(arg) != 1)
-	{
 		is_valid = 0;
-	}
 	if (is_valid == 1 && is_valid_env_variable_value(equal_sign_ptr + 1) != 1)
-	{
 		is_valid = 0;
-	}
+	if (arg[0] == '=')
+			return (0);
 	return (is_valid);
 }
 

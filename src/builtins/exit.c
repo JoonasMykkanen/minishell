@@ -6,7 +6,7 @@
 /*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 07:49:15 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/11 11:20:00 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/11 13:33:46 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_exit(t_data *data)
 
 	idx = data->cur.cmd_index;
 	len = arr_len(data);
-	printf("exit\n");
+	ft_putstr_fd("exit\n", 2);
 	if (len == 1)
 	{
 		clean_exit_shell(data, PARENT);
