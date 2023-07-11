@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 07:55:31 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/04 15:24:08 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/11 21:39:07 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,13 @@ int	is_valid_unset_identified(char *arg)
 
 	i = 1;
 	if (ft_strchr(arg, '=') != NULL)
-	{
 		return (0);
-	}
 	if (is_valid_first_character(arg[0]) == 0)
-	{
 		return (0);
-	}
 	while (arg[i] != '\0')
 	{
 		if (is_valid_subsequent_character(arg[i]) == 0)
-		{
 			return (0);
-		}
 		i++;
 	}
 	return (1);

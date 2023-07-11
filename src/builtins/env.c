@@ -3,21 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 07:47:13 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/11 14:49:05 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/11 21:35:30 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 
-int	ft_env(t_data *data)
+static void	print_list(t_data *data)
 {
-	int	count;
 	int	idx;
 
 	idx = -1;
+	while (data->env.vars[++idx] != NULL)
+	{
+		if (ft_strchr(data->env.vars[idx], '=') != NULL)
+			printf("%s \n", data->env.vars[idx]);
+	}
+}
+
+int	ft_env(t_data *data)
+{
+	int	count;
+
 	count = arr_len(data);
 	if (count > 1)
 	{
@@ -27,10 +37,7 @@ int	ft_env(t_data *data)
 		return (127);
 	}
 	if (data->env.vars)
-	{
-		while (data->env.vars[++idx] != NULL)
-			printf("%s \n", data->env.vars[idx]);
-	}
+		print_list(data);
 	else
 	{
 		perror("problem with env");

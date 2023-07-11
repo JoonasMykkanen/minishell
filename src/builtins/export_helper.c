@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 12:17:13 by jmykkane          #+#    #+#             */
-/*   Updated: 2023/07/04 15:24:20 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/11 21:36:53 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	handle_no_args(t_data *data)
 {
 	if (arr_len(data) < 2)
 	{
-		printf("Shell: Export: No arguments given\n");
+		ft_putstr_fd("Shell: Export: No arguments given\n", 2);
 		return (1);
 	}
 	return (0);
