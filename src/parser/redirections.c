@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:22:37 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/11 13:21:58 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/11 21:41:03 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	input_redirection(int cmd_idx, char *token, int *mode, t_data *data)
 
 int	output_redirection(int cmd_idx, char *token, int *mode, t_data *data)
 {
-	int fd;
+	int	fd;
 
 	if (is_valid_arg_for_redirection(token) == 0)
 	{

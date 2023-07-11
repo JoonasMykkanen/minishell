@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 10:38:38 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/11 21:38:12 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/11 21:41:32 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	is_valid_identifier(char *arg)
 	if (is_valid == 1 && is_valid_env_variable_value(equal_sign_ptr + 1) != 1)
 		is_valid = 0;
 	if (arg[0] == '=')
-			return (0);
+		return (0);
 	return (is_valid);
 }
 
