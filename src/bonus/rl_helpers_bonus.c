@@ -6,11 +6,14 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 12:42:23 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/10 12:56:21 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/12 08:52:02 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "signal_manager.h"
 #include "bonus.h"
+
+extern int	g_sig_status;
 
 void	handle_cursor(t_vec *buf, int key, size_t *cursor_idx)
 {
