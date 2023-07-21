@@ -22,7 +22,7 @@ SRCS = $(addprefix $(SRC_DIR), $(SRC))
 OBJS = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
 INCLUDES = -I./inc
-FLAGS = -Wall -Werror -Wextra $(INCLUDES)
+FLAGS = -g -Wall -Werror -Wextra $(INCLUDES)
 
 all: $(NAME)
 

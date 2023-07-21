@@ -37,10 +37,10 @@ void	execute_cmd(t_pipes *p, int idx, t_data *data)
 {
 	char	*path;
 
-	do_checks(data->cur.cmd_list[idx]->cmd);
+	path = get_command_path(data->cur.cmd_list[idx]->cmd, data);
+	do_checks(path);
 	if (is_builtin(data->cur.cmd_list[idx]->cmd, data) == 1)
 		execute_builtin(p, data);
-	path = get_command_path(data->cur.cmd_list[idx]->cmd, data);
 	execve(data->cur.cmd_list[idx]->cmd, data->cur.cmd_list[idx]->args,
 		data->env.vars);
 	execve(path, data->cur.cmd_list[idx]->args, data->env.vars);

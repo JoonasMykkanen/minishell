@@ -53,7 +53,7 @@ void	get_input(char *delim, t_data *data)
 		if (g_sig_status == SIG_ERROR)
 			break ;
 		new_input = readline("> ");
-		if (ft_strncmp(new_input, delim, ft_strlen(new_input)) == 0)
+		if (ft_strncmp(new_input, delim, ft_strlen(delim)) == 0)
 			delim_found = 1;
 		if (delim_found == 0)
 		{
