@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/11 21:41:47 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/21 14:35:54 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	command_loop(t_pipes *p, t_data *data)
 	{
 		pipe(p->pipes[p->idx]);
 	}
+	g_sig_status = SIG_HAS_CHILD;
 	data->sig.exec_pid = fork();
-	g_sig_status = data->sig.exec_pid;
 	if (data->sig.exec_pid == 0)
 	{
 		handle_child(p, data);
@@ -97,7 +97,7 @@ void	execute(t_data *data)
 			;
 		g_sig_status = SIG_NO_CHILD;
 		if (WIFEXITED(data->env.exit_status))
-			WEXITSTATUS(data->env.exit_status);
+			data->env.exit_status = WEXITSTATUS(data->env.exit_status);
 		else
 			handle_errors(data);
 	}

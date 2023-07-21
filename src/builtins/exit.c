@@ -3,22 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 07:49:15 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/11 21:30:44 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/21 14:36:15 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "signal_manager.h"
 #include "builtins.h"
+
+extern int	g_sig_status;
 
 static void	handle_with_argument(int idx, t_data *data)
 {
+	int	status;
+
 	if (ft_isvalid_int(data->cur.cmd_list[idx]->args[1]))
 	{
 		data->env.exit_status = ft_atoi(data->cur.cmd_list[idx]->args[1]);
+		status = data->env.exit_status;
 		clean_exit_shell(data, PARENT);
-		exit(data->env.exit_status);
+		exit(status);
 	}
 	else
 	{
@@ -56,7 +62,8 @@ void	ft_exit(t_data *data)
 
 	idx = data->cur.cmd_index;
 	len = arr_len(data);
-	ft_putstr_fd("exit\n", 2);
+	if (g_sig_status != SIG_HAS_CHILD)
+		ft_putstr_fd("exit\n", 2);
 	if (len == 1)
 	{
 		clean_exit_shell(data, PARENT);

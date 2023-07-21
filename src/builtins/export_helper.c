@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_helper.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 12:17:13 by jmykkane          #+#    #+#             */
-/*   Updated: 2023/07/11 22:04:21 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/21 14:46:42 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ int	need_to_update(char *arg, t_data *data)
 	idx = -1;
 	temp = ft_split(arg, '=');
 	needle = ft_strdup(temp[0]);
-	free_arr(temp);
-	if (temp[2] == NULL)
+	if (temp[1] == NULL)
 	{
 		free(needle);
+		free_arr(temp);
 		return (0);
 	}
+	free_arr(temp);
 	while (data->env.vars[++idx] != NULL)
 	{
 		if (ft_strncmp(data->env.vars[idx], needle, ft_strlen(needle)) == 0)
