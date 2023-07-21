@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:07:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/21 14:47:29 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/21 19:57:38 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ static void	handle_int(int sig)
 			ioctl(1, TIOCSTI, nlc);
 			rl_on_new_line();
 		}
-		else
-			printf("\n");
 	}
 }
 

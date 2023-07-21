@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 07:49:15 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/21 14:36:15 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:27:11 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_exit(t_data *data)
 	if (len == 1)
 	{
 		clean_exit_shell(data, PARENT);
-		exit(data->env.exit_status);
+		exit(0);
 	}
 	else if (len == 2)
 		handle_with_argument(idx, data);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   evaluate_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:45:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 15:07:16 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:50:24 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "minishell.h"
 #include "tokenizer.h"
 
-// Evaluates a single character
 int	evaluate_char(char c, int *mode, int *i, t_data *data)
 {
 	if (is_terminating_char(c, mode) == true)
@@ -31,7 +30,6 @@ int	evaluate_char(char c, int *mode, int *i, t_data *data)
 	return (0);
 }
 
-// Checks if character terminates a token
 int	is_terminating_char(char c, int *mode)
 {
 	if (*mode == DEFAULT_MODE || *mode == DEFAULT_MODE + 10)
@@ -43,7 +41,6 @@ int	is_terminating_char(char c, int *mode)
 	return (false);
 }
 
-// Checks if character should be stored
 int	is_stored_char(char c, int *mode)
 {
 	if (*mode == DEFAULT_MODE)
@@ -75,7 +72,6 @@ static bool	change_mode_check(int *mode, char c)
 	return (false);
 }
 
-// Checks if character changes mode
 int	is_mode_changing_char(char c, int *mode, t_data *data)
 {
 	if (*mode == DEFAULT_MODE)
