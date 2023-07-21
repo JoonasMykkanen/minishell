@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 09:44:43 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/05 11:39:15 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/21 18:33:58 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 # include "ft_types.h"
 # include <fcntl.h>
 
-# define INPUT_REDIR 2
-# define OUTPUT_REDIR_OVERWRITE 3
-# define OUTPUT_REDIR_APPEND 4
 # define APPEND_MODE 1
+# define INPUT_REDIR 2
 # define OVERWRITE_MODE 2
+# define OUTPUT_REDIR_APPEND 4
+# define OUTPUT_REDIR_OVERWRITE 3
 
 int		get_cmd_count(t_data *data);
 int		parse_commands(t_data *data);

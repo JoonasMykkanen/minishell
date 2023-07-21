@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:53:39 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/04 13:05:38 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/21 18:22:39 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	handle_child(t_pipes *p, t_data *data)
 	if (p->idx < data->cur.cmd_count - 1)
 	{
 		close(p->pipes[p->idx][READ_END]);
-		dup2(p->pipes[p->idx][WRITE_END], STDOUT);
+		dup2(p->pipes[p->idx][WRITE_END], STDOUT_FILENO);
 	}
 	if (p->idx > 0)
 	{

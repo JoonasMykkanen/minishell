@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:46:59 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/04 22:12:58 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/21 18:32:56 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@
 # define WRITE_END 1
 # define READ_END 0
 # define STDERR 2
-# define STDOUT 1
-# define STDIN 0
 
 # define TRUE 1
 # define FALSE 0

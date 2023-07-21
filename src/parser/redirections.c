@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:22:37 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/11 21:41:03 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/21 18:38:40 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	output_redirection(int cmd_idx, char *token, int *mode, t_data *data)
 		printf("syntax error near unexpected token `%s'\n", token);
 		return (1);
 	}
-	fd = open(token, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	fd = open(token, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if (fd == -1)
 	{
 		perror("Error output file creation");

@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:04:33 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/10 13:13:41 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/21 18:20:20 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ int	ft_echo(int cmd_idx, t_data *data)
 	int	idx;
 	int	printed_idx;
 
-	printed_idx = 0;
 	idx = 1;
+	printed_idx = 0;
 	if (has_option_n(&idx, data) == 1)
 	{
 		with_option(cmd_idx, idx, data);
