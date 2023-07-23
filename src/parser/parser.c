@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 11:12:44 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 17:44:08 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/23 13:34:52 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	update_token(int *token_idx, t_token **t, t_data *data)
 	*token_idx = *token_idx + 1;
 	if (*token_idx < (int)data->cur.tokens.len)
 	{
+		free(*t);
 		*t = get_token(*token_idx, data);
 	}
 }
