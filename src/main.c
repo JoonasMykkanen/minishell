@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:26:35 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/25 12:09:54 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/25 14:54:28 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ extern int	g_sig_status;
 
 static void	execute_loop(char *input, t_data *data)
 {
-	if (ft_strlen(input) != 0)
+	if (input != NULL)
 	{
 		if ((input && *input) && g_sig_status != SIG_ERROR)
 			add_history(input);

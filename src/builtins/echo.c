@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:04:33 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/21 20:43:35 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/25 14:02:43 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,18 @@ static int	has_option_n(int *ptr_idx, t_data *data)
 
 static void	with_option(int cmd_idx, int idx, t_data *data)
 {
+	int	printed_idx;
+
+	printed_idx = 0;
 	while (data->cur.cmd_list[cmd_idx]->args[idx] != NULL)
 	{
+		if (printed_idx > 0)
+			printf(" ");
 		if (cmd_idx > 0)
 			printf(" ");
 		printf("%s", data->cur.cmd_list[cmd_idx]->args[idx]);
 		idx++;
+		printed_idx++;
 	}
 }
 

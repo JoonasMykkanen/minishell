@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:19:52 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/25 12:48:34 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/25 14:48:12 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	handle_input(char *input, t_data *data)
 		data->cur.raw = ft_strdup(input);
 		malloc_error_check(data->cur.raw, data);
 		free(input);
+		input = NULL;
 	}
 	return (0);
 }
