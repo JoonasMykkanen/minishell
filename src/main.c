@@ -6,7 +6,7 @@
 /*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:26:35 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/25 14:54:28 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/25 15:15:06 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void	execute_loop(char *input, t_data *data)
 			add_history(input);
 		if (g_sig_status != SIG_ERROR)
 			handle_input(input, data);
+		else
+			free(input);
 		if (data->cur.err_flag == 0 && g_sig_status != SIG_ERROR)
 			tokenize_input(data);
 		if (data->cur.err_flag == 0 && g_sig_status != SIG_ERROR)
