@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:23:57 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/21 18:15:53 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/25 18:30:03 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void	command_loop(t_pipes *p, t_data *data)
 	{
 		pipe(p->pipes[p->idx]);
 	}
-	data->sig.exec_pid = fork();
+	data->sig.exec_pid[p->idx] = fork();
 	g_sig_status = SIG_HAS_CHILD;
-	if (data->sig.exec_pid == 0)
+	if (data->sig.exec_pid[p->idx] == 0)
 		handle_child(p, data);
 	else
 	{
@@ -65,22 +65,25 @@ void	command_loop(t_pipes *p, t_data *data)
 	}
 }
 
-static void	handle_errors(t_data *data)
+static void	handle_errors(int status)
 {
-	if (data->env.exit_status == SIGQUIT)
+	if (status == SIGQUIT)
 		ft_putstr_fd("Quit: 3\n", 2);
-	else if (data->env.exit_status == SIGSEGV)
+	else if (status == SIGSEGV)
 		ft_putstr_fd("Segmentation fault: 11\n", 2);
-	else if (data->env.exit_status == SIGABRT)
+	else if (status == SIGABRT)
 		ft_putstr_fd("Abort: 6\n", 2);
-	else if (data->env.exit_status == SIGBUS)
+	else if (status == SIGBUS)
 		ft_putstr_fd("Bus error: 10\n", 2);
 }
 
 void	execute(t_data *data)
 {
+	int		status[1000];
+	int		idx;
 	t_pipes	p;
 
+	idx = -1;
 	p.idx = 0;
 	if (data->cur.cmd_count == 1
 		&& is_builtin(data->cur.cmd_list[0]->cmd, data) == 1)
@@ -91,12 +94,12 @@ void	execute(t_data *data)
 		termios_settings(NO);
 		while (p.idx < data->cur.cmd_count)
 			command_loop(&p, data);
-		while (waitpid(-1, &data->env.exit_status, 0) > 0)
-			;
+		while (++idx < p.idx)
+			waitpid(data->sig.exec_pid[idx], &status[idx], 0);
 		g_sig_status = SIG_NO_CHILD;
-		if (WIFEXITED(data->env.exit_status))
-			data->env.exit_status = WEXITSTATUS(data->env.exit_status);
+		if (WIFEXITED(status[p.idx - 1]))
+			data->env.exit_status = WEXITSTATUS(status[p.idx - 1]);
 		else
-			handle_errors(data);
+			handle_errors(status[p.idx - 1]);
 	}
 }

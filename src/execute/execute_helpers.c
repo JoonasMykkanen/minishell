@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_helpers.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:24:26 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 17:51:28 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/25 16:50:17 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

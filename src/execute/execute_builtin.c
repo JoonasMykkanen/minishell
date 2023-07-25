@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:51:24 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/25 09:42:08 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/25 15:54:10 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

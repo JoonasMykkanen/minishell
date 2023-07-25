@@ -6,7 +6,7 @@
 /*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:26:35 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/11 15:50:55 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/25 16:24:18 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	init_struct(char **envp, t_data *data)
 	set_builtins(data);
 	init_directories(data);
 	data->sig.shell_pid = getpid();
+	data->env.exit_status = 0;
 	data->env.vars = get_env_vars(envp, data);
 	data->env.vars = remove_env_var("OLDPWD", data);
 	data->env.paths = get_paths(data);

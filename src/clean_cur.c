@@ -6,7 +6,7 @@
 /*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:35:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/25 15:10:38 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/25 18:14:38 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	clean_cur_struct(t_data *data)
 	free(data->cur.cmd_list);
 	handle_heredoc_flag(data);
 	data->cur = (t_cur){};
-	data->sig.exec_pid = NO_CHILDS;
+	ft_memset(data->sig.exec_pid, -1, sizeof(data->sig.exec_pid));
 	g_sig_status = SIG_NO_CHILD;
 	termios_settings(YES);
 }

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "command.h"
-#include "debug.h"
 #include "minishell.h"
 #include "signal_manager.h"
 

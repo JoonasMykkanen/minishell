@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "command.h"
-#include "debug.h"
 #include "minishell.h"
 #include "ft_types.h"
 

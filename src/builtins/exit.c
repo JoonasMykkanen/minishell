@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
+/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 07:49:15 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/21 20:27:11 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/25 17:15:14 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ static void	handle_with_argument(int idx, t_data *data)
 	else
 	{
 		ft_putstr_fd("Shell: exit: Numeric argument required\n", 2);
-		data->env.exit_status = 255;
 		clean_exit_shell(data, PARENT);
-		exit(data->env.exit_status);
+		exit(255);
 	}
 }
 
