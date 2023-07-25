@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:08:28 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/25 10:06:30 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/25 12:41:29 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ void	get_input(char *delim, t_data *data)
 			write(fd, "\n", 1);
 		}
 		free(new_input);
+		new_input = NULL;
 	}
+	free(new_input);
 	close(fd);
 }
 
