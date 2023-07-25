@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:08:28 by oanttoor          #+#    #+#             */
-/*   Updated: 2023/07/11 13:03:49 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/25 10:06:30 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ void	get_input(char *delim, t_data *data)
 		if (g_sig_status == SIG_ERROR)
 			break ;
 		new_input = readline("> ");
-		if (ft_strncmp(new_input, delim, ft_strlen(delim)) == 0)
+		if (new_input == NULL)
+			delim_found = 1;
+		else if (ft_strncmp(new_input, delim, ft_strlen(delim)) == 0)
 			delim_found = 1;
 		if (delim_found == 0)
 		{

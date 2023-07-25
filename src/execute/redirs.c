@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:52:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/21 18:32:16 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/25 09:54:54 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ void	redir_input(t_pipes *p, t_data *data)
 
 void	redir_out(t_pipes *p, t_data *data)
 {
-	ft_putstr_fd("mode in redir: ", 2);
-	ft_putnbr_fd(data->cur.cmd_list[p->idx]->output_mode, 2);
-	ft_putstr_fd("\n", 2);
 	if (data->cur.cmd_list[p->idx]->output_mode == APPEND_MODE)
 		p->fdout = open(data->cur.cmd_list[p->idx]->output,
 				O_WRONLY | O_CREAT | O_APPEND, 0644);
