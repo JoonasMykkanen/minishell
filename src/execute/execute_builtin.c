@@ -6,7 +6,7 @@
 /*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:51:24 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/23 13:27:51 by joonasmykka      ###   ########.fr       */
+/*   Updated: 2023/07/25 09:42:08 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	execute_builtin(t_pipes *p, t_data *data)
 	cmd = ft_strdup(data->cur.cmd_list[data->cur.cmd_index]->cmd);
 	malloc_error_check(cmd, data);
 	idx = what_builtin(cmd, data);
-	free(cmd);	
+	free(cmd);
 	return_value = choose_builtin(idx, data);
 	if (p->out_redirected == TRUE)
 		dup2(original_stdout, STDOUT_FILENO);
