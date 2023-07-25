@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_cur.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:35:33 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/11 13:01:35 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/25 10:30:07 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,13 @@ static void	free_vec_pointers(t_data *data)
 
 	i = -1;
 	if (data->cur.vec_init == NO)
+	{
 		return ;
+	}
 	while (++i < data->cur.tokens.len)
 	{
 		str = *(char **)vec_get(&data->cur.tokens, i);
-		if (str)
-		{
-			free(str);
-		}
+		free(str);
 	}
 	vec_free(&data->cur.tokens);
 	vec_free(&data->cur.types);

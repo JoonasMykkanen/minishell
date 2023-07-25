@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   store_token.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmykkane <jmykkane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joonasmykkanen <joonasmykkanen@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:45:49 by joonasmykka       #+#    #+#             */
-/*   Updated: 2023/07/03 15:07:44 by jmykkane         ###   ########.fr       */
+/*   Updated: 2023/07/25 12:09:48 by joonasmykka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,11 @@ void	store_empty_token(t_data *data)
 	char	*token;
 	int		type;
 
+	if (data->cur.vec_init != YES)
+		return ;
 	type = WITHIN_QUOTES;
-	token = (char *) malloc(sizeof(char));
+	token = ft_strdup("");
 	malloc_error_check(token, data);
-	token[0] = '\0';
 	vec_push(&data->cur.tokens, &token);
 	vec_push(&data->cur.types, &type);
 	clear_and_init_buffer(data);
