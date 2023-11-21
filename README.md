@@ -1,6 +1,7 @@
 # Minishell Project
 
 ## Introduction
+<img src="./output.gif">
 The Minishell project involves creating a simplified version of a shell that imitates core functionalities of a traditional Unix-like shell. This project helps in mastering various aspects of systems programming and C language, especially handling processes, file descriptors, and memory management.
 
 ## Key Takeaways
